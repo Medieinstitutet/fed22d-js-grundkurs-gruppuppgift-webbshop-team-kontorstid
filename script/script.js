@@ -34,3 +34,39 @@ function test2(){
 }
 
 init();
+
+// Tillagt 221109 av Sussie
+// generella variabler
+
+const orderButton = document.querySelector('#order');
+const nameField = document.querySelector('#name');
+const addressField = document.querySelector('#address');
+const zipcodeField = document.querySelector('#zipcode');
+const cityField = document.querySelector('#city');
+const codeField = document.querySelector('#code');
+const phoneField = document.querySelector('#phone');
+const emailField = document.querySelector('#email');
+const paymentMethodChoice = document.querySelector('#paymentmethod');
+let nameIsOk = false;
+
+// formulär
+
+nameField.addEventListener('change', checkName);
+
+function checkName (){
+    console.log("+In function checkName: nameField = " + nameField.value);
+    if (nameField.value.indexOf(' ') > -1) { //Kollar att det finns mellanslag i namnet
+        nameIsOk = true;
+    } else {
+        nameIsOk = false;
+    }
+    activateOrderButton();
+}
+
+function activateOrderButton() {
+    if (nameIsOk) {
+        orderButton.removeAttribute('disabled');
+    } else {
+        orderButton.setAttribute('disabled', true);
+    }
+}
