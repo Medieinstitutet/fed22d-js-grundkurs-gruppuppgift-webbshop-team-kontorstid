@@ -1,12 +1,10 @@
-console.log("hej")
-
 //Global variables
 
 let btnLower; //Button to decrease amount of donuts
 let btnHigher; //Button to increase amount of donuts
 let priceLabel; //Label to show total price
 let amountLevel; //Label to show total amount
-let newPrice = 0;
+let newPrice;
 
 function init(){
 
@@ -20,16 +18,23 @@ function init(){
     btnLower.addEventListener("click", test);
     btnHigher.addEventListener("click", test2);
     console.log("hej");
+    console.log(priceLabel.innerText)
 } //End init
 
 
 function test(){
-    newPrice --;
+    newPrice = Number(priceLabel.innerText);
+    console.log(newPrice);
+    newPrice /= 2;
+    console.log(newPrice);
     priceLabel.innerHTML = newPrice;
 }
 
 function test2(){
-    newPrice ++;
+    newPrice = Number(priceLabel.innerText);
+    console.log(newPrice);
+    newPrice *= 2;
+    console.log(newPrice);
     priceLabel.innerHTML = newPrice;
 }
 

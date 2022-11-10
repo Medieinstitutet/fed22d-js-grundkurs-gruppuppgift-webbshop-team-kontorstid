@@ -55,8 +55,8 @@
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
-                <p>pris: <span id="tot-price">0</span> kr</p>
-                <p>antal: <span id="tot-amount">0</span> kr</p>
+                <p>pris: <span id="tot-price">35</span> kr</p>
+                <p>antal: <span id="tot-amount">0</span> st</p>
                 <input type="button" value="-" id="decreaseBtn">
                 <input type="button" value="+" id="increaseBtn">
             </section>
@@ -215,50 +215,52 @@
                 <input type="button" value="+" id="increaseBtn">
             </section>
         </div>
-        <label>
-            Namn:
-            <input type="text" id="name">
-        </label> <br><br>
-        <label>
-            Adress:
-            <input type="text" id="address">
-        </label><br><br>
-        <label>
-            Postnummer:
-            <input type="number" id="zipcode" min="10000" max="99999">
-        </label><br><br>
-        <label>
-            Postort:
-            <input type="text" id="city">
-        </label><br><br>
-        <label>
-            Portkod:
-            <input type="number" id="code">
-        </label><br><br>
-        <label>
-            Telefonnummer:
-            <input type="number" id="phone">
-        </label><br><br>
-        <label>
-            Email:
-            <input type="email" id="email">
-        </label><br><br>
-        <label>
-            Välj hur du vill betala:
-            <select id="paymentmethod">
-                <option value="card"> Kort</option>
-                <option value="bill"> Faktura</option>
-            </select>
-        </label><br><br>
-        <label>
-            Godkänn behandling av dina personuppgifter <br>
-            <input type="checkbox" id="acknowledge">
-        </label><br><br>
-        <label>
-            Jag vill gärna ta emot Gottfrids munkfabriks nyhetsbrev! <br>
-            <input type="checkbox" id="news" checked>
-        </label><br><br>
-        <button id="order" disabled> Beställ</button>
+        <section class="checkout-container">
+            <label>
+                <p>Namn:</p>
+                <input type="text" id="name">
+            </label> <br><br>
+            <label>
+                <p>Adress:</p>
+                <input type="text" id="address">
+            </label><br><br>
+            <label>
+                <p>Postnummer:</p>
+                <input type="number" id="zipcode" min="10000" max="99999">
+            </label><br><br>
+            <label>
+                <p>Postort:</p>
+                <input type="text" id="city">
+            </label><br><br>
+            <label>
+                <p>Portkod:</p>
+                <input type="number" id="code">
+            </label><br><br>
+            <label>
+                <p>Telefonnummer:</p>
+                <input type="number" id="phone">
+            </label><br><br>
+            <label>
+                <p>E-mail:</p>
+                <input type="email" id="email">
+            </label><br><br>
+            <label>
+                <p>Välj hur du vill betala:</p>
+                <select id="paymentmethod">
+                    <option value="card"> Kort</option>
+                    <option value="bill"> Faktura</option>
+                </select>
+            </label><br><br>
+            <label>
+                <p>Godkänn behandling av dina personuppgifter</p>
+                <input type="checkbox" id="acknowledge">
+            </label><br><br>
+            <label>
+                <p>Jag vill gärna ta emot Gottfrids munkfabriks nyhetsbrev!</p> <br>
+                <input type="checkbox" id="news" checked>
+            </label><br><br>
+            <button id="order" disabled> Beställ</button>
+        </section>
     </main>
     <footer>
 
