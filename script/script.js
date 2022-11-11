@@ -1,54 +1,68 @@
 //Global variables
 
-let array = [35, 29, 23, 47]
-
 let btnLower; //Button to decrease amount of donuts
 let btnHigher; //Button to increase amount of donuts
 let priceLabel; //Label to show total price
-let amountLevel; //Label to show total amount
-let newPrice; //Variable to show new price
-let standardPrice; 
+//let newPrice; //Variable to show new price
+let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
+
+
 
 function init(){
 
     //Declares variables 
-    btnLower = document.querySelector("#decreaseBtn");
-    btnHigher = document.querySelector("#increaseBtn");
-    standardPrice = document.querySelector("#donut-price");
-    priceLabel = document.querySelector("#tot-price");
-    amountLevel = document.querySelector("#tot-amount");
-    
+    btnLower = document.querySelectorAll('button[data-operator="decreaseBtn"]');
+    btnHigher = document.querySelectorAll('button[data-operator="increaseBtn"]');
+    //standardPrice = document.querySelectorAll(".donut-price");
     //Calling functions
-    btnLower.addEventListener("click", reduceTotDonut);
-    btnHigher.addEventListener("click", increaseTotDonut);
-    console.log(standardPrice.innerText)
+    for (let i = 0; i < btnLower.length; i++){
+        btnLower[i].addEventListener("click", reduceTotDonut);
+    }
+    for (let i = 0; i < btnHigher.length; i++){
+        btnHigher[i].addEventListener("click", increaseTotDonut);
+    }
 } //End init
 
 
-function reduceTotDonut(){
-    newPrice = Number(standardPrice.innerText);
-    console.log(newPrice);
+
+function reduceTotDonut(e){
+    const amountLevel = e.currentTarget.parentElement.querySelector('.tot-amount');
+    console.log(standardPrice)
     newAmount = Number(amountLevel.innerText);
-    if(newAmount -1 < 0) {
-        return;
-    }
-    newAmount --;
-    amountLevel.innerHTML = newAmount;
-    priceLabel.innerHTML = newAmount * newPrice;
+
+    if (newAmount <= 0) {
+        return
+      }
+    
+    amountLevel.innerHTML = newAmount - 1;
+    console.log(amountLevel.innerText);
+
+    newPrice = Number(standardPrice.innerText);
+    console.log(newPrice.innerText)
+
+    updateDonutSum(e.currentTarget.parentElement);
 }
 
-function increaseTotDonut(){
-    newPrice = Number(standardPrice.innerText);
-    console.log(newPrice);
+function increaseTotDonut(e){
+    const amountLevel = e.currentTarget.parentElement.querySelector('.tot-amount');
+    console.log(amountLevel.innerText)
     newAmount = Number(amountLevel.innerText);
-    newAmount ++;
-    amountLevel.innerHTML = newAmount;
-    priceLabel.innerHTML = newAmount * newPrice;
+    
+    amountLevel.innerHTML = newAmount + 1;
+    console.log(amountLevel.innerText);
+
+    updateDonutSum(e.currentTarget.parentElement);
 }
 
-function checkPrice() {
-        btnLower.removeAttribute("disabled", true);
+function updateDonutSum(donutElement) {
+    const donutSinglePrice = donutElement.querySelector(".donut-price").innerText;
+    const orderedAmount = donutElement.querySelector(".tot-amount").innerText;
+
+    const sum = donutSinglePrice * orderedAmount;
+
+    donutElement.querySelector(".tot-price").innerHTML = sum;
+    console.log(sum);
 }
 
 init();
