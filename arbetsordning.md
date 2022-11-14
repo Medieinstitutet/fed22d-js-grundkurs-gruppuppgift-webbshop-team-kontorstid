@@ -4,7 +4,7 @@
 [ ] Timer-funktion (varukorgen töms efter 15 min)
 [ ] Slideshow (två bilder på varje munk)
 [ ] Ta bort möjligheten att välja faktura om beställning över 800 kr
-[ ]
+[ ] Göra en variant för desktop och tablet-läge
 [ ]
 [ ] Fält för personnummer/kortnummer korrekt i JS/HTML (ska vara validerat personnummer enligt uppgiften)
 [ ] Andra priser på sidan vissa tider
