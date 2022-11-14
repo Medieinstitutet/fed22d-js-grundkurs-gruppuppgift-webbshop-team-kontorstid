@@ -14,7 +14,7 @@ function init(){
     //Declares variables 
     btnLower = document.querySelectorAll('button[data-operator="decreaseBtn"]');
     btnHigher = document.querySelectorAll('button[data-operator="increaseBtn"]');
-    //standardPrice = document.querySelectorAll(".donut-price");
+    standardPrice = document.querySelectorAll(".donut-price");
     //Calling functions
     for (let i = 0; i < btnLower.length; i++){
         btnLower[i].addEventListener("click", reduceTotDonut);
@@ -39,14 +39,14 @@ function reduceTotDonut(e){
     console.log(amountLevel.innerText);
 
     newPrice = Number(standardPrice.innerText);
-    console.log(newPrice.innerText)
+    console.log(newPrice.innerText);
 
     updateDonutSum(e.currentTarget.parentElement);
 }
 
 function increaseTotDonut(e){
     const amountLevel = e.currentTarget.parentElement.querySelector('.tot-amount');
-    console.log(amountLevel.innerText)
+    console.log(amountLevel.innerText);
     newAmount = Number(amountLevel.innerText);
     
     amountLevel.innerHTML = newAmount + 1;
