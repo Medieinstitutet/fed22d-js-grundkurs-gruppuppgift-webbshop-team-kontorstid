@@ -25,25 +25,26 @@ function init(){
 } //End init
 
 
-
+//Function to reduce total amount of donuts
 function reduceTotDonut(e){
-    const amountLevel = e.currentTarget.parentElement.querySelector('.tot-amount');
-    console.log(standardPrice)
-    newAmount = Number(amountLevel.innerText);
+    const amountLevel = e.currentTarget.parentElement.querySelector('.tot-amount'); //Const which goes through the parent element to find .tot-amount
+    console.log(standardPrice) //Console log to make sure that it is done correctly 
+    newAmount = Number(amountLevel.innerText); //Specifies the variable newAmount equal to amountLevel. Uses Number to convert it from string to number, innerText to read.
 
-    if (newAmount <= 0) {
+    if (newAmount <= 0) { //If the total amount of donuts allready is at 0, don't do the function
         return
       }
     
-    amountLevel.innerHTML = newAmount - 1;
-    console.log(amountLevel.innerText);
+    amountLevel.innerHTML = newAmount - 1; //Reduces the total amount of donuts by one each btn klick
+    console.log(amountLevel.innerText); //Console log to make sure that it is done correctly 
 
-    newPrice = Number(standardPrice.innerText);
+    newPrice = Number(standardPrice.innerText); //Specifies  newPrice equal to Number standardPrice
     console.log(newPrice.innerText);
 
-    updateDonutSum(e.currentTarget.parentElement);
+    updateDonutSum(e.currentTarget.parentElement); //Calls the function updateDonutSum with parameters
 }
 
+//Function to increase total amount of donuts
 function increaseTotDonut(e){
     const amountLevel = e.currentTarget.parentElement.querySelector('.tot-amount');
     console.log(amountLevel.innerText);
