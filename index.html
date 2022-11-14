@@ -48,8 +48,8 @@
         <div>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-socker-hal.jpg" width="100" alt="donut with sugar">
-                <h2>Klassisk donut med socker <span class="donut-price">35</span> kr</h2>
+                <img src="./assets/photos/donut-with-sugar-hole.jpg" width="100" alt="donut with sugar">
+                <h2>Klassisk donut med socker <span id="donut-price">35</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -62,8 +62,8 @@
             </section>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-socker.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2>Klassisk Munk med socker <span class="donut-price">40</span> kr</h2>
+                <img src="./assets/photos/donut-with-sugar.jpg" style="width: 100%;" alt="donut with sugar">
+                <h2> Klassisk munk med socker</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -245,14 +245,27 @@
                 <input type="email" id="email">
             </label><br><br>
             <section class="payment">
-                <p>Välj betalsätt</p>
-                <button id="paymentCard">Kort</button>
-                <button id="paymentInvoice">Faktura</button>
+                <label> Välj betalsätt</label> <br>
+                <input type="radio" name="payment-method" value="kort" id="card"> Kort <br>
+                <input type="radio" name="payment-method" value="faktura" id="invoice"> Faktura
+                <br>
                 
                 <div class="paymentCardContainer">
+                    <label> Kortnummer
+                    <input type="number" id="cardnumber">
+                </label>
+                <br>
+                    <label>Månad/År
+                    <input type="number">
+                </label>
+                <label> CVC
+                <input type="number">
+                </label>
 
                 </div>
                 <div class="paymentInvoiceContainer">
+                    <label> Personnummer</label> <!--OBS! Denna är ej fixad i JS, behöver validera att det är ett korrekt personnummer!!-->
+                    <input type="number" id="personalnumber">
                     
                 </div>
             </section><br><br>

@@ -80,6 +80,8 @@ const phoneField = document.querySelector('#phone');
 const emailField = document.querySelector('#email');
 const paymentMethodChoice = document.querySelector('#paymentmethod');
 let nameIsOk = false;
+const paymentMethod1 = document.querySelector('#card');
+const paymentMethod2 = document.querySelector('#invoice');
 
 // formulär
 
@@ -101,4 +103,16 @@ function activateOrderButton() {
     } else {
         orderButton.setAttribute('disabled', true);
     }
+}
+paymentMethod1.addEventListener('click', showCardContent);
+paymentMethod2.addEventListener('click', showInvoiceContent);
+
+function showInvoiceContent () {
+    document.querySelector('.paymentCardContainer').classList.remove('visible');
+    document.querySelector('.paymentInvoiceContainer').classList.add('visible');
+}
+
+function showCardContent (){
+    document.querySelector('.paymentInvoiceContainer').classList.remove('visible');
+    document.querySelector('.paymentCardContainer').classList.add('visible');
 }
