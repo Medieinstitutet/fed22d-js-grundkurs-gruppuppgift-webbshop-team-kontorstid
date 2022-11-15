@@ -12,124 +12,122 @@ p, h1, h2 { //Text color
     color: $textColor;
 }
 
-h1, h2 { //Font family
-    font-family: 'Archivo Black', sans-serif;;
+h1,
+h2 {
+  //Font family
+  font-family: "Archivo Black", sans-serif;
 }
 
 p {
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-
 
 /*body*/
 
 body {
-    background-color: $primaryColor;
+  background-color: $primaryColor;
 }
-
 
 /*Header section*/
 
 header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+
+  .heading {
+    background-color: $primaryColor;
+  }
+
+  nav {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    transition: all 0.4s ease-in-out;
+    right: -100vw;
+    position: fixed;
+    z-index: 2;
+  }
+
+  nav ul {
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: space-between;
-    padding: 15px;
-
-    .heading {
-        background-color: $primaryColor;
-    }
-
-    nav {
-        width: 100vw;
-        height: 100vh;
-        top: 0;
-        transition: all 0.4s ease-in-out;
-        right: -100vw;
-        position: fixed;
-        z-index: 2;
-    }
-
-    nav ul {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        padding-top: 70px;
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        font-size: 3rem;
-        text-align: center;
-        font-weight: 600;
-    }
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-top: 70px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 600;
+  }
 
     nav a {
         text-decoration: none;
         color: $textColor;
     }
 
-    .checkbox {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 3;
-        width: 45px;
-        height: 45px;
-        opacity: 0;
-        cursor: pointer;
-    }
+  .checkbox {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
+    width: 45px;
+    height: 45px;
+    opacity: 0;
+    cursor: pointer;
+  }
 
-    button {
-        width: 45px;
-        height: 45px;
-        background: transparent;
-        border: 0;
-        position: fixed;
-        right: 20px;
-        top: 10px;
-        z-index: 3;
-        pointer-events: none;
-    }
+  button {
+    width: 45px;
+    height: 45px;
+    background: transparent;
+    border: 0;
+    position: fixed;
+    right: 20px;
+    top: 10px;
+    z-index: 3;
+    pointer-events: none;
+  }
 
-    button span {
-        display: block;
-        width: 35px;
-        height: 5px;
-        background-color: $secondaryColor;
-        margin-bottom: 5px;
-        position: relative;
-        left: 0;
-        margin-left: 6px;
-    }
+  button span {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background-color: $secondaryColor;
+    margin-bottom: 5px;
+    position: relative;
+    left: 0;
+    margin-left: 6px;
+  }
 
-    button span:nth-child(2) {
-        margin-left: 0;
-        transition: all 0.4s ease-in-out;
-    }
+  button span:nth-child(2) {
+    margin-left: 0;
+    transition: all 0.4s ease-in-out;
+  }
 
-    input:hover + .menu button span:nth-child(2) {
-        left: 6px;
-    }
+  input:hover + .menu button span:nth-child(2) {
+    left: 6px;
+  }
 
-    input:checked + .menu nav {
-        visibility: visible;
-        opacity: 1;
-        transition: all 0.4s ease-in-out;
-        right: 0vw;
-    }
-    
+  input:checked + .menu nav {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.4s ease-in-out;
+    right: 0vw;
+  }
 }
-
 
 /*Main section*/
 
 main {
-    padding: 15px;
+  padding: 15px;
 
-    .donut-container {
-        margin-bottom: 50px;
+  .donut-container {
+    margin-bottom: 50px;
 
         button {
             background-color: $textColor;
@@ -139,6 +137,7 @@ main {
         }
 
     }
+  }
 
     .unchecked { //rating
         color: #a7a7a7;
