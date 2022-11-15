@@ -1,6 +1,6 @@
 [1] CSS på sidan 
-[1] HTML-kod fix (bilder, mellanrum formulär)
-[2] Att munkarna hamnar i varukorgen, pris och antal
+[1] x HTML-kod fix (bilder, mellanrum formulär)
+[2] x Att munkarna hamnar i varukorgen, pris och antal
 [2] Timer-funktion (varukorgen töms efter 15 min)
 [3] Slideshow (två bilder på varje munk)
 [3] Ta bort möjligheten att välja faktura om beställning över 800 kr
