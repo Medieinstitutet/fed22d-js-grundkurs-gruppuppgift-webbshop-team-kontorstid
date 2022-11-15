@@ -20,7 +20,7 @@
 <body>
     <header>
         <div class="heading">
-            <img src="./assets/photos/Gottfrids munkfabrik.gif" width: 30% alt="Gottfrids-munkfabrik-logo">
+            <img src="./assets/photos/Gottfrids munkfabrik.gif"  alt="Gottfrids-munkfabrik-logo">
         </div>
         <input type="checkbox" class="checkbox">
         <div class="menu">
@@ -31,9 +31,9 @@
             </button>
             <nav>
                  <ul>
-                    <li><a href=index.html class="nav-links">Home</a></li>
-                    <li><a href="resume.html" class="nav-links">My resume</a></li>
-                    <li><a href="#" class="nav-links">My work</a></li>
+                    <li><a href=index.html class="nav-links">Munkar med choklad</a></li>
+                    <li><a href="resume.html" class="nav-links">Munkar med strössel</a></li>
+                    <li><a href="#" class="nav-links">Övriga munkar</a></li>
                 </ul>  
             </nav>
         </div>
@@ -44,176 +44,262 @@
         </nav>
         <ul>
             <!--Här kommer det finnas en sorteringsmeny-->
+            <li><a href=#> Lägsta pris</a></li>
+            <li><a href=#> Högsta pris</a></li>
         </ul>
         <div>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-socker-hal.jpg" width="100" alt="donut with sugar">
-                <h2>Klassisk donut med socker <span id="donut-price">35</span> kr</h2>
+                <img src="./assets/photos/donut-with-sugar-hole.jpg" alt="Donut med socker">
+                <h2>Classic <span class="donut-price">35</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
-                <p>pris: <span id="tot-price">0</span> kr</p>
-                <p>antal: <span id="tot-amount">0</span> st</p>
-                <input type="button" value="-" id="decreaseBtn">
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-sugar-hole2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-socker.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Klassisk munk med socker</h2>
+                <img src="./assets/photos/donut-with-sugar.jpg" alt="Munk med socker">
+                <h2> Raspberry pie <span class="donut-price">35</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-sugar-2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-florsocker.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Munk med florsocker</h2>
+                <img src="./assets/photos/donut-with-icing-sugar.jpg"  alt="Munk med florsocker">
+                <h2> Sugar dream <span class="donut-price">40</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-icing-sugar2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-strosselfrosting.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Munk med färgglatt strössel</h2>
+                <img src="./assets/photos/donut-with-sprinkles-frosting.jpg" alt="Munk med strössel">
+                <h2> Unicorn <span class="donut-price">40</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-sprinkles-frosting2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-strossel-och-choklad.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Munk med strössel och choklad</h2>
+                <img src="./assets/photos/donut-with-sprinkles-chocolate.jpg" alt="Munk med strössel och choklad">
+                <h2> Hungover <span class="donut-price">40</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-sprinkles-chocolate2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-chokladfrosting.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Munk med chokladfrosting</h2>
+                <img src="./assets/photos/donut-with-chocolate-frosting.jpg" alt="Munk med chokladfrosting">
+                <h2> Chocoholic <span class="donut-price">40</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-chocolate-frosting2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-chokladbitar-på-chokladfrosting.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Munk med chokladbitar på chokladfrosting</h2>
+                <img src="./assets/photos/Donut-with-chocolate-bits.jpg"  alt="Munk med chokladbitar">
+                <h2> Chocoloco <span class="donut-price">40</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/Donut-with-chocolate-bits2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-chokladstrossel.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Munk med chokladströssel</h2>
+                <img src="./assets/photos/donut-with-chocolate-sprinkles.jpg" alt="Munk med chokladströssel">
+                <h2> Chocolate rain <span class="donut-price">40</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-chocolate-sprinkles2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-smarties.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Munk med Smarties</h2>
+                <img src="./assets/photos/donut-with-smarties.jpg" alt="Munk med godis på">
+                <h2> Smartie <span class="donut-price">40</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-smarties2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-topping.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Munk med random topping</h2>
+                <img src="./assets/photos/donut-with-topping.jpg" alt="Munk med topping">
+                <h2> Dragon tail <span class="donut-price">40</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-topping2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-figur.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Munk med random figur</h2>
+                <img src="./assets/photos/donut-with-character.jpg"  alt="Munk med figur">
+                <h2> Monster <span class="donut-price">40</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-character2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
             <section class="donut-container">
                 <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/munk-med-strossel-på-choklad.jpg" style="width: 100%;" alt="donut with sugar">
-                <h2> Munk med färgglatt strössel på choklad</h2>
+                <img src="./assets/photos/donut-with-sprinkles-on-chocolate.jpg" alt="Munk med strössel på chokladfrosting">
+                <h2> Rainbow chocoloco <span class="donut-price">40</span> kr</h2>
                 <span class="fa fa-star checked"></span> <!--rating på donut -->
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star unchecked"></span>
                 <span class="fa fa-star unchecked"></span>
-                <p> antal</p>
-                <p> pris</p>
-                <input type="button" value="-" id="decreaseBtn" disabled>
-                <input type="button" value="+" id="increaseBtn">
+                <p>pris: <span class="tot-price">0</span> kr</p>
+                <p>antal: <span class="tot-amount">0</span> st</p>
+                <button data-operator="decreaseBtn">-</button>
+                <button data-operator="increaseBtn">+</button>
             </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-sprinkles-on-chocolate2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra</p>
+            </aside>
         </div>
         <section class="checkout-container">
             <label>
@@ -245,31 +331,54 @@
                 <input type="email" id="email">
             </label><br><br>
             <section class="payment">
-                <p>Välj betalsätt</p>
-                <button id="paymentCard">Kort</button>
-                <button id="paymentInvoice">Faktura</button>
+                <label> Välj betalsätt</label> <br>
+                <input type="radio" name="payment-method" value="kort" id="card"> Kort <br>
+                <input type="radio" name="payment-method" value="faktura" id="invoice"> Faktura
+                <br>
                 
                 <div class="paymentCardContainer">
+                    <label> Kortnummer
+                    <input type="number" id="cardnumber">
+                </label>
+                <br>
+                    <label>Månad/År
+                    <input type="number">
+                </label>
+                <label> CVC
+                <input type="number">
+                </label>
 
                 </div>
                 <div class="paymentInvoiceContainer">
+                    <label> Personnummer</label> <!--OBS! Denna är ej fixad i JS, behöver validera att det är ett korrekt personnummer!!-->
+                    <input type="number" id="personalnumber">
                     
                 </div>
-            </section><br><br>
+            </section>
             <label>
                 <p>Godkänn behandling av dina personuppgifter</p>
                 <input type="checkbox" id="acknowledge">
-            </label><br><br>
+            </label>
             <label>
-                <p>Jag vill gärna ta emot Gottfrids munkfabriks nyhetsbrev!</p> <br>
+                <p>Jag vill gärna ta emot Gottfrids munkfabriks nyhetsbrev!</p>
                 <input type="checkbox" id="news" checked>
-            </label><br><br>
+            </label><br>
             <button id="order" disabled> Beställ</button>
         </section>
     </main>
     <footer>
-
+        <section class="icon-container">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </section>
+        <section class="price-container">
+            <h2>Pris</h2>
+        </section>
     </footer>
+
+    <!--Scripts-->
     <script src="script/script.js" type="text/javascript"></script>
+
+    <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/bf03cab5e8.js" crossorigin="anonymous"></script>
 </body>
 </html>
