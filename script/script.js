@@ -59,9 +59,9 @@ function updateDonutSum(donutElement) {
 
     newTotSum = Number(totSum.innerText);
     console.log(newTotSum);
-    newTotSum = sum;
-    console.log(newTotSum);
-    newTotSum.innerHTML = sum;
+    newTotSum += Number(donutSinglePrice);
+    console.log(sum);
+    totSum.innerHTML = newTotSum;
     
     donutElement.querySelector(".tot-price").innerHTML = sum;
     
