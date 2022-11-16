@@ -1,0 +1,15 @@
+.donut-container {
+    margin-bottom: 50px;
+    max-width: 490px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        background-color: $textColor;
+        color: $primaryColor;
+        padding: 5px 10px;
+        border: none;
+    }
+
+}
