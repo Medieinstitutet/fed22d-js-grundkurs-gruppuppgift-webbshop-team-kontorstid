@@ -5,11 +5,13 @@ $primaryColor: #f8f8f8;
 $secondaryColor: #f96c9e;
 $textColor: #0e0e0e;
 
-
 /*text*/
 
-p, h1, h2 { //Text color
-    color: $textColor;
+p,
+h1,
+h2 {
+  //Text color
+  color: $textColor;
 }
 
 h1,
@@ -65,10 +67,10 @@ header {
     font-weight: 600;
   }
 
-    nav a {
-        text-decoration: none;
-        color: $textColor;
-    }
+  nav a {
+    text-decoration: none;
+    color: $textColor;
+  }
 
   .checkbox {
     position: fixed;
@@ -129,58 +131,56 @@ main {
   .donut-container {
     margin-bottom: 50px;
 
-        button {
-            background-color: $textColor;
-            color: $primaryColor;
-            padding: 5px 10px;
-            border: none;
-        }
-
+    button {
+      background-color: $textColor;
+      color: $primaryColor;
+      padding: 5px 10px;
+      border: none;
     }
   }
+}
 
-    .unchecked { //rating
-        color: #a7a7a7;
-    }
+.unchecked {
+  //rating
+  color: #a7a7a7;
+}
 
-    img {
-        width: 100%;
-    }
+img {
+  width: 100%;
+}
 
-    .checked {
-        color: $secondaryColor;
-    }
+.checked {
+  color: $secondaryColor;
 }
 
 .paymentCardContainer {
-    display: none;
+  display: none;
 }
 
 .paymentInvoiceContainer {
-    display: none;
+  display: none;
 }
 
 .visible {
-    display: block;
+  display: block;
 }
-
 
 /*Footer section*/
 
 footer {
-    background-color: $secondaryColor;
-    padding: 25px 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  background-color: $secondaryColor;
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-    .fa-cart-shopping {
-        color: $primaryColor;
-        font-size: 2.1rem;
-    }
+  .fa-cart-shopping {
+    color: $primaryColor;
+    font-size: 2.1rem;
+  }
 
-    h2 {
-        margin: 0;
-        color: $primaryColor;
-    }
+  h2 {
+    margin: 0;
+    color: $primaryColor;
+  }
 }
