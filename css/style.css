@@ -1,5 +1,16 @@
 /*Variables*/
 /*Colors*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*html*/
+html {
+  scroll-behavior: smooth;
+}
+
 /*text*/
 p,
 h1,
@@ -121,6 +132,11 @@ main .donut-container {
   margin-bottom: 50px;
   max-width: 490px;
   margin: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  margin: auto;
+  margin-bottom: 3rem;
 }
 main .donut-container button {
   background-color: #0e0e0e;
@@ -129,15 +145,32 @@ main .donut-container button {
   border: none;
 }
 main .donut-image-container {
-  background-color: #f96c9e;
   width: 100%;
 }
 main .donut-info-container {
   margin-left: 2rem;
   width: 100%;
 }
+main .donut-info-container h2,
+main span,
+main p {
+  color: #0e0e0e;
+}
+main .donut-info-container button {
+  background-color: #d9d9d9;
+  color: #0e0e0e;
+  margin-top: 1rem;
+  margin-right: 1.2rem;
+  height: 30px;
+  width: 30px;
+}
+main .donut-info-container .checked,
+main .unchecked {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 main .donut-info {
-  visibility: hidden;
+  display: none;
 }
 main .unchecked {
   color: #a7a7a7;
@@ -201,19 +234,9 @@ footer .tot-sum {
   font-size: 1.1rem;
 }
 
-@media screen and (min-width: 350px) {
-  .donut-container {
-    margin-bottom: 50px;
-    max-width: 490px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-  }
-  .donut-container button {
-    background-color: #0e0e0e;
-    color: #f8f8f8;
-    padding: 5px 10px;
-    border: none;
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  body {
+    background-color: blue;
   }
 }
 @media screen and (min-width: 800px) {

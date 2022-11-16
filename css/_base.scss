@@ -5,6 +5,15 @@ $primaryColor: #f8f8f8;
 $secondaryColor: #f96c9e;
 $textColor: #0e0e0e;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*html*/
+html {
+  scroll-behavior: smooth;
+}
 /*text*/
 
 p,
@@ -143,6 +152,11 @@ main {
     margin-bottom: 50px;
     max-width: 490px;
     margin: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    margin: auto;
+    margin-bottom: 3rem;
 
     button {
       background-color: $textColor;
@@ -153,7 +167,6 @@ main {
   }
 
   .donut-image-container {
-    background-color: #f96c9e;
     width: 100%;
   }
 
@@ -161,9 +174,28 @@ main {
     margin-left: 2rem;
     width: 100%;
   }
+  .donut-info-container h2,
+  span,
+  p {
+    color: $textColor;
+  }
+
+  .donut-info-container button {
+    background-color: #d9d9d9;
+    color: $textColor;
+    margin-top: 1rem;
+    margin-right: 1.2rem;
+    height: 30px;
+    width: 30px;
+  }
+  .donut-info-container .checked,
+  .unchecked {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 
   .donut-info {
-    visibility: hidden;
+    display: none;
   }
 
   .unchecked {
@@ -235,5 +267,10 @@ footer {
     color: $primaryColor;
     font-weight: bold;
     font-size: 1.1rem;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  body {
+    background-color: blue;
   }
 }
