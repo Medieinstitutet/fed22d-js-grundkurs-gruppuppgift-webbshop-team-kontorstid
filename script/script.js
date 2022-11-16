@@ -103,13 +103,17 @@ const codeField = document.querySelector('#code');
 const phoneField = document.querySelector('#phone');
 const emailField = document.querySelector('#email');
 const paymentMethodChoice = document.querySelector('#paymentmethod');
+const paymentMethodInvoice = document.querySelector('#invoice');
 let nameIsOk = false;
+let addressIsOk = false;
+let invoiceChoice = true;
 const paymentMethod1 = document.querySelector('#card');
 const paymentMethod2 = document.querySelector('#invoice');
 
 // formulär
 
 nameField.addEventListener('change', checkName);
+addressField.addEventListener('change', checkAddress);
 
 function checkName (){
     console.log("+In function checkName: nameField = " + nameField.value);
@@ -120,13 +124,29 @@ function checkName (){
     }
     activateOrderButton();
 }
-
-function activateOrderButton() {
-    if (nameIsOk) {
+function checkAddress (){
+    console.log("+In function checkAddress: addressField = " + addressField.value);
+    if (addressField.value.indexOf(' ') > -1) { //Kollar att det finns mellanslag i adressen
+        addressIsOk = true;
+    } else {
+        addressIsOk = false;
+    }
+}
+function checkSumInvoice ( ){
+    console.log("+In function checkSumInvoice: paymentMethodInvoice = " + paymentMethodInvoice.value);
+    if (Number(newTotSum >= 800)){
+        paymentMethodInvoice.removeAttribute('disabled');
+    } else {
+        paymentMethodInvoice.setAttribute('disabled', true);
+    }
+}
+function activateOrderButton(){
+    if (nameIsOk && addressIsOk) {
         orderButton.removeAttribute('disabled');
     } else {
         orderButton.setAttribute('disabled', true);
     }
+    activateOrderButton();
 }
 paymentMethod1.addEventListener('click', showCardContent);
 paymentMethod2.addEventListener('click', showInvoiceContent);
