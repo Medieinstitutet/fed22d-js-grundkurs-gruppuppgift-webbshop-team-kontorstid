@@ -12,7 +12,7 @@ p, h1, h2 { //Text color
     color: $textColor;
 }
 
-h1, h2 { //Font family
+h1, h2, h3 { //Font family
     font-family: 'Archivo Black', sans-serif;;
 }
 
@@ -190,7 +190,6 @@ main {
     display: block;
 }
 
-
 /*Footer section*/
 
 footer {
@@ -203,10 +202,24 @@ footer {
     .fa-cart-shopping {
         color: $primaryColor;
         font-size: 2.1rem;
+        margin: 0;
+        margin-top: 7px;
     }
 
     h2 {
         margin: 0;
         color: $primaryColor;
+    }
+
+    p {
+        color: $primaryColor;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .tot-sum {
+        color: $primaryColor;
+        font-weight: bold;
+        font-size: 1.1rem;
     }
 }
