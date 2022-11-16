@@ -16,6 +16,10 @@ h1, h2 { //Font family
     font-family: 'Archivo Black', sans-serif;;
 }
 
+h2 {
+    font-size: 1.2rem;
+}
+
 p {
     font-family: 'Roboto', sans-serif;
 }
@@ -37,6 +41,11 @@ header {
 
     .heading {
         background-color: $primaryColor;
+
+        img {
+            max-width: 65%;
+            margin-top: -5px;
+        }
     }
 
     nav {
@@ -130,6 +139,8 @@ main {
 
     .donut-container {
         margin-bottom: 50px;
+        max-width: 490px;
+        margin: auto;
 
         button {
             background-color: $textColor;
@@ -140,12 +151,26 @@ main {
 
     }
 
+    .donut-image-container {
+        background-color: #f96c9e;
+        width: 100%;
+    }
+
+    .donut-info-container {
+        background-color: aqua;
+        width: 100%;
+    }
+
+    .donut-info {
+        visibility: hidden;
+    }
+
     .unchecked { //rating
         color: #a7a7a7;
     }
 
     img {
-        width: 100%;
+        max-width: 100%;
     }
 
     .checked {

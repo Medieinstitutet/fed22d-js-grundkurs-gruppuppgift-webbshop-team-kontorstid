@@ -1,1 +1,6 @@
 @import 'base';
+
+@media screen and(min-width: 350px) {
+    @import 'baseLarge';
+}
+    

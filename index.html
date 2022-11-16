@@ -20,7 +20,7 @@
 <body>
     <header>
         <div class="heading">
-            <img src="./assets/photos/Gottfrids munkfabrik.gif"  alt="Gottfrids-munkfabrik-logo">
+            <img src="./assets/photos/gottfridsMunkfrabrik.gif"  alt="Gottfrids-munkfabrik-logo">
         </div>
         <input type="checkbox" class="checkbox">
         <div class="menu">
@@ -49,18 +49,21 @@
         </ul>
         <div>
             <section class="donut-container">
-                <!--Här kommer det finnas en munk med bild, pris, rating mm-->
-                <img src="./assets/photos/donut-with-sugar-hole.jpg" alt="Donut med socker">
-                <h2>Classic <span class="donut-price">35</span> kr</h2>
-                <span class="fa fa-star checked"></span> <!--rating på donut -->
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <p>pris: <span class="tot-price">0</span> kr</p>
-                <p>antal: <span class="tot-amount">0</span> st</p>
-                <button data-operator="decreaseBtn">-</button>
-                <button data-operator="increaseBtn">+</button>
+                <div class="donut-image-container">
+                    <img src="./assets/photos/donut-with-sugar-hole.jpg" alt="Donut med socker">
+                </div>
+                <div class="donut-info-container">
+                    <h2>Classic <span class="donut-price">35</span> kr</h2>
+                    <span class="fa fa-star checked"></span> <!--rating på donut -->
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <p>pris: <span class="tot-price">0</span> kr, antal: <span class="tot-amount">0</span> st</p>
+                    <p></p>
+                    <button data-operator="decreaseBtn">-</button>
+                    <button data-operator="increaseBtn">+</button>
+                </div>
             </section>
             <aside class=" donut-info">
                 <img src="./assets/photos/donut-with-sugar-hole2.jpg">
@@ -84,7 +87,7 @@
                 <button data-operator="increaseBtn">+</button>
             </section>
             <aside class=" donut-info">
-                <img src="./assets/photos/donut-with-sugar-2.jpg">
+                <img src="./assets/photos/donut-with-sugar2.jpg">
                 <h3> Ingredienser</h3>
                 <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
                     modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
@@ -272,7 +275,7 @@
                 <button data-operator="decreaseBtn">-</button>
                 <button data-operator="increaseBtn">+</button>
             </section>
-            <aside class=" donut-info">
+            <aside class="donut-info">
                 <img src="./assets/photos/donut-with-character2.jpg">
                 <h3> Ingredienser</h3>
                 <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, 
