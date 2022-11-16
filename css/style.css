@@ -8,17 +8,17 @@ h2 {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: "Archivo Black", sans-serif;
+}
+
+h2 {
+  font-size: 1.2rem;
 }
 
 p {
   font-family: "Roboto", sans-serif;
-}
-
-/*html*/
-html {
-  scroll-behavior: smooth;
 }
 
 /*body*/
@@ -35,11 +35,15 @@ header {
 header .heading {
   background-color: #f8f8f8;
 }
+header .heading img {
+  max-width: 65%;
+  margin-top: -5px;
+}
 header nav {
+  background-color: rgba(255, 255, 255, 0.85);
   width: 100vw;
   height: 100vh;
   top: 0;
-  background-color: rgba(255, 255, 255, 0.8);
   transition: all 0.4s ease-in-out;
   right: -100vw;
   position: fixed;
@@ -56,7 +60,7 @@ header nav ul {
   display: flex;
   flex-direction: column;
   height: 100%;
-  font-size: 2.5rem;
+  font-size: 3rem;
   text-align: center;
   font-weight: 600;
 }
@@ -108,9 +112,6 @@ header input:checked + .menu nav {
   transition: all 0.4s ease-in-out;
   right: 0vw;
 }
-header .nav-menu.on {
-  transform: translateX(0px);
-}
 
 /*Main section*/
 main {
@@ -118,6 +119,8 @@ main {
 }
 main .donut-container {
   margin-bottom: 50px;
+  max-width: 490px;
+  margin: auto;
 }
 main .donut-container button {
   background-color: #0e0e0e;
@@ -125,14 +128,36 @@ main .donut-container button {
   padding: 5px 10px;
   border: none;
 }
+main .donut-image-container {
+  background-color: #f96c9e;
+  width: 100%;
+}
+main .donut-info-container {
+  margin-left: 2rem;
+  width: 100%;
+}
+main .donut-info {
+  visibility: hidden;
+}
 main .unchecked {
   color: #a7a7a7;
 }
 main img {
-  width: 100%;
+  max-width: 100%;
 }
 main .checked {
   color: #f96c9e;
+}
+main .checkout-container {
+  background-color: #616161;
+}
+main .checkout-container p,
+main input {
+  margin-left: 3rem;
+}
+main .checkout-container p,
+main .payment {
+  color: #f8f8f8;
 }
 
 .paymentCardContainer {
@@ -158,8 +183,45 @@ footer {
 footer .fa-cart-shopping {
   color: #f8f8f8;
   font-size: 2.1rem;
+  margin: 0;
+  margin-top: 7px;
 }
 footer h2 {
   margin: 0;
   color: #f8f8f8;
-} /*# sourceMappingURL=style.css.map */
+}
+footer p {
+  color: #f8f8f8;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+footer .tot-sum {
+  color: #f8f8f8;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@media screen and (min-width: 350px) {
+  .donut-container {
+    margin-bottom: 50px;
+    max-width: 490px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .donut-container button {
+    background-color: #0e0e0e;
+    color: #f8f8f8;
+    padding: 5px 10px;
+    border: none;
+  }
+}
+@media screen and (min-width: 800px) {
+  .postal-address-container {
+    display: flex;
+    gap: 15px;
+  }
+  .postal-address-container .postalcode {
+    max-width: 100px;
+  }
+}/*# sourceMappingURL=style.css.map */
