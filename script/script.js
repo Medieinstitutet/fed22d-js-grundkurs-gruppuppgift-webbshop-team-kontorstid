@@ -65,6 +65,7 @@ function updateDonutSum(donutElement) {
     
     donutElement.querySelector(".tot-price").innerHTML = sum;
     
+    checkSumInvoice ();
 
     /**
      * Skapa en variabel för totala summan i varukorgen, sätt den till 0.
@@ -135,9 +136,9 @@ function checkAddress (){
 function checkSumInvoice ( ){
     console.log("+In function checkSumInvoice: paymentMethodInvoice = " + paymentMethodInvoice.value);
     if (Number(newTotSum >= 800)){
-        paymentMethodInvoice.removeAttribute('disabled');
-    } else {
         paymentMethodInvoice.setAttribute('disabled', true);
+    } else {
+        paymentMethodInvoice.setAttribute('enabled', true);
     }
 }
 function activateOrderButton(){
