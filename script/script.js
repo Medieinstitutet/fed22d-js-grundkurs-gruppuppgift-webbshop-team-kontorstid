@@ -1,17 +1,17 @@
+//Global variables
+
 let btnLower; //Button to decrease amount of donuts
 let btnHigher; //Button to increase amount of donuts
 let priceLabel; //Label to show total price
+//let newPrice; //Variable to show new price
 let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
-let totSum;
-let newTotSum;
 
 function init() {
   //Declares variables
   btnLower = document.querySelectorAll('button[data-operator="decreaseBtn"]');
   btnHigher = document.querySelectorAll('button[data-operator="increaseBtn"]');
   standardPrice = document.querySelectorAll(".donut-price");
-  totSum = document.querySelector(".tot-sum");
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
     btnLower[i].addEventListener("click", reduceTotDonut);
@@ -19,13 +19,13 @@ function init() {
   for (let i = 0; i < btnHigher.length; i++) {
     btnHigher[i].addEventListener("click", increaseTotDonut);
   }
-  console.log(Number(totSum.innerText));
 } //End init
 
 //Function to reduce total amount of donuts
 function reduceTotDonut(e) {
   const amountLevel =
     e.currentTarget.parentElement.querySelector(".tot-amount"); //Const which goes through the parent element to find .tot-amount
+  console.log(standardPrice); //Console log to make sure that it is done correctly
   newAmount = Number(amountLevel.innerText); //Specifies the variable newAmount equal to amountLevel. Uses Number to convert it from string to number, innerText to read.
 
   if (newAmount <= 0) {
@@ -34,6 +34,10 @@ function reduceTotDonut(e) {
   }
 
   amountLevel.innerHTML = newAmount - 1; //Reduces the total amount of donuts by one each btn klick
+  console.log(amountLevel.innerText); //Console log to make sure that it is done correctly
+
+  newPrice = Number(standardPrice.innerText); //Specifies  newPrice equal to Number standardPrice
+  console.log(newPrice.innerText);
 
   updateDonutSum(e.currentTarget.parentElement); //Calls the function updateDonutSum with parameters
 }
@@ -42,9 +46,11 @@ function reduceTotDonut(e) {
 function increaseTotDonut(e) {
   const amountLevel =
     e.currentTarget.parentElement.querySelector(".tot-amount");
+  console.log(amountLevel.innerText);
   newAmount = Number(amountLevel.innerText);
 
   amountLevel.innerHTML = newAmount + 1;
+  console.log(amountLevel.innerText);
 
   updateDonutSum(e.currentTarget.parentElement);
 }
@@ -55,35 +61,11 @@ function updateDonutSum(donutElement) {
 
   const sum = donutSinglePrice * orderedAmount;
 
-  newTotSum = Number(totSum.innerText);
-  console.log(newTotSum);
-  newTotSum += Number(donutSinglePrice);
-  console.log(sum);
-  totSum.innerHTML = newTotSum;
-
   donutElement.querySelector(".tot-price").innerHTML = sum;
-
-  /**
-   * Skapa en variabel för totala summan i varukorgen, sätt den till 0.
-   * Varje gång man klickar på lägg till donut, öka summan i varukorgen med vad donuten kostar (pris * antal)
-   * Skriv ut summan till varukorgen
-   */
-
-  /*for (let i = 0; i < donutSinglePrice.length; i++){
-        console.log(donutSinglePrice * orderedAmount)
-        totSum = donutSinglePrice * orderedAmount;
-        totalAmount();
-    }*/
+  console.log(sum);
 }
 
 init();
-
-/**
- * Skapa en for-loop som går igenom totala summan på alla munkar
- * Anropa en ny funktion för att addera ihop alla summor
- * Spara totala summan i en ny variabel
- * Skriv ut variabeln till varukorgen
- */
 
 // Tillagt 221109 av Sussie
 // generella variabler
@@ -137,3 +119,7 @@ function showCardContent() {
     .classList.remove("visible");
   document.querySelector(".paymentCardContainer").classList.add("visible");
 }
+
+document.getElementById("nav-links").onclick = function () {
+  document.getElementById("toggle").click();
+};

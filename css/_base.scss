@@ -23,6 +23,10 @@ h2 {
 p {
   font-family: "Roboto", sans-serif;
 }
+/*html*/
+html {
+  scroll-behavior: smooth;
+}
 
 /*body*/
 
@@ -45,6 +49,7 @@ header {
     width: 100vw;
     height: 100vh;
     top: 0;
+    background-color: rgba(255, 255, 255, 0.8);
     transition: all 0.4s ease-in-out;
     right: -100vw;
     position: fixed;
@@ -62,7 +67,7 @@ header {
     display: flex;
     flex-direction: column;
     height: 100%;
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
     font-weight: 600;
   }
@@ -121,6 +126,9 @@ header {
     transition: all 0.4s ease-in-out;
     right: 0vw;
   }
+  .nav-menu.on {
+    transform: translateX(0px);
+  }
 }
 
 /*Main section*/
@@ -138,19 +146,19 @@ main {
       border: none;
     }
   }
-}
 
-.unchecked {
-  //rating
-  color: #a7a7a7;
-}
+  .unchecked {
+    //rating
+    color: #a7a7a7;
+  }
 
-img {
-  width: 100%;
-}
+  img {
+    width: 100%;
+  }
 
-.checked {
-  color: $secondaryColor;
+  .checked {
+    color: $secondaryColor;
+  }
 }
 
 .paymentCardContainer {

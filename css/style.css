@@ -1,1 +1,165 @@
-p,h1,h2{color:#0e0e0e}h1,h2{font-family:"Archivo Black",sans-serif}p{font-family:"Roboto",sans-serif}body{background-color:#f8f8f8}header{display:flex;justify-content:space-between;padding:15px}header .heading{background-color:#f8f8f8}header nav{width:100vw;height:100vh;top:0;transition:all .4s ease-in-out;right:-100vw;position:fixed;z-index:2}header nav ul{margin:0;padding:0;display:flex;flex-direction:column;justify-content:space-evenly;padding-top:70px;list-style:none;display:flex;flex-direction:column;height:100%;font-size:3rem;text-align:center;font-weight:600}header nav a{text-decoration:none;color:#0e0e0e}header .checkbox{position:fixed;top:20px;right:20px;z-index:3;width:45px;height:45px;opacity:0;cursor:pointer}header button{width:45px;height:45px;background:rgba(0,0,0,0);border:0;position:fixed;right:20px;top:10px;z-index:3;pointer-events:none}header button span{display:block;width:35px;height:5px;background-color:#f96c9e;margin-bottom:5px;position:relative;left:0;margin-left:6px}header button span:nth-child(2){margin-left:0;transition:all .4s ease-in-out}header input:hover+.menu button span:nth-child(2){left:6px}header input:checked+.menu nav{visibility:visible;opacity:1;transition:all .4s ease-in-out;right:0vw}main{padding:15px}main .donut-container{margin-bottom:50px}main .donut-container button{background-color:#0e0e0e;color:#f8f8f8;padding:5px 10px;border:none}main .unchecked{color:#a7a7a7}main img{width:100%}main .checked{color:#f96c9e}.paymentCardContainer{display:none}.paymentInvoiceContainer{display:none}.visible{display:block}footer{background-color:#f96c9e;padding:25px 15px;display:flex;flex-direction:row;justify-content:space-between}footer .fa-cart-shopping{color:#f8f8f8;font-size:2.1rem}footer h2{margin:0;color:#f8f8f8}/*# sourceMappingURL=style.css.map */
+/*Variables*/
+/*Colors*/
+/*text*/
+p,
+h1,
+h2 {
+  color: #0e0e0e;
+}
+
+h1,
+h2 {
+  font-family: "Archivo Black", sans-serif;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+}
+
+/*html*/
+html {
+  scroll-behavior: smooth;
+}
+
+/*body*/
+body {
+  background-color: #f8f8f8;
+}
+
+/*Header section*/
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+header .heading {
+  background-color: #f8f8f8;
+}
+header nav {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.4s ease-in-out;
+  right: -100vw;
+  position: fixed;
+  z-index: 2;
+}
+header nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-top: 70px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+header nav a {
+  text-decoration: none;
+  color: #0e0e0e;
+}
+header .checkbox {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  width: 45px;
+  height: 45px;
+  opacity: 0;
+  cursor: pointer;
+}
+header button {
+  width: 45px;
+  height: 45px;
+  background: transparent;
+  border: 0;
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  z-index: 3;
+  pointer-events: none;
+}
+header button span {
+  display: block;
+  width: 35px;
+  height: 5px;
+  background-color: #f96c9e;
+  margin-bottom: 5px;
+  position: relative;
+  left: 0;
+  margin-left: 6px;
+}
+header button span:nth-child(2) {
+  margin-left: 0;
+  transition: all 0.4s ease-in-out;
+}
+header input:hover + .menu button span:nth-child(2) {
+  left: 6px;
+}
+header input:checked + .menu nav {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.4s ease-in-out;
+  right: 0vw;
+}
+header .nav-menu.on {
+  transform: translateX(0px);
+}
+
+/*Main section*/
+main {
+  padding: 15px;
+}
+main .donut-container {
+  margin-bottom: 50px;
+}
+main .donut-container button {
+  background-color: #0e0e0e;
+  color: #f8f8f8;
+  padding: 5px 10px;
+  border: none;
+}
+main .unchecked {
+  color: #a7a7a7;
+}
+main img {
+  width: 100%;
+}
+main .checked {
+  color: #f96c9e;
+}
+
+.paymentCardContainer {
+  display: none;
+}
+
+.paymentInvoiceContainer {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+/*Footer section*/
+footer {
+  background-color: #f96c9e;
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+footer .fa-cart-shopping {
+  color: #f8f8f8;
+  font-size: 2.1rem;
+}
+footer h2 {
+  margin: 0;
+  color: #f8f8f8;
+}/*# sourceMappingURL=style.css.map */
