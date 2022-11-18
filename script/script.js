@@ -11,8 +11,8 @@ let newAmount; //Variable to show new amount of donuts
 const donuts = [
   {
       img: 'assets/photos/bild1.jpg', //Donut picture
-      name: 'Donut med socker', //Donut name
-      category: 'classic', //Donut category
+      name: 'Classic', //Donut name
+      category: 'Övrigt', //Donut category
       // TODO: lägg på keys
       35, //Donut price
       `<span class="fa fa-star checked"></span>
