@@ -8,12 +8,12 @@ let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
 
 //Donuts
-const donuts1 = [
+const donuts = [
   {
-    properties: [
-      'assets/photos/bild1.jpg', //Donut picture
-      'Donut med socker', //Donut name
-      'classic', //Donut category
+      img: 'assets/photos/bild1.jpg', //Donut picture
+      name: 'Donut med socker', //Donut name
+      category: 'classic', //Donut category
+      // TODO: lägg på keys
       35, //Donut price
       `<span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
@@ -21,11 +21,45 @@ const donuts1 = [
       <span class="fa fa-star checked"></span>`, //rating
       0, //Total price
       0, //Amount
-    ]
-  }
+  },
+
 ]
 
-const donuts2 = [
+for (let i = 0; i <donuts.length; i++) {
+  donuts[i].name // => Donut med socker
+  donutContainer.innerHTML += `
+  <section class="donut-container">
+                <div class="donut-image-container">
+                    <img src="./assets/photos/bild1.jpg" alt="${donut[i].name}">
+                </div>
+                <div class="donut-info-container">
+                    <h2 class="donutName"><span class="donut-price"></span> kr</h2>
+                    <p class="donutCategory"></p>
+                    <div class="ratingContainer"></div>
+  
+                    
+                    <p>pris: <span class="tot-price">${donut[i].price}</span> kr</p>
+                    <p>antal: <span class="tot-amount"></span> st</p>
+                    <button data-operator="decreaseBtn">-</button>
+                    <button data-operator="increaseBtn">+</button>
+                </div>
+            </section>
+            <aside class=" donut-info">
+                <img src="./assets/photos/donut-with-sugar-hole2.jpg">
+                <h3> Ingredienser</h3>
+                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500),
+                    äggulepulver, salt,
+                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
+                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom,
+                    glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel,
+                    citronsyra
+                </p>
+            </aside>
+  `;
+
+}
+
+const donut2 = [
   {
     properties: [
       'assets/photos/bild1.jpg', //Donut picture
