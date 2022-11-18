@@ -19,8 +19,8 @@ const donuts = [
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>`, //rating
-      Tot-price: 0, //Total price
-      Tot-amount: 0, //Amount
+      totPrice: 0, //Total price
+      totAmount: 0, //Amount
   },
     {
       properties: [
@@ -186,7 +186,7 @@ for (let i = 0; i <donuts.length; i++) {
                     <img src="./assets/photos/bild1.jpg" alt="${donut[i].name}">
                 </div>
                 <div class="donut-info-container">
-                    <h2 class="donutName"><span class="donut-price"></span> kr</h2>
+                    <h2 class="donutName"><span class="donut-price">${donut[i].price}</span> kr</h2>
                     <p class="donutCategory"></p>
                     <div class="ratingContainer"></div>
   
