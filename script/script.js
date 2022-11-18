@@ -14,16 +14,169 @@ const donuts = [
       name: 'Classic', //Donut name
       category: 'Övrigt', //Donut category
       // TODO: lägg på keys
-      35, //Donut price
-      `<span class="fa fa-star checked"></span>
+      price: 35, //Donut price
+      rating: `<span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>`, //rating
-      0, //Total price
-      0, //Amount
+      Tot-price: 0, //Total price
+      Tot-amount: 0, //Amount
   },
-
-]
+    {
+      properties: [
+        'assets/photos/bild2.jpg', //Donut picture
+        'Raspberry pie', //Donut name
+        'Övrigt', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    },
+    {
+      properties: [
+        'assets/photos/bild3.jpg', //Donut picture
+        'Sugar dream', //Donut name
+        'Övrigt', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    },
+    {
+      properties: [
+        'assets/photos/bild5.jpg', //Donut picture
+        'Dragon Tail', //Donut name
+        'Övrigt', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    },
+    {
+      properties: [
+        'assets/photos/bild4.jpg', //Donut picture
+        'Unicorn', //Donut name
+        'Strössel', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    },
+    {
+      properties: [
+        'assets/photos/bild6.jpg', //Donut picture
+        'Hungover', //Donut name
+        'Strössel', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    },
+    {
+      properties: [
+        'assets/photos/bild7.jpg', //Donut picture
+        'Smarties', //Donut name
+        'Strössel', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    },
+    {
+      properties: [
+        'assets/photos/bild8.jpg', //Donut picture
+        'Monster', //Donut name
+        'Strössel', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    },
+    {
+      properties: [
+        'assets/photos/bild9.jpg', //Donut picture
+        'Chocoholic', //Donut name
+        'Choklad', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    },
+    {
+      properties: [
+        'assets/photos/bild10.jpg', //Donut picture
+        'Chocoloco', //Donut name
+        'Choklad', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    },
+    {
+      properties: [
+        'assets/photos/bild11.jpg', //Donut picture
+        'Chocolate rain', //Donut name
+        'Choklad', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    },
+    {
+      properties: [
+        'assets/photos/bild12.jpg', //Donut picture
+        'Rainbow', //Donut name
+        'Övrigt', //Donut category
+        40, //Donut price
+        `<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>`, //rating
+        0, //Total price
+        0, //Amount
+      ]
+    }
+  ]
 
 for (let i = 0; i <donuts.length; i++) {
   donuts[i].name // => Donut med socker
@@ -58,23 +211,6 @@ for (let i = 0; i <donuts.length; i++) {
   `;
 
 }
-
-const donut2 = [
-  {
-    properties: [
-      'assets/photos/bild1.jpg', //Donut picture
-      'Donut med socker', //Donut name
-      'classic', //Donut category
-      40, //Donut price
-      `<span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>`, //rating
-      0, //Total price
-      0, //Amount
-    ]
-  }
-]
 
 function init() {
   //Declares variables
