@@ -7,6 +7,41 @@ let priceLabel; //Label to show total price
 let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
 
+//Donuts
+const donuts1 = [
+  {
+    properties: [
+      'assets/photos/bild1.jpg', //Donut picture
+      'Donut med socker', //Donut name
+      'classic', //Donut category
+      35, //Donut price
+      `<span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>`, //rating
+      0, //Total price
+      0, //Amount
+    ]
+  }
+]
+
+const donuts2 = [
+  {
+    properties: [
+      'assets/photos/bild1.jpg', //Donut picture
+      'Donut med socker', //Donut name
+      'classic', //Donut category
+      40, //Donut price
+      `<span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>`, //rating
+      0, //Total price
+      0, //Amount
+    ]
+  }
+]
+
 function init() {
   //Declares variables
   btnLower = document.querySelectorAll('button[data-operator="decreaseBtn"]');
