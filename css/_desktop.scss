@@ -12,3 +12,15 @@ main {
         max-width: 100px;
     }
 }
+@media screen and (min-width: 800px) {
+    main {
+      display: grid;
+      grid-template-columns: 33% 33% 33%;
+    }
+    .postal-address-container {
+      display: flex;
+      gap: 15px;
+    }
+    .postal-address-container .postalcode {
+      max-width: 100px;
+    }
