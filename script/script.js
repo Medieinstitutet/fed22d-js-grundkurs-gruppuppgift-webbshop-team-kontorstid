@@ -12,12 +12,12 @@ let donutImageContainer;
 //Donuts
 const donuts = [
   {
-    images [
+    images: [
       {
         url: 'assets/photos/bild1.jpg',
         alt: 'Donut-med-socker',
-        width: 100;
-        height: auto;
+        width: 100,
+        height: auto,
       },
     ],
     /* // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
@@ -30,12 +30,12 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    images [
+    images: [
       {
         url: 'assets/photos/bild2.jpg',
         alt: 'Klassisk-syltmunk',
-        width: 100;
-        height: auto;
+        width: 100,
+        height: auto,
       },
     ],
     name:'Raspberry pie', //Donut name
@@ -46,12 +46,12 @@ const donuts = [
     totAmount: 0, //Amount 
   },
   {
-    images [
+    images: [
       {
         url: 'assets/photos/bild3.jpg',
         alt: 'Munk-med-florsocker',
-        width: 100;
-        height: auto;
+        width: 100,
+        height: auto,
       },
     ],
     name:'Sugar dream', //Donut name
@@ -62,12 +62,12 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    images [
+    images: [
       {
         url: 'assets/photos/bild5.jpg',
         alt: 'Munk-med-topping',
-        width: 100;
-        height: auto;
+        width: 100,
+        height: auto,
       },
     ],
     name:'Dragon Tail', //Donut name
@@ -78,12 +78,12 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    images [
+    images: [
       {
         url: 'assets/photos/bild4.jpg',
         alt: 'Munk-med-fargglatt-strossel',
-        width: 100;
-        height: auto;
+        width: 100,
+        height: auto,
       },
     ],
     name: 'Unicorn', //Donut name
@@ -94,12 +94,12 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    images [
+    images: [
       {
-        url: 'assets/photos/bild6.jpg'
-        alt: 'Munk-med-chokladtopping-och-strossel'
-        width: 100;
-        height: auto;
+        url: 'assets/photos/bild6.jpg',
+        alt: 'Munk-med-chokladtopping-och-strossel',
+        width: 100,
+        height: auto,
       },
     ],
     name: 'Hungover', //Donut name
@@ -110,12 +110,12 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    images [
+    images: [
       {
         url: 'assets/photos/bild7.jpg', 
         alt: 'Munk-med-smarties',
-        width: 100;
-        height: auto;
+        width: 100,
+        height: auto,
       },
     ],
     name: 'Smarties', //Donut name
@@ -126,12 +126,12 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    images [
+    images: [
       {
         url: 'assets/photos/bild8.jpg', 
         alt: 'Munk-med-figur',
-        width: 100;
-        height: auto;
+        width: 100,
+        height: auto,
       },
     ],
     name: 'Monster', //Donut name
@@ -142,12 +142,12 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    images [
+    images: [
       {
         url: 'assets/photos/bild9.jpg',
         alt: 'Munk-med-chokladstrossel',
-        width: 100;
-        height: auto;
+        width: 100,
+        height: auto,
       },
     ],
     //Donut picture - kolla upp att alt-text stämmer med bild på munk 9-12
@@ -159,12 +159,12 @@ const donuts = [
     totAmount: 0, //Amount
     },
     {
-      images [
+      images: [
         {
           url:'assets/photos/bild10.jpg',
-          alt: 'Munk-med-chokladbitar-pa-chokladfrosting'
-          width: 100;
-          height: auto;
+          alt: 'Munk-med-chokladbitar-pa-chokladfrosting',
+          width: 100,
+          height: auto,
         },
       ],
     name: 'Chocoloco', //Donut name
@@ -175,12 +175,12 @@ const donuts = [
     totAmount: 0, //Amount
     },
     {
-      images [
+      images: [
         {
           url: 'assets/photos/bild11.jpg',
           alt: 'Munk-med-strossel-pa-choklad',
-          width: 100;
-          height: auto;
+          width: 100,
+          height: auto,
         },
       ],
       name: 'Chocolate rain', //Donut name
@@ -191,12 +191,12 @@ const donuts = [
       totAmount: 0, //Amount
     },
     {
-      images [
+      images: [
         {
           url: 'assets/photos/bild12.jpg',
           alt: 'Munk-med-fargglatt-strossel',
-          width: 100;
-          height: auto;
+          width: 100,
+          height: auto,
         },
       ],
       name: 'Rainbow', //Donut name
