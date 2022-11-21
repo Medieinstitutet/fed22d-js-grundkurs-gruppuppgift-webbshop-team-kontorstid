@@ -128,12 +128,13 @@ const donuts = [
     }
   ]
 
-for (let i = 0; i <donuts.length; i++) {
+
+for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
   donuts[i].name // => Donut med socker
   donutContainer.innerHTML += `
   <section class="donut-container">
                 <div class="donut-image-container">
-                    <img src="./assets/photos/bild1.jpg" alt="${donut[i].name}">
+                    <img src="${donut[i].img}" alt="${donut[i].name}">
                 </div>
                 <div class="donut-info-container">
                     <h2 class="donutName"><span class="donut-price">${donut[i].price}</span> kr</h2>
