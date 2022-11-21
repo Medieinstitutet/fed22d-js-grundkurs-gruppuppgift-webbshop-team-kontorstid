@@ -100,6 +100,33 @@ const donuts = [
     totPrice: 0, //Total price
     totAmount: 0, //Amount
     },
+    {
+    img:'assets/photos/bild10.jpg', //Donut picture
+    name: 'Chocoloco', //Donut name
+    category: 'Choklad', //Donut category
+    price: 40, //Donut price
+    rating: 4, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
+    },
+    {
+      img:'assets/photos/bild11.jpg', //Donut picture
+      name: 'Chocolate rain', //Donut name
+      category: 'Choklad', //Donut category
+      price:  40, //Donut price
+      rating: 4, //rating
+      totPrice: 0, //Total price
+      totAmount: 0, //Amount
+    },
+    {
+      img: 'assets/photos/bild12.jpg', //Donut picture
+      name: 'Rainbow', //Donut name
+      category:'Övrigt', //Donut category
+      price: 40, //Donut price
+      rating: 5, //rating
+      totPrice: 0, //Total price
+      totAmount: 0, //Amount
+    }
   ]
 
 
