@@ -136,7 +136,7 @@ function init() {
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
   standardPrice = document.querySelectorAll(".donut-price");
-  donutContainer = document.querySelectorAll(".donutContainer");
+  donutContainer = document.querySelector(".donutContainer");
   donutImageContainer = document.querySelector(".donutImageContainer");
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
