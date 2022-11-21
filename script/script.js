@@ -97,49 +97,34 @@ const donuts = [
     price: 40, //Donut price
     rating: 4, //rating
     totPrice: 0, //Total price
-        0, //Amount
+    totAmount: 0, //Amount
     },
     {
-      properties: [
-        'assets/photos/bild10.jpg', //Donut picture
-        'Chocoloco', //Donut name
-        'Choklad', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
+    img:'assets/photos/bild10.jpg', //Donut picture
+    name: 'Chocoloco', //Donut name
+    category: 'Choklad', //Donut category
+    price: 40, //Donut price
+    rating: 4, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
     },
     {
-      properties: [
-        'assets/photos/bild11.jpg', //Donut picture
-        'Chocolate rain', //Donut name
-        'Choklad', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
+      img:'assets/photos/bild11.jpg', //Donut picture
+      name: 'Chocolate rain', //Donut name
+      category: 'Choklad', //Donut category
+      price:  40, //Donut price
+      rating: 4, //rating
+      totPrice: 0, //Total price
+      totAmount: 0, //Amount
     },
     {
-      properties: [
-        'assets/photos/bild12.jpg', //Donut picture
-        'Rainbow', //Donut name
-        'Övrigt', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
+      img: 'assets/photos/bild12.jpg', //Donut picture
+      name: 'Rainbow', //Donut name
+      category:'Övrigt', //Donut category
+      price: 40, //Donut price
+      rating: 5, //rating
+      totPrice: 0, //Total price
+      totAmount: 0, //Amount
     }
   ]
 
