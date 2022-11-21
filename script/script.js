@@ -7,11 +7,12 @@ let priceLabel; //Label to show total price
 let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
 let donutContainer; //Variable to select donutContainer from HTML
+let donutImageContainer;
 
 //Donuts
 const donuts = [
   {
-    images [
+    images: [
       {
         url: "assets/photos/bild1.jpg",
         alt: "Donut-med-socker",
@@ -42,7 +43,7 @@ const donuts = [
         p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
         }, 
   {
-    images [
+    images: [
       {
         url: 'assets/photos/bild2.jpg',
         alt: 'Klassisk-syltmunk',
@@ -72,7 +73,7 @@ const donuts = [
         },  //Amount 
   },
   {
-    images [
+    images: [
       {
         url: "assets/photos/bild3.jpg",
         alt: "Munk-med-florsocker",
@@ -102,7 +103,7 @@ const donuts = [
         }, //Amount
   },
   {
-    images [
+    images: [
       {
         url: "assets/photos/bild5.jpg",
         alt: "Munk-med-topping",
@@ -132,7 +133,7 @@ const donuts = [
         }, //Amount
   },
   {
-    images [
+    images: [
       {
         url: "assets/photos/bild4.jpg",
         alt: "Munk-med-fargglatt-strossel",
@@ -162,7 +163,7 @@ const donuts = [
         },  //Amount
   },
   {
-    images [
+    images: [
       {
         url: "assets/photos/bild6.jpg",
         alt: "Munk-med-chokladtopping-och-strossel",
@@ -192,7 +193,7 @@ const donuts = [
         },  //Amount
   },
   {
-    images [
+    images: [
       {
         url: "assets/photos/bild7.jpg", 
         alt: "Munk-med-smarties",
@@ -222,7 +223,7 @@ const donuts = [
         },  //Amount
   },
   {
-    images [
+    images: [
       {
         url: "assets/photos/bild8.jpg", 
         alt: "Munk-med-figur",
@@ -252,7 +253,7 @@ const donuts = [
         }, //Amount
   },
   {
-    images [
+    images: [
       {
         url: "assets/photos/bild9.jpg",
         alt: "Munk-med-chokladstrossel",
@@ -283,7 +284,7 @@ const donuts = [
         },
     },
     {
-      images [
+      images: [
         {
           url:"assets/photos/bild10.jpg",
           alt: "Munk-med-chokladbitar-pa-chokladfrosting",
@@ -313,7 +314,7 @@ const donuts = [
         },
     },
     {
-      images [
+      images: [
         {
           url: "assets/photos/bild11.jpg",
           alt: "Munk-med-strossel-pa-choklad",
@@ -343,7 +344,7 @@ const donuts = [
           }, 
     },
     {
-      images [
+      images: [
         {
           url: "assets/photos/bild12.jpg",
           alt: "Munk-med-fargglatt-strossel",
@@ -381,7 +382,8 @@ function init() {
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
   standardPrice = document.querySelectorAll(".donut-price");
-  donutContainer = document.querySelector("#donutContainer");
+  donutContainer = document.querySelectorAll(".donutContainer");
+  donutImageContainer = document.querySelector(".donutImageContainer");
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
     btnLower[i].addEventListener("click", reduceTotDonut);
@@ -393,25 +395,27 @@ function init() {
 
 function showDonuts() {
     // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
-for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
-  donuts[i].name // => Donut med socker
-  donutContainer.innerHTML += `
-  <section class="donut-container">
-                <div class="donut-image-container">
-                    <img src="${donut[i].img}" alt="${donut[i].alt}">
-                </div>
-                <div class="donut-info-container">
-                    <h2 class="${donut[i].name}"><span class="donut-price">${donut[i].price}</span> kr</h2>
-                    <p class="donutCategory">${donut[i].category}</p>
-                    <div class="ratingContainer"></div>
-                    
-                    <p>pris: <span class="tot-price">${donut[i].tot-price}</span> kr</p>
-                    <p>antal: <span class="tot-amount">${donut[i].totAmount}</span> st</p>
-                </div>
-            </section>
-  `;
-}
-console.log("hej")
+  for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
+   
+    donutImageContainer.innerHTML = donuts[i].img;
+
+    donutContainer.innerHTML += `
+    <section class="donut-container">
+      <div class="donut-image-container">
+          <img src="${donuts[i].img}" alt="${donuts[i].alt}">
+      </div>
+      <div class="donut-info-container">
+          <h2 class="${donuts[i].name}"><span class="donut-price">${donuts[i].price}</span> kr</h2>
+          <p class="donutCategory">${donuts[i].category}</p>
+          <div class="ratingContainer"></div>
+          
+          <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
+          <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
+      </div>
+    </section>
+    `;
+    console.log(donutContainer.innerHTML);
+  }
 }
 
 //Function to reduce total amount of donuts
