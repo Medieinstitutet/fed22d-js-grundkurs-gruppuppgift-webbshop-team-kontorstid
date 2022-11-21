@@ -146,26 +146,26 @@ function init() {
 
 function showDonuts() {
   // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
+  const price = 100; // TODO: What is this?
   for (let i = 0; i < donuts.length; i++) {
     //For-loop to loop through every donut
-    donuts[i].name; // => Donut med socker
     donutContainer.innerHTML += `
   <section class="donut-container">
                 <div class="donut-image-container">
-                    <img src="${donut[i].img}" alt="${donut[i].alt}">
+                    <img src="${donuts[i].img}" alt="${donuts[i].alt}">
                 </div>
                 <div class="donut-info-container">
-                    <h2 class="${donut[i].name}"><span class="donut-price">${
-      donut[i].price
+                    <h2 class="${donuts[i].name}"><span class="donut-price">${
+      donuts[i].price
     }</span> kr</h2>
-                    <p class="donutCategory">${donut[i].category}</p>
+                    <p class="donutCategory">${donuts[i].category}</p>
                     <div class="ratingContainer"></div>
                     
                     <p>pris: <span class="tot-price">${
-                      donut[i].tot - price
+                      donuts[i].tot - price // TODO: What is price?
                     }</span> kr</p>
                     <p>antal: <span class="tot-amount">${
-                      donut[i].totAmount
+                      donuts[i].totAmount
                     }</span> st</p>
                 </div>
             </section>
