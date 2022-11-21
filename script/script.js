@@ -152,7 +152,7 @@ function showDonuts() {
     // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
   for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
    
-    //donutImageContainer.innerHTML = donuts[i].img;
+    donutImageContainer.innerHTML = donuts[i].img;
 
     donutContainer.innerHTML += `
     <section class="donut-container">
@@ -169,7 +169,7 @@ function showDonuts() {
       </div>
     </section>
     `;
-    console.log(donutContainer);
+    console.log(donutContainer.innerHTML);
   }
 }
 
