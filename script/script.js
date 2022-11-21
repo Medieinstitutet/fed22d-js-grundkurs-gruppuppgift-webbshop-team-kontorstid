@@ -7,6 +7,7 @@ let priceLabel; //Label to show total price
 let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
 let donutContainer; //Variable to select donutContainer from HTML
+let donutImageContainer;
 
 //Donuts
 const donuts = [
@@ -136,7 +137,8 @@ function init() {
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
   standardPrice = document.querySelectorAll(".donut-price");
-  donutContainer = document.querySelector("#donutContainer");
+  donutContainer = document.querySelectorAll(".donutContainer");
+  donutImageContainer = document.querySelector(".donutImageContainer");
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
     btnLower[i].addEventListener("click", reduceTotDonut);
@@ -148,25 +150,27 @@ function init() {
 
 function showDonuts() {
     // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
-for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
-  donuts[i].name // => Donut med socker
-  donutContainer.innerHTML += `
-  <section class="donut-container">
-                <div class="donut-image-container">
-                    <img src="${donut[i].img}" alt="${donut[i].alt}">
-                </div>
-                <div class="donut-info-container">
-                    <h2 class="${donut[i].name}"><span class="donut-price">${donut[i].price}</span> kr</h2>
-                    <p class="donutCategory">${donut[i].category}</p>
-                    <div class="ratingContainer"></div>
-                    
-                    <p>pris: <span class="tot-price">${donut[i].tot-price}</span> kr</p>
-                    <p>antal: <span class="tot-amount">${donut[i].totAmount}</span> st</p>
-                </div>
-            </section>
-  `;
-}
-console.log("hej")
+  for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
+   
+    //donutImageContainer.innerHTML = donuts[i].img;
+
+    donutContainer.innerHTML += `
+    <section class="donut-container">
+      <div class="donut-image-container">
+          <img src="${donuts[i].img}" alt="${donuts[i].alt}">
+      </div>
+      <div class="donut-info-container">
+          <h2 class="${donuts[i].name}"><span class="donut-price">${donuts[i].price}</span> kr</h2>
+          <p class="donutCategory">${donuts[i].category}</p>
+          <div class="ratingContainer"></div>
+          
+          <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
+          <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
+      </div>
+    </section>
+    `;
+    console.log(donutContainer);
+  }
 }
 
 //Function to reduce total amount of donuts
