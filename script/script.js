@@ -6,18 +6,19 @@ let priceLabel; //Label to show total price
 //let newPrice; //Variable to show new price
 let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
+let donutContainer; //Variable to select donutContainer from HTML
 
 //Donuts
 const donuts = [
   {
-    images: [
+    /*images: [
       {
         url: 'assets/photos/bild1.jpg',
         alt: 'Munk 1',
         width: 100,
         height: 'auto'
       }, // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
-    ],
+    ],*/
     img: 'assets/photos/bild1.jpg', //Donut picture
     name: 'Classic', //Donut name
     category: 'Övrigt', //Donut category
@@ -97,92 +98,18 @@ const donuts = [
     price: 40, //Donut price
     rating: 4, //rating
     totPrice: 0, //Total price
-        0, //Amount
+    totAmount: 0, //Amount
     },
-    {
-      properties: [
-        'assets/photos/bild10.jpg', //Donut picture
-        'Chocoloco', //Donut name
-        'Choklad', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
-    },
-    {
-      properties: [
-        'assets/photos/bild11.jpg', //Donut picture
-        'Chocolate rain', //Donut name
-        'Choklad', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
-    },
-    {
-      properties: [
-        'assets/photos/bild12.jpg', //Donut picture
-        'Rainbow', //Donut name
-        'Övrigt', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
-    }
   ]
 
 
-for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
-  donuts[i].name // => Donut med socker
-  donutContainer.innerHTML += `
-  <section class="donut-container">
-                <div class="donut-image-container">
-                    <img src="${donut[i].img}" alt="${donut[i].name}">
-                </div>
-                <div class="donut-info-container">
-                    <h2 class="donutName"><span class="donut-price">${donut[i].price}</span> kr</h2>
-                    <p class="donutCategory"></p>
-                    <div class="ratingContainer"></div>
-  
-                    
-                    <p>pris: <span class="tot-price">${donut[i].price}</span> kr</p>
-                    <p>antal: <span class="tot-amount"></span> st</p>
-                    <button data-operator="decreaseBtn">-</button>
-                    <button data-operator="increaseBtn">+</button>
-                </div>
-            </section>
-            <aside class=" donut-info">
-                <img src="./assets/photos/donut-with-sugar-hole2.jpg">
-                <h3> Ingredienser</h3>
-                <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500),
-                    äggulepulver, salt,
-                    modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br>
-                    <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom,
-                    glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel,
-                    citronsyra
-                </p>
-            </aside>
-  `;
-
-}
 
 function init() {
   //Declares variables
-  btnLower = document.querySelectorAll('button[data-operator="decreaseBtn"]');
-  btnHigher = document.querySelectorAll('button[data-operator="increaseBtn"]');
+  btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
+  btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
   standardPrice = document.querySelectorAll(".donut-price");
+  donutContainer = document.querySelector("#donutContainer");
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
     btnLower[i].addEventListener("click", reduceTotDonut);
@@ -191,6 +118,29 @@ function init() {
     btnHigher[i].addEventListener("click", increaseTotDonut);
   }
 } //End init
+
+function showDonuts() {
+    // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
+for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
+  donuts[i].name // => Donut med socker
+  donutContainer.innerHTML += `
+  <section class="donut-container">
+                <div class="donut-image-container">
+                    <img src="${donut[i].img}" alt="${donut[i].alt}">
+                </div>
+                <div class="donut-info-container">
+                    <h2 class="${donut[i].name}"><span class="donut-price">${donut[i].price}</span> kr</h2>
+                    <p class="donutCategory">${donut[i].category}</p>
+                    <div class="ratingContainer"></div>
+                    
+                    <p>pris: <span class="tot-price">${donut[i].tot-price}</span> kr</p>
+                    <p>antal: <span class="tot-amount">${donut[i].totAmount}</span> st</p>
+                </div>
+            </section>
+  `;
+}
+console.log("hej")
+}
 
 //Function to reduce total amount of donuts
 function reduceTotDonut(e) {
@@ -236,7 +186,7 @@ function updateDonutSum(donutElement) {
   console.log(sum);
 }
 
-init();
+
 
 // Tillagt 221109 av Sussie
 // generella variabler
@@ -294,3 +244,7 @@ function showCardContent() {
 document.getElementById("nav-links").onclick = function () {
   document.getElementById("toggle").click();
 };
+
+
+init();
+showDonuts();
