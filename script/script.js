@@ -178,7 +178,8 @@ const donuts = [
     }
   ]
 
-for (let i = 0; i <donuts.length; i++) {
+
+for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
   donuts[i].name // => Donut med socker
   donutContainer.innerHTML += `
   <section class="donut-container">
