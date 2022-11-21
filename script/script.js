@@ -12,25 +12,32 @@ let donutImageContainer;
 //Donuts
 const donuts = [
   {
-    /*images: [
+    images [
       {
         url: 'assets/photos/bild1.jpg',
-        alt: 'Munk 1',
-        width: 100,
-        height: 'auto'
-      }, // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
+        alt: 'Donut-med-socker',
+        width: 100;
+        height: auto;
+      },
+    ],
+    /* // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
     ],*/
-    img: 'assets/photos/bild1.jpg', //Donut picture
     name: 'Classic', //Donut name
     category: 'Övrigt', //Donut category
-      // TODO: lägg på keys
     price: 35, //Donut price
     rating: 5, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild1.jpg', //Donut picture
+    images [
+      {
+        url: 'assets/photos/bild2.jpg',
+        alt: 'Klassisk-syltmunk',
+        width: 100;
+        height: auto;
+      },
+    ],
     name:'Raspberry pie', //Donut name
     category: 'Övrigt', //Donut category
     price: 40, //Donut price
@@ -39,7 +46,14 @@ const donuts = [
     totAmount: 0, //Amount 
   },
   {
-    img:'assets/photos/bild3.jpg', //Donut picture
+    images [
+      {
+        url: 'assets/photos/bild3.jpg',
+        alt: 'Munk-med-florsocker',
+        width: 100;
+        height: auto;
+      },
+    ],
     name:'Sugar dream', //Donut name
     category:'Övrigt', //Donut category
     price: 40, //Donut price
@@ -48,7 +62,14 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    img:'assets/photos/bild5.jpg', //Donut picture
+    images [
+      {
+        url: 'assets/photos/bild5.jpg',
+        alt: 'Munk-med-topping',
+        width: 100;
+        height: auto;
+      },
+    ],
     name:'Dragon Tail', //Donut name
     category:'Övrigt', //Donut category
     price: 40, //Donut price
@@ -57,7 +78,14 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild4.jpg', //Donut picture
+    images [
+      {
+        url: 'assets/photos/bild4.jpg',
+        alt: 'Munk-med-fargglatt-strossel',
+        width: 100;
+        height: auto;
+      },
+    ],
     name: 'Unicorn', //Donut name
     category: 'Strössel', //Donut category
     price: 40, //Donut price
@@ -66,7 +94,14 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild6.jpg', //Donut picture
+    images [
+      {
+        url: 'assets/photos/bild6.jpg'
+        alt: 'Munk-med-chokladtopping-och-strossel'
+        width: 100;
+        height: auto;
+      },
+    ],
     name: 'Hungover', //Donut name
     category: 'Strössel', //Donut category
     price: 40, //Donut price
@@ -75,7 +110,14 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild7.jpg', //Donut picture
+    images [
+      {
+        url: 'assets/photos/bild7.jpg', 
+        alt: 'Munk-med-smarties',
+        width: 100;
+        height: auto;
+      },
+    ],
     name: 'Smarties', //Donut name
     category: 'Strössel', //Donut category
     price: 40, //Donut price
@@ -84,7 +126,14 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild8.jpg', //Donut picture
+    images [
+      {
+        url: 'assets/photos/bild8.jpg', 
+        alt: 'Munk-med-figur',
+        width: 100;
+        height: auto;
+      },
+    ],
     name: 'Monster', //Donut name
     category:'Strössel', //Donut category
     price: 40, //Donut price
@@ -93,7 +142,15 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild9.jpg', //Donut picture
+    images [
+      {
+        url: 'assets/photos/bild9.jpg',
+        alt: 'Munk-med-chokladstrossel',
+        width: 100;
+        height: auto;
+      },
+    ],
+    //Donut picture - kolla upp att alt-text stämmer med bild på munk 9-12
     name: 'Chocoholic', //Donut name
     category:'Choklad', //Donut category
     price: 40, //Donut price
@@ -102,7 +159,14 @@ const donuts = [
     totAmount: 0, //Amount
     },
     {
-    img:'assets/photos/bild10.jpg', //Donut picture
+      images [
+        {
+          url:'assets/photos/bild10.jpg',
+          alt: 'Munk-med-chokladbitar-pa-chokladfrosting'
+          width: 100;
+          height: auto;
+        },
+      ],
     name: 'Chocoloco', //Donut name
     category: 'Choklad', //Donut category
     price: 40, //Donut price
@@ -111,7 +175,14 @@ const donuts = [
     totAmount: 0, //Amount
     },
     {
-      img:'assets/photos/bild11.jpg', //Donut picture
+      images [
+        {
+          url: 'assets/photos/bild11.jpg',
+          alt: 'Munk-med-strossel-pa-choklad',
+          width: 100;
+          height: auto;
+        },
+      ],
       name: 'Chocolate rain', //Donut name
       category: 'Choklad', //Donut category
       price:  40, //Donut price
@@ -120,7 +191,14 @@ const donuts = [
       totAmount: 0, //Amount
     },
     {
-      img: 'assets/photos/bild12.jpg', //Donut picture
+      images [
+        {
+          url: 'assets/photos/bild12.jpg',
+          alt: 'Munk-med-fargglatt-strossel',
+          width: 100;
+          height: auto;
+        },
+      ],
       name: 'Rainbow', //Donut name
       category:'Övrigt', //Donut category
       price: 40, //Donut price
