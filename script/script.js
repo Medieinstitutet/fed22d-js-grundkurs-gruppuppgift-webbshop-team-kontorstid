@@ -10,129 +10,94 @@ let newAmount; //Variable to show new amount of donuts
 //Donuts
 const donuts = [
   {
-      img: 'assets/photos/bild1.jpg', //Donut picture
-      name: 'Classic', //Donut name
-      category: 'Övrigt', //Donut category
+    images: [
+      {
+        url: 'assets/photos/bild1.jpg',
+        alt: 'Munk 1',
+        width: 100,
+        height: 'auto'
+      }, // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
+    ],
+    img: 'assets/photos/bild1.jpg', //Donut picture
+    name: 'Classic', //Donut name
+    category: 'Övrigt', //Donut category
       // TODO: lägg på keys
-      price: 35, //Donut price
-      rating: `<span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>`, //rating
-      totPrice: 0, //Total price
-      totAmount: 0, //Amount
+    price: 35, //Donut price
+    rating: 5, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
   },
-    {
-      properties: [
-        'assets/photos/bild2.jpg', //Donut picture
-        'Raspberry pie', //Donut name
-        'Övrigt', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
+  {
+    img: 'assets/photos/bild1.jpg', //Donut picture
+    name:'Raspberry pie', //Donut name
+    category: 'Övrigt', //Donut category
+    price: 40, //Donut price
+    rating: 4, //rating
+    totPrice:0, //Total price
+    totAmount: 0, //Amount 
+  },
+  {
+    img:'assets/photos/bild3.jpg', //Donut picture
+    name:'Sugar dream', //Donut name
+    category:'Övrigt', //Donut category
+    price: 40, //Donut price
+    rating: 5, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
+  },
+  {
+    img:'assets/photos/bild5.jpg', //Donut picture
+    name:'Dragon Tail', //Donut name
+    category:'Övrigt', //Donut category
+    price: 40, //Donut price
+    rating: 4, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
+  },
+  {
+    img: 'assets/photos/bild4.jpg', //Donut picture
+    name: 'Unicorn', //Donut name
+    category: 'Strössel', //Donut category
+    price: 40, //Donut price
+    rating: 5, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
+  },
+  {
+    img: 'assets/photos/bild6.jpg', //Donut picture
+    name: 'Hungover', //Donut name
+    category: 'Strössel', //Donut category
+    price: 40, //Donut price
+    rating: 3, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
+  },
+  {
+    img: 'assets/photos/bild7.jpg', //Donut picture
+    name: 'Smarties', //Donut name
+    category: 'Strössel', //Donut category
+    price: 40, //Donut price
+    rating: 4, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
+  },
+  {
+    img: 'assets/photos/bild8.jpg', //Donut picture
+    name: 'Monster', //Donut name
+    category:'Strössel', //Donut category
+    price: 40, //Donut price
+    rating: 3, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
+  },
+  {
+    img: 'assets/photos/bild9.jpg', //Donut picture
+    name: 'Chocoholic', //Donut name
+    category:'Choklad', //Donut category
+    price: 40, //Donut price
+    rating: 4, //rating
+    totPrice: 0, //Total price
         0, //Amount
-      ]
-    },
-    {
-      properties: [
-        'assets/photos/bild3.jpg', //Donut picture
-        'Sugar dream', //Donut name
-        'Övrigt', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
-    },
-    {
-      properties: [
-        'assets/photos/bild5.jpg', //Donut picture
-        'Dragon Tail', //Donut name
-        'Övrigt', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
-    },
-    {
-      properties: [
-        'assets/photos/bild4.jpg', //Donut picture
-        'Unicorn', //Donut name
-        'Strössel', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
-    },
-    {
-      properties: [
-        'assets/photos/bild6.jpg', //Donut picture
-        'Hungover', //Donut name
-        'Strössel', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
-    },
-    {
-      properties: [
-        'assets/photos/bild7.jpg', //Donut picture
-        'Smarties', //Donut name
-        'Strössel', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
-    },
-    {
-      properties: [
-        'assets/photos/bild8.jpg', //Donut picture
-        'Monster', //Donut name
-        'Strössel', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
-    },
-    {
-      properties: [
-        'assets/photos/bild9.jpg', //Donut picture
-        'Chocoholic', //Donut name
-        'Choklad', //Donut category
-        40, //Donut price
-        `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>`, //rating
-        0, //Total price
-        0, //Amount
-      ]
     },
     {
       properties: [
@@ -178,12 +143,13 @@ const donuts = [
     }
   ]
 
-for (let i = 0; i <donuts.length; i++) {
+
+for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
   donuts[i].name // => Donut med socker
   donutContainer.innerHTML += `
   <section class="donut-container">
                 <div class="donut-image-container">
-                    <img src="./assets/photos/bild1.jpg" alt="${donut[i].name}">
+                    <img src="${donut[i].img}" alt="${donut[i].name}">
                 </div>
                 <div class="donut-info-container">
                     <h2 class="donutName"><span class="donut-price">${donut[i].price}</span> kr</h2>
