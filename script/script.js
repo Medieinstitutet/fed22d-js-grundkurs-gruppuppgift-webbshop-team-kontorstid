@@ -17,7 +17,7 @@ const donuts = [
         url: 'assets/photos/bild1.jpg',
         alt: 'Donut-med-socker',
         width: 100,
-        height: auto,
+        //height: auto, //Auto not defined
       },
     ],
     /* // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
@@ -35,7 +35,7 @@ const donuts = [
         url: 'assets/photos/bild2.jpg',
         alt: 'Klassisk-syltmunk',
         width: 100,
-        height: auto,
+        //height: auto,
       },
     ],
     name:'Raspberry pie', //Donut name
@@ -51,7 +51,7 @@ const donuts = [
         url: 'assets/photos/bild3.jpg',
         alt: 'Munk-med-florsocker',
         width: 100,
-        height: auto,
+        //height: auto,
       },
     ],
     name:'Sugar dream', //Donut name
@@ -67,7 +67,7 @@ const donuts = [
         url: 'assets/photos/bild5.jpg',
         alt: 'Munk-med-topping',
         width: 100,
-        height: auto,
+        //height: auto,
       },
     ],
     name:'Dragon Tail', //Donut name
@@ -83,7 +83,7 @@ const donuts = [
         url: 'assets/photos/bild4.jpg',
         alt: 'Munk-med-fargglatt-strossel',
         width: 100,
-        height: auto,
+        //height: auto,
       },
     ],
     name: 'Unicorn', //Donut name
@@ -99,7 +99,7 @@ const donuts = [
         url: 'assets/photos/bild6.jpg',
         alt: 'Munk-med-chokladtopping-och-strossel',
         width: 100,
-        height: auto,
+        //height: auto,
       },
     ],
     name: 'Hungover', //Donut name
@@ -115,7 +115,7 @@ const donuts = [
         url: 'assets/photos/bild7.jpg', 
         alt: 'Munk-med-smarties',
         width: 100,
-        height: auto,
+        //height: auto,
       },
     ],
     name: 'Smarties', //Donut name
@@ -131,7 +131,7 @@ const donuts = [
         url: 'assets/photos/bild8.jpg', 
         alt: 'Munk-med-figur',
         width: 100,
-        height: auto,
+        //height: auto,
       },
     ],
     name: 'Monster', //Donut name
@@ -147,7 +147,7 @@ const donuts = [
         url: 'assets/photos/bild9.jpg',
         alt: 'Munk-med-chokladstrossel',
         width: 100,
-        height: auto,
+        //height: auto,
       },
     ],
     //Donut picture - kolla upp att alt-text stämmer med bild på munk 9-12
@@ -164,7 +164,7 @@ const donuts = [
           url:'assets/photos/bild10.jpg',
           alt: 'Munk-med-chokladbitar-pa-chokladfrosting',
           width: 100,
-          height: auto,
+          //height: auto,
         },
       ],
     name: 'Chocoloco', //Donut name
@@ -180,7 +180,7 @@ const donuts = [
           url: 'assets/photos/bild11.jpg',
           alt: 'Munk-med-strossel-pa-choklad',
           width: 100,
-          height: auto,
+          //height: auto,
         },
       ],
       name: 'Chocolate rain', //Donut name
@@ -196,7 +196,7 @@ const donuts = [
           url: 'assets/photos/bild12.jpg',
           alt: 'Munk-med-fargglatt-strossel',
           width: 100,
-          height: auto,
+          //height: auto,
         },
       ],
       name: 'Rainbow', //Donut name
@@ -230,7 +230,7 @@ function showDonuts() {
     // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
   for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
    
-    donutImageContainer.innerHTML = donuts[i].img;
+    donutImageContainer.setAttribute('src', donuts[i].img);
 
     donutContainer.innerHTML += `
     <section class="donut-container">
@@ -244,11 +244,14 @@ function showDonuts() {
           
           <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
           <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
+          <button data-operator="decreaseBtn">-</button>
+          <button data-operator="increaseBtn">+</button>
       </div>
     </section>
     `;
     console.log(donutContainer.innerHTML);
   }
+
 }
 
 //Function to reduce total amount of donuts
