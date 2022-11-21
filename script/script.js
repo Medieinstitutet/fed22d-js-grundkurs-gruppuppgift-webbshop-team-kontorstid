@@ -13,28 +13,41 @@ const donuts = [
   {
     images [
       {
-        url: 'assets/photos/bild1.jpg',
-        alt: 'Donut-med-socker',
-        width: 100;
-        height: auto;
+        url: "assets/photos/bild1.jpg",
+        alt: "Donut-med-socker",
+        width: 100,
+        height: auto,
       },
     ],
     /* // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
     ],*/
-    name: 'Classic', //Donut name
-    category: 'Övrigt', //Donut category
+    name: "Classic", //Donut name
+    category: "Övrigt", //Donut category
     price: 35, //Donut price
     rating: 5, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
-  },
+    donut_info [
+      images [
+      {
+        url: "./assets/photos/bild1.jpg",
+        alt: "Donut-med-socker",
+        width: 100,
+        height: auto,
+      },
+    ]
+      HTML_info [ //här behöver även class läggas till, hur?
+        {
+        h3: "<h3> Ingredienser</h3>",
+        p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+        }, 
   {
     images [
       {
         url: 'assets/photos/bild2.jpg',
         alt: 'Klassisk-syltmunk',
-        width: 100;
-        height: auto;
+        width: 100,
+        height: auto,
       },
     ],
     name:'Raspberry pie', //Donut name
@@ -42,15 +55,29 @@ const donuts = [
     price: 40, //Donut price
     rating: 4, //rating
     totPrice:0, //Total price
-    totAmount: 0, //Amount 
+    totAmount: 0,
+    donut_info [
+      images [
+      {
+        url: "./assets/photos/bild2.jpgjpg",
+        alt: "Klassisk-syltmunk",
+        width: 100,
+        height: auto,
+      },
+    ]
+      HTML_info [ //här behöver även class läggas till, hur?
+        {
+        h3: "<h3> Ingredienser</h3>",
+        p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+        },  //Amount 
   },
   {
     images [
       {
-        url: 'assets/photos/bild3.jpg',
-        alt: 'Munk-med-florsocker',
-        width: 100;
-        height: auto;
+        url: "assets/photos/bild3.jpg",
+        alt: "Munk-med-florsocker",
+        width: 100,
+        height: auto,
       },
     ],
     name:'Sugar dream', //Donut name
@@ -58,152 +85,292 @@ const donuts = [
     price: 40, //Donut price
     rating: 5, //rating
     totPrice: 0, //Total price
-    totAmount: 0, //Amount
+    totAmount: 0, 
+    donut_info [
+      images [
+      {
+        url: "./assets/photos/bild3.jpg",
+        alt: "Munk-med-florsocker",
+        width: 100,
+        height: auto,
+      },
+    ]
+      HTML_info [ //här behöver även class läggas till, hur?
+        {
+        h3: "<h3> Ingredienser</h3>",
+        p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+        }, //Amount
   },
   {
     images [
       {
-        url: 'assets/photos/bild5.jpg',
-        alt: 'Munk-med-topping',
-        width: 100;
-        height: auto;
+        url: "assets/photos/bild5.jpg",
+        alt: "Munk-med-topping",
+        width: 100,
+        height: auto,
       },
     ],
-    name:'Dragon Tail', //Donut name
-    category:'Övrigt', //Donut category
+    name:"Dragon Tail", //Donut name
+    category:"Övrigt", //Donut category
     price: 40, //Donut price
     rating: 4, //rating
     totPrice: 0, //Total price
-    totAmount: 0, //Amount
+    totAmount: 0, 
+    donut_info [
+      images [
+      {
+        url: "./assets/photos/bild5.jpg",
+        alt: "Munk-med-topping",
+        width: 100,
+        height: auto,
+      },
+    ]
+      HTML_info [ //här behöver även class läggas till, hur?
+        {
+        h3: "<h3> Ingredienser</h3>",
+        p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+        }, //Amount
   },
   {
     images [
       {
-        url: 'assets/photos/bild4.jpg',
-        alt: 'Munk-med-fargglatt-strossel',
-        width: 100;
-        height: auto;
+        url: "assets/photos/bild4.jpg",
+        alt: "Munk-med-fargglatt-strossel",
+        width: 100,
+        height: auto,
       },
     ],
-    name: 'Unicorn', //Donut name
-    category: 'Strössel', //Donut category
+    name: "Unicorn", //Donut name
+    category: "Strössel", //Donut category
     price: 40, //Donut price
     rating: 5, //rating
     totPrice: 0, //Total price
-    totAmount: 0, //Amount
+    totAmount: 0,
+    donut_info [
+      images [
+      {
+        url: "./assets/photos/bild4.jpg",
+        alt: "Munk-med-fargglatt-strossel",
+        width: 100,
+        height: auto,
+      },
+    ]
+      HTML_info [ //här behöver även class läggas till, hur?
+        {
+        h3: "<h3> Ingredienser</h3>",
+        p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+        },  //Amount
   },
   {
     images [
       {
-        url: 'assets/photos/bild6.jpg'
-        alt: 'Munk-med-chokladtopping-och-strossel'
-        width: 100;
-        height: auto;
+        url: "assets/photos/bild6.jpg",
+        alt: "Munk-med-chokladtopping-och-strossel",
+        width: 100,
+        height: auto,
       },
     ],
-    name: 'Hungover', //Donut name
-    category: 'Strössel', //Donut category
+    name: "Hungover", //Donut name
+    category: "Strössel", //Donut category
     price: 40, //Donut price
     rating: 3, //rating
     totPrice: 0, //Total price
-    totAmount: 0, //Amount
+    totAmount: 0,
+    donut_info [
+      images [
+      {
+        url: "./assets/photos/bild6.jpg",
+        alt: "Munk-med-chokladtopping-och-strossel",
+        width: 100,
+        height: auto;
+      },
+    ]
+      HTML_info [ //här behöver även class läggas till, hur?
+        {
+        h3: "<h3> Ingredienser</h3>",
+        p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+        },  //Amount
   },
   {
     images [
       {
-        url: 'assets/photos/bild7.jpg', 
-        alt: 'Munk-med-smarties',
-        width: 100;
-        height: auto;
+        url: "assets/photos/bild7.jpg", 
+        alt: "Munk-med-smarties",
+        width: 100,
+        height: auto,
       },
     ],
-    name: 'Smarties', //Donut name
-    category: 'Strössel', //Donut category
+    name: "Smarties", //Donut name
+    category: "Strössel", //Donut category
     price: 40, //Donut price
     rating: 4, //rating
     totPrice: 0, //Total price
-    totAmount: 0, //Amount
+    totAmount: 0,
+    donut_info [
+      images [
+      {
+        url: "./assets/photos/bild7.jpg",
+        alt: "Munk-med-smarties",
+        width: 100,
+        height: auto;
+      },
+    ]
+      HTML_info [ //här behöver även class läggas till, hur?
+        {
+        h3: "<h3> Ingredienser</h3>",
+        p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+        },  //Amount
   },
   {
     images [
       {
-        url: 'assets/photos/bild8.jpg', 
-        alt: 'Munk-med-figur',
-        width: 100;
-        height: auto;
+        url: "assets/photos/bild8.jpg", 
+        alt: "Munk-med-figur",
+        width: 100,
+        height: auto,
       },
     ],
-    name: 'Monster', //Donut name
-    category:'Strössel', //Donut category
+    name: "Monster", //Donut name
+    category:"Strössel", //Donut category
     price: 40, //Donut price
     rating: 3, //rating
     totPrice: 0, //Total price
-    totAmount: 0, //Amount
+    totAmount: 0,
+    donut_info [
+      images [
+      {
+        url: "./assets/photos/bild8.jpg",
+        alt: "Munk-med-figur",
+        width: 100,
+        height: auto;
+      },
+    ]
+      HTML_info [ //här behöver även class läggas till, hur?
+        {
+        h3: "<h3> Ingredienser</h3>",
+        p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+        }, //Amount
   },
   {
     images [
       {
-        url: 'assets/photos/bild9.jpg',
-        alt: 'Munk-med-chokladstrossel',
-        width: 100;
-        height: auto;
+        url: "assets/photos/bild9.jpg",
+        alt: "Munk-med-chokladstrossel",
+        width: 100,
+        height: auto,
       },
     ],
     //Donut picture - kolla upp att alt-text stämmer med bild på munk 9-12
-    name: 'Chocoholic', //Donut name
-    category:'Choklad', //Donut category
+    name: "Chocoholic", //Donut name
+    category: "Choklad", //Donut category
     price: 40, //Donut price
     rating: 4, //rating
     totPrice: 0, //Total price
-    totAmount: 0, //Amount
+    totAmount: 0, 
+    donut_info [
+      images [
+      {
+        url: "./assets/photos/bild9.jpg",
+        alt: "Munk-med-choklastrossel",
+        width: 100,
+        height: auto;
+      },
+    ]
+      HTML_info [ //här behöver även class läggas till, hur?
+        {
+        h3: "<h3> Ingredienser</h3>",
+        p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+        },
     },
     {
       images [
         {
-          url:'assets/photos/bild10.jpg',
-          alt: 'Munk-med-chokladbitar-pa-chokladfrosting'
-          width: 100;
-          height: auto;
+          url:"assets/photos/bild10.jpg",
+          alt: "Munk-med-chokladbitar-pa-chokladfrosting",
+          width: 100,
+          height: auto,
         },
       ],
-    name: 'Chocoloco', //Donut name
-    category: 'Choklad', //Donut category
+    name: "Chocoloco", //Donut name
+    category: "Choklad", //Donut category
     price: 40, //Donut price
     rating: 4, //rating
     totPrice: 0, //Total price
-    totAmount: 0, //Amount
+    totAmount: 0,
+    donut_info [
+      images [
+      {
+        url: "assets/photos/bild10.jpg",
+        alt: "Munk-med-chokladbitar-pa-chokladfrosting",
+        width: 100,
+        height: auto;
+      },
+    ]
+      HTML_info [ //här behöver även class läggas till, hur?
+        {
+        h3: "<h3> Ingredienser</h3>",
+        p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+        },
     },
     {
       images [
         {
-          url: 'assets/photos/bild11.jpg',
-          alt: 'Munk-med-strossel-pa-choklad',
-          width: 100;
-          height: auto;
+          url: "assets/photos/bild11.jpg",
+          alt: "Munk-med-strossel-pa-choklad",
+          width: 100,
+          height: auto,
         },
       ],
-      name: 'Chocolate rain', //Donut name
-      category: 'Choklad', //Donut category
+      name: "Chocolate rain", //Donut name
+      category: "Choklad", //Donut category
       price:  40, //Donut price
       rating: 4, //rating
       totPrice: 0, //Total price
       totAmount: 0, //Amount
+      donut_info [
+        images [
+        {
+          url: "assets/photos/bild11.jpg",
+          alt: "Munk-med-strossel-pa-choklad",
+          width: 100,
+          height: auto;
+        },
+      ]
+        HTML_info [ //här behöver även class läggas till, hur?
+          {
+          h3: "<h3> Ingredienser</h3>",
+          p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+          }, 
     },
     {
       images [
         {
-          url: 'assets/photos/bild12.jpg',
-          alt: 'Munk-med-fargglatt-strossel',
-          width: 100;
-          height: auto;
+          url: "assets/photos/bild12.jpg",
+          alt: "Munk-med-fargglatt-strossel",
+          width: 100,
+          height: auto,
         },
       ],
-      name: 'Rainbow', //Donut name
-      category:'Övrigt', //Donut category
+      name: "Rainbow", //Donut name
+      category:"Övrigt", //Donut category
       price: 40, //Donut price
       rating: 5, //rating
       totPrice: 0, //Total price
       totAmount: 0, //Amount
+      donut_info [
+        images [
+        {
+          url: "./assets/photos/bild12.jpg",
+          alt: "Munk-med-fargglatt-strossel",
+          width: 100,
+          height: auto;
+        },
+      ]
+        HTML_info [ //här behöver även class läggas till, hur?
+          {
+          h3: "<h3> Ingredienser</h3>",
+          p: "<p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450, E500), äggulepulver, salt, modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel (E466).<br> <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin, vaniljarom, glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471, konserveringsmedel, citronsyra </p>",
+          }, 
     }
   ]
 
