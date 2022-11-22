@@ -146,9 +146,11 @@ function init() {
 
 function showDonuts() {
   // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
+
+  donutContainer.innerHTML = "";
+
   for (let i = 0; i < donuts.length; i++) {
     //For-loop to loop through every donut
-
 
     donutContainer.innerHTML += `
     <section class="donut-container">
