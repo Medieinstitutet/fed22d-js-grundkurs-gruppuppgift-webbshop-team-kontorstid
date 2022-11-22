@@ -1,30 +1,43 @@
+/*Variables*/
+/*Colors*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/*html*/
 html {
   scroll-behavior: smooth;
 }
+
+/*text*/
 p,
 h1,
 h2 {
   color: #0e0e0e;
 }
+
 h1,
 h2,
 h3 {
   font-family: "Archivo Black", sans-serif;
 }
+
 h2 {
   font-size: 1.2rem;
 }
+
 p {
   font-family: "Roboto", sans-serif;
 }
+
+/*body*/
 body {
   background-color: #f8f8f8;
 }
+
+/*Header section*/
 header {
   display: flex;
   justify-content: space-between;
@@ -79,7 +92,7 @@ header .checkbox {
 header button {
   width: 45px;
   height: 45px;
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   border: 0;
   position: fixed;
   right: 20px;
@@ -110,6 +123,8 @@ header input:checked + .menu nav {
   transition: all 0.4s ease-in-out;
   right: 0vw;
 }
+
+/*Main section*/
 main {
   padding: 15px;
 }
@@ -167,6 +182,7 @@ main .checked {
   color: #f96c9e;
 }
 main .checkout-container {
+  display: none;
   background-color: #616161;
 }
 main .checkout-container p,
@@ -177,15 +193,20 @@ main .checkout-container p,
 main .payment {
   color: #f8f8f8;
 }
+
 .paymentCardContainer {
   display: none;
 }
+
 .paymentInvoiceContainer {
   display: none;
 }
+
 .visible {
   display: block;
 }
+
+/*Footer section*/
 footer {
   background-color: #f96c9e;
   padding: 25px 15px;
@@ -213,15 +234,23 @@ footer .tot-sum {
   font-weight: bold;
   font-size: 1.1rem;
 }
-@media only screen and (min-width: 350px) and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+@media only screen and (min-width: 768px) and (min-device-width: 768px) and (max-device-width: 1024px) {
   body {
     background-color: blue;
   }
 }
-@media screen and (min-width: 800px) {
-  main {
+@media screen and (min-width: 1264px) {
+  .sortering {
     display: grid;
     grid-template-columns: 33% 33% 33%;
+  }
+  .postal-address-container {
+    display: flex;
+    gap: 15px;
+  }
+  .postal-address-container .postalcode {
+    max-width: 100px;
   }
   .postal-address-container {
     display: flex;
@@ -241,4 +270,4 @@ footer .tot-sum {
   .postal-address-container .postalcode {
     max-width: 100px;
   }
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
