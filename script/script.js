@@ -34,13 +34,22 @@ const donuts = [
 
 function init() {
   //Declares variables
-  btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
-  btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
+  
   standardPrice = document.querySelectorAll(".donut-price");
   donutContainer = document.querySelector(".donutContainer");
+ 
+} //End init
+
+
+function initButtons() {
+  //Declares variables
+  btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
+  btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
+  
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
     btnLower[i].addEventListener("click", reduceTotDonut);
+    console.log("Added an event listener");
   }
   for (let i = 0; i < btnHigher.length; i++) {
     btnHigher[i].addEventListener("click", increaseTotDonut);
@@ -78,7 +87,7 @@ function showDonuts() {
 function reduceTotDonut(e) {
   const amountLevel =
     e.currentTarget.parentElement.querySelector(".tot-amount"); //Const which goes through the parent element to find .tot-amount
-  console.log(standardPrice); //Console log to make sure that it is done correctly
+  console.log("+In reduceTotDonut"+standardPrice); //Console log to make sure that it is done correctly
   newAmount = Number(amountLevel.innerText); //Specifies the variable newAmount equal to amountLevel. Uses Number to convert it from string to number, innerText to read.
 
   if (newAmount <= 0) {
@@ -177,3 +186,5 @@ document.getElementById("nav-links").onclick = function () {
 
 init();
 showDonuts();
+initButtons();
+
