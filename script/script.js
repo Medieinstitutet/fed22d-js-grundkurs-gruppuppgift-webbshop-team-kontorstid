@@ -9,8 +9,6 @@ let newAmount; //Variable to show new amount of donuts
 let donutContainer; //Variable to select donutContainer from HTML
 
 //Donuts
-const donuts = [
-  {
     /*images: [
       {
         url: 'assets/photos/bild1.jpg',
@@ -19,114 +17,19 @@ const donuts = [
         height: 'auto'
       }, // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
     ],*/
-    img: "assets/photos/bild1.jpg", //Donut picture
-    name: "Classic ", //Donut name
-    category: "Övrigt", //Donut category
-    // TODO: lägg på keys
-    price: 35, //Donut price
-    rating: 5, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild2.jpg", //Donut picture
-    name: "Raspberry pie ", //Donut name
-    category: "Övrigt", //Donut category
-    price: 40, //Donut price
-    rating: 4, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild3.jpg", //Donut picture
-    name: "Sugar dream ", //Donut name
-    category: "Övrigt", //Donut category
-    price: 40, //Donut price
-    rating: 5, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild5.jpg", //Donut picture
-    name: "Dragon Tail ", //Donut name
-    category: "Övrigt", //Donut category
-    price: 40, //Donut price
-    rating: 4, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild4.jpg", //Donut picture
-    name: "Unicorn ", //Donut name
-    category: "Strössel", //Donut category
-    price: 40, //Donut price
-    rating: 5, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild6.jpg", //Donut picture
-    name: "Hungover ", //Donut name
-    category: "Strössel", //Donut category
-    price: 40, //Donut price
-    rating: 3, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild7.jpg", //Donut picture
-    name: "Smarties ", //Donut name
-    category: "Strössel", //Donut category
-    price: 40, //Donut price
-    rating: 4, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild8.jpg", //Donut picture
-    name: "Monster ", //Donut name
-    category: "Strössel", //Donut category
-    price: 40, //Donut price
-    rating: 3, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild9.jpg", //Donut picture
-    name: "Chocoholic ", //Donut name
-    category: "Choklad", //Donut category
-    price: 40, //Donut price
-    rating: 4, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild10.jpg", //Donut picture
-    name: "Chocoloco ", //Donut name
-    category: "Choklad", //Donut category
-    price: 40, //Donut price
-    rating: 4, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild11.jpg", //Donut picture
-    name: "Chocolate rain ", //Donut name
-    category: "Choklad", //Donut category
-    price: 40, //Donut price
-    rating: 4, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
-  {
-    img: "assets/photos/bild12.jpg", //Donut picture
-    name: "Rainbow ", //Donut name
-    category: "Övrigt", //Donut category
-    price: 40, //Donut price
-    rating: 5, //rating
-    totPrice: 0, //Total price
-    totAmount: 0, //Amount
-  },
+const donuts = [
+  { images: [ { img: "assets/photos/bild1.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Classic ", category: "Övrigt", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild2.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Övrigt", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild3.jpg", alt: "Munk-med-florsocker", width: 100, height: "auto" } ], name: "Sugar dream ", category: "Övrigt", price: 40, rating: 5, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild5.jpg", alt: "Munk-med-topping", width: 100, height: "auto" } ], name: "Dragon Tail ", category: "Övrigt", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild4.jpg", alt: "Munk-med-strossel", width: 100, height: "auto" } ], name: "Unicorn ", category: "Strössel", price: 40, rating: 5, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild6.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Hungover ", category: "Strössel", price: 40, rating: 3, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild7.jpg", alt: "Munk-med-smarties", width: 100, height: "auto" } ], name: "Smarties ", category: "Strössel", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild8.jpg", alt: "Munk-med-figur", width: 100, height: "auto" } ], name: "Monster ", category: "Strössel", price: 40, rating: 3, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild9.jpg", alt: "Munk-med-choklad", width: 100, height: "auto" } ], name: "Chocoholic ", category: "Choklad", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild10.jpg", alt: "Munk-med-chokladbitar", width: 100, height: "auto" } ], name: "Chocoloco ", category: "Choklad", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild11.jpg", alt: "Munk-med-chokladstrossel", width: 100, height: "auto" } ], name: "Chocolate rain ", category: "Choklad", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild12.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Övrigt", price: 40, rating: 5, totPrice: 0, totAmount: 0 },
 ];
 
 function init() {
@@ -153,12 +56,12 @@ function showDonuts() {
     donutContainer.innerHTML += `
     <section class="donut-container">
       <div class="donut-image-container">
-          <img src="${donuts[i].img}" alt="${donuts[i].alt}">
+          <img src="${donuts[i].images[0].img}" alt="${donuts[i].alt}">
       </div>
       <div class="donut-info-container">
           <h2 class="donutName">${donuts[i].name}<span class="donut-price">${donuts[i].price}</span> kr</h2>
           <p class="donutCategory">${donuts[i].category}</p>
-          <div class="ratingContainer"></div>
+          <div class="ratingContainer">${donuts[i].rating}</div>
           
           <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
           <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
