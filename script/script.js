@@ -7,7 +7,6 @@ let priceLabel; //Label to show total price
 let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
 let donutContainer; //Variable to select donutContainer from HTML
-let donutImageContainer;
 
 //Donuts
 const donuts = [
@@ -20,124 +19,122 @@ const donuts = [
         height: 'auto'
       }, // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
     ],*/
-    img: 'assets/photos/bild1.jpg', //Donut picture
-    name: 'Classic', //Donut name
-    category: 'Övrigt', //Donut category
-      // TODO: lägg på keys
+    img: "assets/photos/bild1.jpg", //Donut picture
+    name: "Classic ", //Donut name
+    category: "Övrigt", //Donut category
+    // TODO: lägg på keys
     price: 35, //Donut price
     rating: 5, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild1.jpg', //Donut picture
-    name:'Raspberry pie', //Donut name
-    category: 'Övrigt', //Donut category
+    img: "assets/photos/bild2.jpg", //Donut picture
+    name: "Raspberry pie ", //Donut name
+    category: "Övrigt", //Donut category
     price: 40, //Donut price
     rating: 4, //rating
-    totPrice:0, //Total price
-    totAmount: 0, //Amount 
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
   },
   {
-    img:'assets/photos/bild3.jpg', //Donut picture
-    name:'Sugar dream', //Donut name
-    category:'Övrigt', //Donut category
+    img: "assets/photos/bild3.jpg", //Donut picture
+    name: "Sugar dream ", //Donut name
+    category: "Övrigt", //Donut category
     price: 40, //Donut price
     rating: 5, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
   },
   {
-    img:'assets/photos/bild5.jpg', //Donut picture
-    name:'Dragon Tail', //Donut name
-    category:'Övrigt', //Donut category
+    img: "assets/photos/bild5.jpg", //Donut picture
+    name: "Dragon Tail ", //Donut name
+    category: "Övrigt", //Donut category
     price: 40, //Donut price
     rating: 4, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild4.jpg', //Donut picture
-    name: 'Unicorn', //Donut name
-    category: 'Strössel', //Donut category
+    img: "assets/photos/bild4.jpg", //Donut picture
+    name: "Unicorn ", //Donut name
+    category: "Strössel", //Donut category
     price: 40, //Donut price
     rating: 5, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild6.jpg', //Donut picture
-    name: 'Hungover', //Donut name
-    category: 'Strössel', //Donut category
+    img: "assets/photos/bild6.jpg", //Donut picture
+    name: "Hungover ", //Donut name
+    category: "Strössel", //Donut category
     price: 40, //Donut price
     rating: 3, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild7.jpg', //Donut picture
-    name: 'Smarties', //Donut name
-    category: 'Strössel', //Donut category
+    img: "assets/photos/bild7.jpg", //Donut picture
+    name: "Smarties ", //Donut name
+    category: "Strössel", //Donut category
     price: 40, //Donut price
     rating: 4, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild8.jpg', //Donut picture
-    name: 'Monster', //Donut name
-    category:'Strössel', //Donut category
+    img: "assets/photos/bild8.jpg", //Donut picture
+    name: "Monster ", //Donut name
+    category: "Strössel", //Donut category
     price: 40, //Donut price
     rating: 3, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
   },
   {
-    img: 'assets/photos/bild9.jpg', //Donut picture
-    name: 'Chocoholic', //Donut name
-    category:'Choklad', //Donut category
+    img: "assets/photos/bild9.jpg", //Donut picture
+    name: "Chocoholic ", //Donut name
+    category: "Choklad", //Donut category
     price: 40, //Donut price
     rating: 4, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
-    },
-    {
-    img:'assets/photos/bild10.jpg', //Donut picture
-    name: 'Chocoloco', //Donut name
-    category: 'Choklad', //Donut category
+  },
+  {
+    img: "assets/photos/bild10.jpg", //Donut picture
+    name: "Chocoloco ", //Donut name
+    category: "Choklad", //Donut category
     price: 40, //Donut price
     rating: 4, //rating
     totPrice: 0, //Total price
     totAmount: 0, //Amount
-    },
-    {
-      img:'assets/photos/bild11.jpg', //Donut picture
-      name: 'Chocolate rain', //Donut name
-      category: 'Choklad', //Donut category
-      price:  40, //Donut price
-      rating: 4, //rating
-      totPrice: 0, //Total price
-      totAmount: 0, //Amount
-    },
-    {
-      img: 'assets/photos/bild12.jpg', //Donut picture
-      name: 'Rainbow', //Donut name
-      category:'Övrigt', //Donut category
-      price: 40, //Donut price
-      rating: 5, //rating
-      totPrice: 0, //Total price
-      totAmount: 0, //Amount
-    }
-  ]
-
+  },
+  {
+    img: "assets/photos/bild11.jpg", //Donut picture
+    name: "Chocolate rain ", //Donut name
+    category: "Choklad", //Donut category
+    price: 40, //Donut price
+    rating: 4, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
+  },
+  {
+    img: "assets/photos/bild12.jpg", //Donut picture
+    name: "Rainbow ", //Donut name
+    category: "Övrigt", //Donut category
+    price: 40, //Donut price
+    rating: 5, //rating
+    totPrice: 0, //Total price
+    totAmount: 0, //Amount
+  },
+];
 
 function init() {
   //Declares variables
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
   standardPrice = document.querySelectorAll(".donut-price");
-  donutContainer = document.querySelectorAll(".donutContainer");
-  donutImageContainer = document.querySelector(".donutImageContainer");
+  donutContainer = document.querySelector(".donutContainer");
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
     btnLower[i].addEventListener("click", reduceTotDonut);
@@ -148,10 +145,10 @@ function init() {
 } //End init
 
 function showDonuts() {
-    // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
-  for (let i = 0; i <donuts.length; i++) { //For-loop to loop through every donut
-   
-    donutImageContainer.setAttribute('src', donuts[i].img);
+  // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
+  for (let i = 0; i < donuts.length; i++) {
+    //For-loop to loop through every donut
+
 
     donutContainer.innerHTML += `
     <section class="donut-container">
@@ -159,7 +156,7 @@ function showDonuts() {
           <img src="${donuts[i].img}" alt="${donuts[i].alt}">
       </div>
       <div class="donut-info-container">
-          <h2 class="${donuts[i].name}"><span class="donut-price">${donuts[i].price}</span> kr</h2>
+          <h2 class="donutName">${donuts[i].name}<span class="donut-price">${donuts[i].price}</span> kr</h2>
           <p class="donutCategory">${donuts[i].category}</p>
           <div class="ratingContainer"></div>
           
@@ -170,9 +167,8 @@ function showDonuts() {
       </div>
     </section>
     `;
-    console.log(donutContainer.innerHTML);
+    console.log(donuts[i].name);
   }
-
 }
 
 //Function to reduce total amount of donuts
@@ -218,8 +214,6 @@ function updateDonutSum(donutElement) {
   donutElement.querySelector(".tot-price").innerHTML = sum;
   console.log(sum);
 }
-
-
 
 // Tillagt 221109 av Sussie
 // generella variabler
@@ -277,7 +271,6 @@ function showCardContent() {
 document.getElementById("nav-links").onclick = function () {
   document.getElementById("toggle").click();
 };
-
 
 init();
 showDonuts();
