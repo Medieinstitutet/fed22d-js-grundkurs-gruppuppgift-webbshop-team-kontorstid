@@ -1,14 +1,20 @@
-main {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
+.sortering {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
 }
 
-
 .postal-address-container {
-    display: flex;
-    gap: 15px;
+  display: flex;
+  gap: 15px;
 
-    .postalcode {
-        max-width: 100px;
-    }
+  .postalcode {
+    max-width: 100px;
+  }
+}
+.postal-address-container {
+  display: flex;
+  gap: 15px;
+}
+.postal-address-container .postalcode {
+  max-width: 100px;
 }

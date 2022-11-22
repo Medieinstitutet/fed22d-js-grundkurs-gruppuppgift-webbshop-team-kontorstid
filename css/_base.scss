@@ -211,6 +211,7 @@ main {
     color: $secondaryColor;
   }
   .checkout-container {
+    display: none;
     background-color: #616161;
   }
   .checkout-container p,
@@ -267,10 +268,5 @@ footer {
     color: $primaryColor;
     font-weight: bold;
     font-size: 1.1rem;
-  }
-}
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  body {
-    background-color: blue;
   }
 }

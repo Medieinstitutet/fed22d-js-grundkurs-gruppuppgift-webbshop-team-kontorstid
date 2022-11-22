@@ -182,6 +182,7 @@ main .checked {
   color: #f96c9e;
 }
 main .checkout-container {
+  display: none;
   background-color: #616161;
 }
 main .checkout-container p,
@@ -234,15 +235,23 @@ footer .tot-sum {
   font-size: 1.1rem;
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  body {
-    background-color: blue;
+@media screen and (min-width: 768px) {
+  .sortering {
+    display: grid;
+    grid-template-columns: 33% 33%;
   }
 }
-@media screen and (min-width: 800px) {
-  main {
+@media screen and (min-width: 1264px) {
+  .sortering {
     display: grid;
     grid-template-columns: 33% 33% 33%;
+  }
+  .postal-address-container {
+    display: flex;
+    gap: 15px;
+  }
+  .postal-address-container .postalcode {
+    max-width: 100px;
   }
   .postal-address-container {
     display: flex;
