@@ -241,9 +241,10 @@ footer .tot-sum {
   }
 }
 @media screen and (min-width: 1264px) {
-  .sortering {
+  .donutContainer {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: aqua;
   }
   .postal-address-container {
     display: flex;
@@ -260,8 +261,7 @@ footer .tot-sum {
     max-width: 100px;
   }
   main {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
+    padding: 15px;
   }
   .postal-address-container {
     display: flex;
