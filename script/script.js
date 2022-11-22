@@ -30,7 +30,7 @@ const donuts = [
     totAmount: 0, //Amount
   },
   {
-    img: "assets/photos/bild1.jpg", //Donut picture
+    img: "assets/photos/bild2.jpg", //Donut picture
     name: "Raspberry pie", //Donut name
     category: "Övrigt", //Donut category
     price: 40, //Donut price
