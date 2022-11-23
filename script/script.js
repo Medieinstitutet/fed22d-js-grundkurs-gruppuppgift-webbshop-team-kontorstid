@@ -34,7 +34,6 @@ const donuts = [
 
 function init() {
   //Declares variables
-  
   standardPrice = document.querySelectorAll(".donut-price");
   donutContainer = document.querySelector(".donutContainer");
  
@@ -50,9 +49,11 @@ function initButtons() {
   for (let i = 0; i < btnLower.length; i++) {
     btnLower[i].addEventListener("click", reduceTotDonut);
     console.log("Added an event listener");
+
   }
   for (let i = 0; i < btnHigher.length; i++) {
     btnHigher[i].addEventListener("click", increaseTotDonut);
+    
   }
 } //End init
 
@@ -60,7 +61,6 @@ function showDonuts() {
   // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
   for (let i = 0; i < donuts.length; i++) {
     //For-loop to loop through every donut
-
 
     donutContainer.innerHTML += `
     <section class="donut-container">
