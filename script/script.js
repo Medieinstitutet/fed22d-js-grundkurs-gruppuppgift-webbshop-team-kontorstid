@@ -36,6 +36,7 @@ function init() {
   //Declares variables
   standardPrice = document.querySelectorAll(".donut-price");
   donutContainer = document.querySelector(".donutContainer");
+  totalSum = document.querySelector(".totSum");
  
 } //End init
 
@@ -48,19 +49,18 @@ function initButtons() {
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
     btnLower[i].addEventListener("click", reduceTotDonut);
-    console.log("Added an event listener");
-
   }
   for (let i = 0; i < btnHigher.length; i++) {
     btnHigher[i].addEventListener("click", increaseTotDonut);
-    
+
   }
 } //End init
 
 function showDonuts() {
   // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
+  //For-loop to loop through every donut
   for (let i = 0; i < donuts.length; i++) {
-    //For-loop to loop through every donut
+    
 
     donutContainer.innerHTML += `
     <section class="donut-container">
@@ -79,7 +79,6 @@ function showDonuts() {
       </div>
     </section>
     `;
-    console.log(donuts[i].name);
   }
 }
 
@@ -87,7 +86,6 @@ function showDonuts() {
 function reduceTotDonut(e) {
   const amountLevel =
     e.currentTarget.parentElement.querySelector(".tot-amount"); //Const which goes through the parent element to find .tot-amount
-  console.log("+In reduceTotDonut"+standardPrice); //Console log to make sure that it is done correctly
   newAmount = Number(amountLevel.innerText); //Specifies the variable newAmount equal to amountLevel. Uses Number to convert it from string to number, innerText to read.
 
   if (newAmount <= 0) {
@@ -96,10 +94,8 @@ function reduceTotDonut(e) {
   }
 
   amountLevel.innerHTML = newAmount - 1; //Reduces the total amount of donuts by one each btn klick
-  console.log(amountLevel.innerText); //Console log to make sure that it is done correctly
 
   newPrice = Number(standardPrice.innerText); //Specifies  newPrice equal to Number standardPrice
-  console.log(newPrice.innerText);
 
   updateDonutSum(e.currentTarget.parentElement); //Calls the function updateDonutSum with parameters
 }
@@ -108,11 +104,9 @@ function reduceTotDonut(e) {
 function increaseTotDonut(e) {
   const amountLevel =
     e.currentTarget.parentElement.querySelector(".tot-amount");
-  console.log(amountLevel.innerText);
   newAmount = Number(amountLevel.innerText);
 
   amountLevel.innerHTML = newAmount + 1;
-  console.log(amountLevel.innerText);
 
   updateDonutSum(e.currentTarget.parentElement);
 }
@@ -123,8 +117,10 @@ function updateDonutSum(donutElement) {
 
   const sum = donutSinglePrice * orderedAmount;
 
+  totalSum.innerHTML = Number(sum);
+  
   donutElement.querySelector(".tot-price").innerHTML = sum;
-  console.log(sum);
+  //totalSum.innerHTML += Number(donutSinglePrice);
 }
 
 // Tillagt 221109 av Sussie
@@ -140,15 +136,14 @@ const phoneField = document.querySelector("#phone");
 const emailField = document.querySelector("#email");
 const paymentMethodChoice = document.querySelector("#paymentmethod");
 let nameIsOk = false;
-const paymentMethod1 = document.querySelector("#card");
-const paymentMethod2 = document.querySelector("#invoice");
+const paymentMethodCard = document.querySelector("#card");
+const paymentMethodInvoice = document.querySelector("#invoice");
 
 // formulär
 
 nameField.addEventListener("change", checkName);
 
 function checkName() {
-  console.log("+In function checkName: nameField = " + nameField.value);
   if (nameField.value.indexOf(" ") > -1) {
     //Kollar att det finns mellanslag i namnet
     nameIsOk = true;
