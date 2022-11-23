@@ -8,15 +8,7 @@ let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
 let donutContainer; //Variable to select donutContainer from HTML
 
-//Donuts
-    /*images: [
-      {
-        url: 'assets/photos/bild1.jpg',
-        alt: 'Munk 1',
-        width: 100,
-        height: 'auto'
-      }, // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
-    ],*/
+
 const donuts = [
   { images: [ { img: "assets/photos/bild1.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Classic ", category: "Övrigt", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild2.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Övrigt", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
@@ -57,8 +49,6 @@ function initButtons() {
 } //End init
 
 function showDonuts() {
-  // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
-  //For-loop to loop through every donut
   for (let i = 0; i < donuts.length; i++) {
     
 
@@ -89,8 +79,8 @@ function reduceTotDonut(e) {
   newAmount = Number(amountLevel.innerText); //Specifies the variable newAmount equal to amountLevel. Uses Number to convert it from string to number, innerText to read.
 
   if (newAmount <= 0) {
-    //If the total amount of donuts allready is at 0, don't do the function
-    return;
+    //If the total amount of donuts allready is at 0, skip the rest of the functions
+      return;
   }
 
   amountLevel.innerHTML = newAmount - 1; //Reduces the total amount of donuts by one each btn klick
