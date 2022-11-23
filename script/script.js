@@ -9,7 +9,7 @@ let newAmount; //Variable to show new amount of donuts
 let donutContainer; //Variable to select donutContainer from HTML
 
 
-const donuts = [
+const donuts = [ //Array which stores all info about the donut, e.g. name
   { images: [ { img: "assets/photos/bild1.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Classic ", category: "Övrigt", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild2.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Övrigt", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild3.jpg", alt: "Munk-med-florsocker", width: 100, height: "auto" } ], name: "Sugar dream ", category: "Övrigt", price: 40, rating: 5, totPrice: 0, totAmount: 0 },
@@ -24,17 +24,16 @@ const donuts = [
   { images: [ { img: "assets/photos/bild12.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Övrigt", price: 40, rating: 5, totPrice: 0, totAmount: 0 },
 ];
 
-function init() {
-  //Declares variables
-  standardPrice = document.querySelectorAll(".donut-price");
-  donutContainer = document.querySelector(".donutContainer");
-  totalSum = document.querySelector(".totSum");
- 
+
+function init() { //Function to declare HTML elements
+  standardPrice = document.querySelectorAll(".donut-price"); //Total price of donuts 
+  donutContainer = document.querySelector(".donutContainer"); //Container surrounding each donut
+  totalSum = document.querySelector(".totSum"); //HTML element to display total sum 
 } //End init
 
 
 function initButtons() {
-  //Declares variables
+  //Declare variables
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
   
@@ -48,11 +47,10 @@ function initButtons() {
   }
 } //End init
 
+
 function showDonuts() {
   //For-loop to loop through every donut
   for (let i = 0; i < donuts.length; i++) {
-    
-
     donutContainer.innerHTML += `
     <section class="donut-container">
       <div class="donut-image-container">
@@ -65,16 +63,16 @@ function showDonuts() {
           
           <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
           <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
-          <button data-operator="decreaseBtn">-</button>
-          <button data-operator="increaseBtn">+</button>
+          <button data-operator="decreaseBtn" data-id = "${i}">-</button>
+          <button data-operator="increaseBtn" data-id = "${i}">+</button>
       </div>
     </section>
     `;
   }
 }
 
-//Function to reduce total amount of donuts
-function reduceTotDonut(e) {
+
+function reduceTotDonut(e) { //Function to reduce total amount of donuts
   const amountLevel =
     e.currentTarget.parentElement.querySelector(".tot-amount"); //Const which goes through the parent element to find .tot-amount
   newAmount = Number(amountLevel.innerText); //Specifies the variable newAmount equal to amountLevel. Uses Number to convert it from string to number, innerText to read.
@@ -84,34 +82,51 @@ function reduceTotDonut(e) {
       return;
   }
 
-  amountLevel.innerHTML = newAmount - 1; //Reduces the total amount of donuts by one each btn klick
+  amountLevel.innerHTML = donuts[e.currentTarget.dataset.id].totAmount -= 1; //Reduces the total amount of donuts by one each btn klick
 
   newPrice = Number(standardPrice.innerText); //Specifies  newPrice equal to Number standardPrice
 
   updateDonutSum(e.currentTarget.parentElement); //Calls the function updateDonutSum with parameters
 }
 
-//Function to increase total amount of donuts
-function increaseTotDonut(e) {
-  const amountLevel =
-    e.currentTarget.parentElement.querySelector(".tot-amount");
+                                
+function increaseTotDonut(e) { //Function to increase total amount of donuts
+  const amountLevel = e.currentTarget.parentElement.querySelector(".tot-amount");
   newAmount = Number(amountLevel.innerText);
 
-  amountLevel.innerHTML = newAmount + 1;
+  amountLevel.innerHTML = donuts[e.currentTarget.dataset.id].totAmount += 1;
+  totalPrice = donuts[e.currentTarget.dataset.id].price;
 
   updateDonutSum(e.currentTarget.parentElement);
+
 }
 
+
 function updateDonutSum(donutElement) {
+  //Declaration of local variables
   const donutSinglePrice = donutElement.querySelector(".donut-price").innerText;
   const orderedAmount = donutElement.querySelector(".tot-amount").innerText;
-
   const sum = donutSinglePrice * orderedAmount;
-
-  totalSum.innerHTML = Number(sum);
+  let totalPrice = 0; 
+  const monday = new Date();
   
   donutElement.querySelector(".tot-price").innerHTML = sum;
-  //totalSum.innerHTML += Number(donutSinglePrice);
+
+
+  for (let i = 0; i < donuts.length; i++) {
+      if (donuts[i].totAmount > 0) {
+          totalPrice += donuts[i].price * orderedAmount;
+      }
+  }
+  
+  const reducedPriceMonday = totalPrice * 0.9;
+
+  if (monday.getDay() === 1) {
+    console.log(reducedPriceMonday);
+    totalSum.innerHTML = reducedPriceMonday;
+  } else {
+    totalSum.innerHTML = totalPrice;
+  }
 }
 
 // Tillagt 221109 av Sussie
