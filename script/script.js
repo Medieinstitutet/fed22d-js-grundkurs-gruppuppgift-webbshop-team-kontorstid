@@ -49,6 +49,7 @@ function initButtons() {
 } //End init
 
 function showDonuts() {
+  //For-loop to loop through every donut
   for (let i = 0; i < donuts.length; i++) {
     
 
@@ -79,7 +80,7 @@ function reduceTotDonut(e) {
   newAmount = Number(amountLevel.innerText); //Specifies the variable newAmount equal to amountLevel. Uses Number to convert it from string to number, innerText to read.
 
   if (newAmount <= 0) {
-    //If the total amount of donuts allready is at 0, skip the rest of the functions
+    //If the total amount of donuts allready is at 0, skip the rest of the function
       return;
   }
 
@@ -150,8 +151,8 @@ function activateOrderButton() {
     orderButton.setAttribute("disabled", true);
   }
 }
-paymentMethod1.addEventListener("click", showCardContent);
-paymentMethod2.addEventListener("click", showInvoiceContent);
+paymentMethodCard.addEventListener("click", showCardContent);
+paymentMethodInvoice.addEventListener("click", showInvoiceContent);
 
 function showInvoiceContent() {
   document.querySelector(".paymentCardContainer").classList.remove("visible");
