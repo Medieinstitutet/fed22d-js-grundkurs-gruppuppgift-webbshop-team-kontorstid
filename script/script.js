@@ -67,7 +67,6 @@ function showDonuts() {
     </section>
     `;
   }
-}
 
 
 function reduceTotDonut(e) { //Function to reduce total amount of donuts
