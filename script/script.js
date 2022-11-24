@@ -77,6 +77,8 @@ function showDonuts() {
   }
   priceContainer.innerHTML += `
   <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
+
+  initButtons();
 }
 
 function showShoppingCart() {
@@ -111,33 +113,44 @@ function reduceTotDonut(e) { //Function to reduce total amount of donuts
   }
   amountLevel = donuts[e.currentTarget.dataset.id].totAmount -= 1;
 
+  showDonuts();
+
+  //console.log(amountLevel);
+
+  updateDonutSum();
   showShoppingCart();
+
+ /*if (donuts[e.currentTarget.dataset.id].totAmount === 0) {
+      console.log(donuts[e.currentTarget.dataset.id].totPrice + "hej")
+      donuts[e.currentTarget.dataset.id].totPrice = 0;
+  }*/
+  
+  //console.log(e.currentTarget.dataset.id);
 }
 
                                 
 function increaseTotDonut(e) { //Function to increase total amount of donuts
   amountLevel = donuts[e.currentTarget.dataset.id].totAmount += 1;
-  console.log(amountLevel);
+  //console.log(amountLevel);
 
   updateDonutSum();
-  showShoppingCart(amountLevel);
+  showShoppingCart();
 }
 
 
-function updateDonutSum() {
-  //Declaration of local variables
-
-  const monday = new Date();
-
+function updateDonutSum(e) {
   for (let i = 0; i < donuts.length; i++) {
       if (donuts[i].totAmount > 0) {
-          donuts[i].totPrice = donuts[i].price * amountLevel;
-          //console.log(donuts[i].totPrice);
+          
       }
   }
-
+  //donuts[e.currentTarget.dataset.id].totPrice = donuts[e.currentTarget.dataset.id].price * amountLevel;
+      //console.log(donuts[e.currentTarget.dataset.id].totPrice);
+      //console.log(amountLevel + "hej")
+      console.log(e.currentTarget)
   showDonuts();
 
+  //const monday = new Date();
   //const reducedPriceMonday = totalPrice * 0.9;
 
   /*if (monday.getDay() === 1) {
