@@ -75,6 +75,33 @@ function showDonuts() {
     </section>
     `;
   }
+  priceContainer.innerHTML += `
+  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
+}
+
+function showShoppingCart() {
+  priceContainer.innerHTML = "";
+  const sum = donuts.reduce(
+    (previousValue, donut) => {
+      return (donut.totAmount * donut.price) + previousValue;
+    },
+    0
+  );
+
+  printOrdredDonuts();
+
+  priceContainer.innerHTML += `
+  <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+}
+
+function printOrdredDonuts() {
+  priceContainer.innerHTML = "";
+
+  for(let i = 0; i < donuts.length; i++) {
+    if (donuts[i].amount > 0) {
+      pr.innerHTML += `<p>${donuts[i].name}</p>`;
+    }
+  }
 }
 
 
