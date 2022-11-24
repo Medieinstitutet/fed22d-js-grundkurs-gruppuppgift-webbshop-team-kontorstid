@@ -74,42 +74,8 @@ function showDonuts() {
       </div>
     </section>
     `;
-    console.log(donuts[i].totPrice)
-  }
-  priceContainer.innerHTML += `
-  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
-}
-
-function showShoppingCart() {
-  priceContainer.innerHTML = "";
-  const sum = donuts.reduce(
-    (previousValue, donut) => {
-      return (donut.totAmount * donut.price) + previousValue;
-    },
-    0
-  );
-
-  printOrdredDonuts();
-
-  priceContainer.innerHTML += `
-  <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
-}
-
-function printOrdredDonuts() {
-  priceContainer.innerHTML = "";
-
-  for(let i = 0; i < donuts.length; i++) {
-    if (donuts[i].amount > 0) {
-      pr.innerHTML += `<p>${donuts[i].name}</p>`;
-    }
   }
 }
-
-/** Todo
- *  X Öka totAmount när man klickar på plusknappen i arrayen
- *  X Kontrollera om donuts är över noll
- *  Skriv ut priset på varje donut till varukorgen (som är över 0)
-*/
 
 
 function reduceTotDonut(e) { //Function to reduce total amount of donuts
@@ -160,7 +126,8 @@ function updateDonutSum() {
 // generella variabler
 
 const orderButton = document.querySelector("#order");
-const nameField = document.querySelector("#name");
+const nameField1 = document.querySelector("#name1");
+const nameField2 = document.querySelector("#name2");
 const addressField = document.querySelector("#address");
 const zipcodeField = document.querySelector("#zipcode");
 const cityField = document.querySelector("#city");
@@ -174,25 +141,70 @@ const paymentMethodInvoice = document.querySelector("#invoice");
 
 // formulär
 
-nameField.addEventListener("change", checkName);
+nameField1.addEventListener("change", checkFormAndToggleOrderButton);
+nameField2.addEventListener("change", checkFormAndToggleOrderButton);
+addressField.addEventListener("change", checkFormAndToggleOrderButton);
+zipcodeField.addEventListener("change", checkFormAndToggleOrderButton);
+cityField.addEventListener("change", checkFormAndToggleOrderButton);
 
-function checkName() {
-  if (nameField.value.indexOf(" ") > -1) {
-    //Kollar att det finns mellanslag i namnet
-    nameIsOk = true;
+function checkFormAndToggleOrderButton() {
+  if (checkName1() && checkName2() && checkAddress() && checkZipcode()) {
+    activateOrderButton();
   } else {
-    nameIsOk = false;
+    disableOrderButton();
   }
-  activateOrderButton();
+}
+
+function checkName1() {
+  if (nameField1.value.length > 1) {
+    //Kollar att det finns mellanslag i namnet
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkName2() {
+  if (nameField2.value.length > 1) {
+    //Kollar att det finns mellanslag i namnet
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkAddress() {
+  if (addressField.value.indexOf(" ") > -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkZipcode() {
+  if (zipcodeField.value.length == 5) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkCity() {
+  if (cityField.value.length > 1) {
+    //Kollar att det finns mellanslag i namnet
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function activateOrderButton() {
-  if (nameIsOk) {
-    orderButton.removeAttribute("disabled");
-  } else {
-    orderButton.setAttribute("disabled", true);
-  }
+  orderButton.removeAttribute("disabled");
 }
+function disableOrderButton() {
+  orderButton.setAttribute("disabled", true);
+}
+
 paymentMethodCard.addEventListener("click", showCardContent);
 paymentMethodInvoice.addEventListener("click", showInvoiceContent);
 
@@ -203,8 +215,7 @@ function showInvoiceContent() {
 
 function showCardContent() {
   document
-    .querySelector(".paymentInvoiceContainer")
-    .classList.remove("visible");
+    .querySelector(".paymentInvoiceContainer").classList.remove("visible");
   document.querySelector(".paymentCardContainer").classList.add("visible");
 }
 
@@ -215,4 +226,3 @@ document.getElementById("nav-links").onclick = function () {
 init();
 showDonuts();
 initButtons();
-
