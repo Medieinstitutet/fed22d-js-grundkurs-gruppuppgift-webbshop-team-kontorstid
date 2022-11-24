@@ -77,6 +77,8 @@ function showDonuts() {
   }
   priceContainer.innerHTML += `
   <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
+
+  initButtons();
 }
 
 function showShoppingCart() {
