@@ -49,8 +49,6 @@ function initButtons() {
 
 
 function showDonuts() {
-  //For-loop to loop through every donut
-  for (let i = 0; i < donuts.length; i++) {
     donutContainer.innerHTML += `
     <section class="donut-container">
       <div class="donut-image-container">
