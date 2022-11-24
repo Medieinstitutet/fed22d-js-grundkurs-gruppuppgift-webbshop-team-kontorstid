@@ -7,6 +7,10 @@ let priceLabel; //Label to show total price
 let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
 let donutContainer; //Variable to select donutContainer from HTML
+let amountLevel;
+let priceContainer;
+let donutPrice; //Price of each donut
+let donutAmount; //Amount of each donut
 
 
 const donuts = [ //Array which stores all info about the donut, e.g. name
@@ -29,6 +33,7 @@ function init() { //Function to declare HTML elements
   standardPrice = document.querySelectorAll(".donut-price"); //Total price of donuts 
   donutContainer = document.querySelector(".donutContainer"); //Container surrounding each donut
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum 
+  priceContainer = document.querySelector(".priceContainer");
 } //End init
 
 
@@ -49,6 +54,7 @@ function initButtons() {
 
 
 function showDonuts() {
+  donutContainer.innerHTML = "";
   //For-loop to loop through every donut
   for (let i = 0; i < donuts.length; i++) {
     donutContainer.innerHTML += `
@@ -68,65 +74,86 @@ function showDonuts() {
       </div>
     </section>
     `;
+    console.log(donuts[i].totPrice)
+  }
+  priceContainer.innerHTML += `
+  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
+}
+
+function showShoppingCart() {
+  priceContainer.innerHTML = "";
+  const sum = donuts.reduce(
+    (previousValue, donut) => {
+      return (donut.totAmount * donut.price) + previousValue;
+    },
+    0
+  );
+
+  printOrdredDonuts();
+
+  priceContainer.innerHTML += `
+  <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+}
+
+function printOrdredDonuts() {
+  priceContainer.innerHTML = "";
+
+  for(let i = 0; i < donuts.length; i++) {
+    if (donuts[i].amount > 0) {
+      pr.innerHTML += `<p>${donuts[i].name}</p>`;
+    }
   }
 }
 
+/** Todo
+ *  X Öka totAmount när man klickar på plusknappen i arrayen
+ *  X Kontrollera om donuts är över noll
+ *  Skriv ut priset på varje donut till varukorgen (som är över 0)
+*/
+
 
 function reduceTotDonut(e) { //Function to reduce total amount of donuts
-  const amountLevel =
-    e.currentTarget.parentElement.querySelector(".tot-amount"); //Const which goes through the parent element to find .tot-amount
-  newAmount = Number(amountLevel.innerText); //Specifies the variable newAmount equal to amountLevel. Uses Number to convert it from string to number, innerText to read.
-
-  if (newAmount <= 0) {
-    //If the total amount of donuts allready is at 0, skip the rest of the function
-      return;
+  if (donuts[e.currentTarget.dataset.id].totAmount <= 0) {
+    return;
   }
+  amountLevel = donuts[e.currentTarget.dataset.id].totAmount -= 1;
 
-  amountLevel.innerHTML = donuts[e.currentTarget.dataset.id].totAmount -= 1; //Reduces the total amount of donuts by one each btn klick
-
-  newPrice = Number(standardPrice.innerText); //Specifies  newPrice equal to Number standardPrice
-
-  updateDonutSum(e.currentTarget.parentElement); //Calls the function updateDonutSum with parameters
+  showShoppingCart();
 }
 
                                 
 function increaseTotDonut(e) { //Function to increase total amount of donuts
-  const amountLevel = e.currentTarget.parentElement.querySelector(".tot-amount");
-  newAmount = Number(amountLevel.innerText);
+  amountLevel = donuts[e.currentTarget.dataset.id].totAmount += 1;
+  console.log(amountLevel);
 
-  amountLevel.innerHTML = donuts[e.currentTarget.dataset.id].totAmount += 1;
-  totalPrice = donuts[e.currentTarget.dataset.id].price;
-
-  updateDonutSum(e.currentTarget.parentElement);
-
+  updateDonutSum();
+  showShoppingCart(amountLevel);
 }
 
 
-function updateDonutSum(donutElement) {
+function updateDonutSum() {
   //Declaration of local variables
-  const donutSinglePrice = donutElement.querySelector(".donut-price").innerText;
-  const orderedAmount = donutElement.querySelector(".tot-amount").innerText;
-  const sum = donutSinglePrice * orderedAmount;
-  let totalPrice = 0; 
-  const monday = new Date();
-  
-  donutElement.querySelector(".tot-price").innerHTML = sum;
 
+  const monday = new Date();
 
   for (let i = 0; i < donuts.length; i++) {
       if (donuts[i].totAmount > 0) {
-          totalPrice += donuts[i].price * orderedAmount;
+          donuts[i].totPrice = donuts[i].price * amountLevel;
+          //console.log(donuts[i].totPrice);
       }
   }
-  
-  const reducedPriceMonday = totalPrice * 0.9;
 
-  if (monday.getDay() === 1) {
+  showDonuts();
+
+  //const reducedPriceMonday = totalPrice * 0.9;
+
+  /*if (monday.getDay() === 1) {
     console.log(reducedPriceMonday);
     totalSum.innerHTML = reducedPriceMonday;
   } else {
     totalSum.innerHTML = totalPrice;
-  }
+  }*/
+
 }
 
 // Tillagt 221109 av Sussie
