@@ -13,6 +13,7 @@ let donutAmount; //Amount of each donut
 
 
 const donuts = [ //Array which stores all info about the donut, e.g. name
+
   { images: [ { img: "assets/photos/bild1.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Gottfrids ", category: "Klassisk", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild2.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Klassisk", price: 36, rating: 4, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild3.jpg", alt: "Munk-med-florsocker", width: 100, height: "auto" } ], name: "Sugar dream ", category: "Klassisk", price: 37, rating: 5, totPrice: 0, totAmount: 0 },
@@ -25,6 +26,7 @@ const donuts = [ //Array which stores all info about the donut, e.g. name
   { images: [ { img: "assets/photos/bild10.jpg", alt: "Munk-med-chokladbitar", width: 100, height: "auto" } ], name: "Chocoloco ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild11.jpg", alt: "Munk-med-chokladstrossel", width: 100, height: "auto" } ], name: "Chocolate rain ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild12.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Choklad", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
+
 ];
 
 
@@ -98,6 +100,7 @@ function sortAfterName () { //Function to sort array after name
   });
   console.table(donuts);
   showDonuts();
+
 }
 
 function showShoppingCart() { //Function to display shopping cart
@@ -152,7 +155,7 @@ function updateDonutSum() { //Function to update donut sum
 
   for (let i = 0; i < donuts.length; i++) {
       /*if (donuts[i].totAmount >= 0) {
-          
+         
           //console.log(donuts[i].totPrice);
       }*/
       donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
