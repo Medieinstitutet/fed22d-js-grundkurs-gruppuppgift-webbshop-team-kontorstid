@@ -35,7 +35,7 @@ function init() { //Function to declare HTML elements
   donutContainer = document.querySelector(".donutContainer"); //Container surrounding each donut
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum 
   priceContainer = document.querySelector(".priceContainer");
-  sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", sortDonuts);
+  sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", sort1Donuts);
 } //End init
 
 
@@ -112,7 +112,7 @@ function sortAfterName () { //Function to sort array after name
  * Kör en console.table för att se att det fungerar
  */
 
-function sortDonuts() {
+function sort1Donuts() {
   donuts.sort((donut1, donut2) => {
     return donut1.name > donut2.name; 
   });
@@ -289,7 +289,7 @@ document.getElementById("nav-links").onclick = function () {
   document.getElementById("toggle").click();
 };
 
-document.querySelector("#sortDonuts").addEventListener('change', updateSorting);
+document.querySelector(".sortDonuts").addEventListener('change', updateSorting);
 
 init();
 showDonuts();
