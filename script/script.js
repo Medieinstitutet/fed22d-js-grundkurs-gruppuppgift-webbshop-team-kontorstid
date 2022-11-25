@@ -75,14 +75,24 @@ function showDonuts() {
     `;
   }
   priceContainer.innerHTML += `
-  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
-  sortAfterName();
+  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`;
 }
 
+function updateSorting(e) {
+  const selectedSortingValue = e.currentTarget.value;
+  if (selectedSortingValue === 'donutName') {
+    sortAfterName();
+  }
+}
 
 function sortAfterName () {
   donuts.sort((donut1, donut2) => {
-      return donut1.name > donut2.name;    
+    if (donut1.name > donut2.name) {
+      return 1;
+    } else if(donut1.name < donut2.name) {
+      return -1;
+    }
+    return 0;
   });
   console.table(donuts);
   showDonuts();
@@ -260,6 +270,8 @@ function showCardContent() {
 document.getElementById("nav-links").onclick = function () {
   document.getElementById("toggle").click();
 };
+
+document.querySelector("#sortDonuts").addEventListener('change', updateSorting);
 
 init();
 showDonuts();
