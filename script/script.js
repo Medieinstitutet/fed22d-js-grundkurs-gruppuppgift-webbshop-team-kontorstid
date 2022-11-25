@@ -36,7 +36,7 @@ function init() { //Function to declare HTML elements
 } //End init
 
 
-function initButtons() {
+function initButtons() { //Function to declare buttons
   //Declare variables
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
@@ -52,7 +52,7 @@ function initButtons() {
 } //End init
 
 
-function showDonuts() {
+function showDonuts() {  //Function to display what is in the array/the donuts
   donutContainer.innerHTML = "";
   //For-loop to loop through every donut
   for (let i = 0; i < donuts.length; i++) {
@@ -74,18 +74,20 @@ function showDonuts() {
     </section>
     `;
   }
+
   priceContainer.innerHTML += `
-  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`;
+  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>
+  `;
 }
 
-function updateSorting(e) {
+function updateSorting(e) { //Function to update sorting
   const selectedSortingValue = e.currentTarget.value;
   if (selectedSortingValue === 'donutName') {
     sortAfterName();
   }
 }
 
-function sortAfterName () {
+function sortAfterName () { //Function to sort array after name
   donuts.sort((donut1, donut2) => {
     if (donut1.name > donut2.name) {
       return 1;
@@ -98,7 +100,7 @@ function sortAfterName () {
   showDonuts();
 }
 
-function showShoppingCart() {
+function showShoppingCart() { //Function to display shopping cart
   priceContainer.innerHTML = "";
   const sum = donuts.reduce(
     (previousValue, donut) => {
@@ -143,7 +145,7 @@ function increaseTotDonut(e) { //Function to increase total amount of donuts
 }
 
 
-function updateDonutSum() {
+function updateDonutSum() { //Function to update donut sum
   //Declaration of local variables
 
   const monday = new Date();
