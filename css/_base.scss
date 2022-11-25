@@ -50,6 +50,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 15px;
+  height: 100vh;
 
   .heading {
     background-color: $primaryColor;
@@ -143,9 +144,7 @@ header {
   }
 }
 
-.headerBackground {
-  background-image: url('../assets/donutHeader');
-}
+
 /*Main section*/
 
 main {
