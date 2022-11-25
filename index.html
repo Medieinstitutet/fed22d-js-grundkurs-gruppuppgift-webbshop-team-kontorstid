@@ -45,6 +45,8 @@
         </div>
     </header>
     <main>
+        <div class="dimmer">
+        </div>
         <nav>
             <!--Här kommer det finnas varukorg och summa-->
         </nav>
@@ -53,8 +55,43 @@
             <li><a href=#> Lägsta pris</a></li>
             <li><a href=#> Högsta pris</a></li>
         </ul>
+        <div class="donutBox">
+            <div class="slideshow" id="slideshow">
+                <div class="slideControl">
+                    <div class="controls">
+                        <button class="left" id="nextImage">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                    </div>
+                    <div class="images">
+                        <img id="img1" class="img-1" src="" alt="" width="400" height="400">
+                        <img id="img2" class="img-2" src="" alt="" width="400" height="400">
+                    </div>
+                    <div class="controls">
+                        <button class="right" id="nextImage2">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="indicator" id="indicatorDots"></div>
+            <h1 id="donutName"></h1>
+            <h3> Ingredienser</h3>
+            <p><b>Munk</b>: Vetemjöl, socker, rapsolja, skummjölkspulver, sojamjöl, bakpulver (E450,
+                E500),
+                äggulepulver, salt,
+                modifierad stärkelse, aromämne, emulgeringsmedel (E322[soja]), stabiliseringsmedel
+                (E466).<br>
+                <b>Frosting</b>: Socker, kokosfett, vasslemjölkspulver, emulgeringsmedel, sojalecitin,
+                vaniljarom,
+                glykossirap, fuktighetsbevarande medel, sorbitolsirap, emulgeringsmedel E471,
+                konserveringsmedel,
+                citronsyra
+            </p>
+        </div>
 
         <section class="donutContainer">
+
             <!---   <div class="donutImageContainer">
                     <img src="" alt="">
                 </div>
@@ -70,6 +107,7 @@
                     <button data-operator="increaseBtn"></button>
                 </div>-->
         </section>
+
         <!--<aside class=" donut-info">
                 <img src="./assets/photos/donut-with-sugar-hole2.jpg">
                 <h3> Ingredienser</h3>
