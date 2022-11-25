@@ -98,15 +98,15 @@ function initImg() {
   document.addEventListener("click", function (e) {
     if(lockState==0){
       //document.html.style.backgroundColor="black";
-      dimmer.style.display="block";
     if (e.target.closest(".donut-image-container")) {
+      dimmer.style.display="block";
       donutBox.style.display = 'block';
       img1.setAttribute('src',e.target.getAttribute('src'));
       donutName.innerHTML=e.target.parentElement.parentElement.querySelector("h2").innerHTML;
       if (displayState==0){
       images[0].url=img1.getAttribute('src');
       images[1].url=img2.getAttribute('src');
-      
+      document.body.style.overflow="hidden";
     }
     displayState=1;
     lockState=1;
@@ -118,6 +118,7 @@ function initImg() {
       //document.html.style.backgroundColor="white";
       dimmer.style.display="none";
       donutBox.style.display = 'none';
+      document.body.style.overflow="scroll";
       displayState=0;
       lockState=0;
     }
@@ -237,12 +238,12 @@ function showDonuts() {
     </section>
     `;
   }
-  priceContainer.innerHTML += `
-  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
+  //EJ DEFINERAD//priceContainer.innerHTML += `
+  //EJ DEFINERAD//<p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
 }
 
 function showShoppingCart() {
-  priceContainer.innerHTML = "";
+  //EJ DEFINERAD//priceContainer.innerHTML = "";
   const sum = donuts.reduce(
     (previousValue, donut) => {
       return (donut.totAmount * donut.price) + previousValue;
@@ -252,12 +253,12 @@ function showShoppingCart() {
 
   printOrdredDonuts();
 
-  priceContainer.innerHTML += `
-  <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+  //EJ DEFINERAD//priceContainer.innerHTML += `
+  //EJ DEFINERAD//<p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
 }
 
 function printOrdredDonuts() {
-  priceContainer.innerHTML = "";
+  //EJ DEFINERAD// priceContainer.innerHTML = "";
 
   for(let i = 0; i < donuts.length; i++) {
     if (donuts[i].amount > 0) {
