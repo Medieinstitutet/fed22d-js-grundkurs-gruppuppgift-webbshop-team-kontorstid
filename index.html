@@ -39,7 +39,7 @@
                     <ul class="nav-menu">
                         <li><a href=#choklad-sida id="nav-links">Munkar med choklad</a></li>
                         <li><a href="resume.html" id="nav-links">Munkar med strössel</a></li>
-                        <li><a href="#" id="nav-links">Övriga munkar</a></li>
+                        <li><a href="#" id="nav-links">Klassiska munkar</a></li>
                     </ul>
                 </nav>
             </div>
@@ -50,11 +50,17 @@
         <nav>
             <!--Här kommer det finnas varukorg och summa-->
         </nav>
-        <ul>
-            <!--Här kommer det finnas en sorteringsmeny-->
-            <li><a href=#> Lägsta pris</a></li>
-            <li><a href=#> Högsta pris</a></li>
-        </ul>
+        <form action="/action_page.php">
+            <label for="donuts"></label>
+            <select name="donuts" id="donuts">
+              <option value="sort">Sortering</option>
+              <option value="lowestPricve">Lägsta pris</option>
+              <option value="highestPrice">Högsta pris</option>
+              <option value="donutName">Namn</option>
+              <option value="donutRating">Rating</option>
+              <option value="donutCategory">Kategori</option>
+            </select>
+          </form>
 
             <section id="donutGridWrapper" class="donutContainer">
             </section>
