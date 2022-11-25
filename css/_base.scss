@@ -51,8 +51,15 @@ header {
   justify-content: space-between;
   padding: 15px;
 
+  background-image: url('../assets/photos/Fyra-munkar-pa-rad.jpg');
+  background-position: center;
+  background-size: cover;
+
+  height: 100vh;
+
   .heading {
     background-color: $primaryColor;
+    height: fit-content;
 
     img {
       max-width: 65%;
@@ -142,6 +149,7 @@ header {
     right: 0vw;
   }
 }
+
 
 /*Main section*/
 
