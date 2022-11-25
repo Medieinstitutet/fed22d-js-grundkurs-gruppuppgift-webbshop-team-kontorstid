@@ -76,10 +76,9 @@ function showDonuts() {  //Function to display what is in the array/the donuts
     </section>
     `;
   }
+  showShoppingCart();
+  initButtons();
 
-  priceContainer.innerHTML += `
-  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>
-  `;
 }
 
 function updateSorting(e) { //Function to update sorting
@@ -114,7 +113,7 @@ function showShoppingCart() { //Function to display shopping cart
 
   printOrdredDonuts();
 
-  priceContainer.innerHTML += `
+  priceContainer.innerHTML = `
   <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
 }
 
@@ -162,7 +161,6 @@ function updateDonutSum() { //Function to update donut sum
   }
 
   showDonuts();
-  initButtons();
 
   //const reducedPriceMonday = totalPrice * 0.9;
 
