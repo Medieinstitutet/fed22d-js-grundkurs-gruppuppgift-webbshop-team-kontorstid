@@ -3,11 +3,10 @@
 let btnLower; //Button to decrease amount of donuts
 let btnHigher; //Button to increase amount of donuts
 let priceLabel; //Label to show total price
-//let newPrice; //Variable to show new price
 let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
-let donutContainer; //Variable to select donutContainer from;
-let priceContainer;
+let donutContainer; //Variable to select donutContainer from
+let priceContainer; //Variable to select the container surrounding the shopping cart
 let donutPrice; //Price of each donut
 let donutAmount; //Amount of each donut
 
@@ -76,6 +75,25 @@ function showDonuts() {
   }
   priceContainer.innerHTML += `
   <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
+
+  sortAfterName();
+}
+
+
+/**Todo
+ * Skapa en product.sort funktion = donuts.sort()
+ * Lägg in två parametrar 
+ * Returnera värdet
+ * Kör en console.table för att se att det fungerar
+ */
+
+function sortAfterName() {
+  donuts.sort((donut1, donut2) => {
+    return donut1.name > donut2.name; 
+  });
+  console.table(donuts)
+  showDonuts();
+  initButtons();
 }
 
 function showShoppingCart() {
@@ -129,10 +147,6 @@ function updateDonutSum() {
   const monday = new Date();
 
   for (let i = 0; i < donuts.length; i++) {
-      /*if (donuts[i].totAmount >= 0) {
-          
-          //console.log(donuts[i].totPrice);
-      }*/
       donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
   }
 
