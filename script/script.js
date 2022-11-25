@@ -3,13 +3,13 @@
 let btnLower; //Button to decrease amount of donuts
 let btnHigher; //Button to increase amount of donuts
 let priceLabel; //Label to show total price
-//let newPrice; //Variable to show new price
 let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
-let donutContainer; //Variable to select donutContainer from;
-let priceContainer;
+let donutContainer; //Variable to select donutContainer from
+let priceContainer; //Variable to select the container surrounding the shopping cart
 let donutPrice; //Price of each donut
 let donutAmount; //Amount of each donut
+let sortDonuts; //Variable to sort donuts e.g. after pricv
 
 
 const donuts = [ //Array which stores all info about the donut, e.g. name
@@ -35,6 +35,7 @@ function init() { //Function to declare HTML elements
   donutContainer = document.querySelector(".donutContainer"); //Container surrounding each donut
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum 
   priceContainer = document.querySelector(".priceContainer");
+  sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", sortDonuts);
 } //End init
 
 
@@ -42,6 +43,7 @@ function initButtons() { //Function to declare buttons
   //Declare variables
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
+
   
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
@@ -102,7 +104,24 @@ function sortAfterName () { //Function to sort array after name
 
 }
 
-function showShoppingCart() { //Function to display shopping cart
+
+/**Todo
+ * Skapa en product.sort funktion = donuts.sort()
+ * Lägg in två parametrar 
+ * Returnera värdet
+ * Kör en console.table för att se att det fungerar
+ */
+
+function sortDonuts() {
+  donuts.sort((donut1, donut2) => {
+    return donut1.name > donut2.name; 
+  });
+  console.table(donuts)
+  showDonuts();
+  initButtons();
+}
+
+function showShoppingCart() {
   priceContainer.innerHTML = "";
   const sum = donuts.reduce(
     (previousValue, donut) => {
@@ -153,10 +172,6 @@ function updateDonutSum() { //Function to update donut sum
   const monday = new Date();
 
   for (let i = 0; i < donuts.length; i++) {
-      /*if (donuts[i].totAmount >= 0) {
-         
-          //console.log(donuts[i].totPrice);
-      }*/
       donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
   }
 

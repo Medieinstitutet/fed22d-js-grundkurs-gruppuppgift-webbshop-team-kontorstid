@@ -15,51 +15,59 @@
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!--Google icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
 
 </head>
 
 <body>
     <!--Header section-->
     <header>
-        <div class="heading">
-            <div class="logo">
-                <a href="index.html"><img src="./assets/photos/bragif.gif" alt="Gottfrids-munkfabrik-logo"></a>
+            <div class="heading">
+                <div class="logo">
+                    <a href="index.html"><img src="./assets/photos/bragif.gif" alt="Gottfrids-munkfabrik-logo"></a>
+                </div>
+                <div class="menu">
+                    <input type="checkbox" id="toggle" class="checkbox">
+                    <button aria-label="Menu-button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                <nav id="checkbox">
+                    <ul class="nav-menu">
+                        <li><a href=#choklad-sida id="nav-links">Munkar med choklad</a></li>
+                        <li><a href="resume.html" id="nav-links">Munkar med strössel</a></li>
+                        <li><a href="#" id="nav-links">Övriga munkar</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="navigation"></div>
-                <input type="checkbox" id="toggle" class="checkbox">
-                <button aria-label="Menu-button">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            <nav id="checkbox">
-                <ul class="nav-menu">
-                    <li><a href=#choklad-sida id="nav-links">Munkar med choklad</a></li>
-                    <li><a href="resume.html" id="nav-links">Munkar med strössel</a></li>
-                    <li><a href="#" id="nav-links">Klassiska munkar</a></li>
-                </ul>
-            </nav>
-        </div>
         <section class="headerBackground">
         </section>
     </header>
     <main>
+        <nav>
+            <!--Här kommer det finnas varukorg och summa-->
+        </nav>
         <form action="/action_page.php">
             <label for="donuts"></label>
-            <select name="donuts" id="sortDonuts">
-              <option value="sort" disabled selected>Sortering</option>
-              <option value="lowestPricve">Lägsta pris</option>
-              <option value="highestPrice">Högsta pris</option>
-              <option value="donutName">Namn</option>
-              <option value="donutRating">Rating</option>
-              <option value="donutCategory">Kategori</option>
+            <select name="donuts" clas="sortDonuts">
+              <option value="sort">Sortering</option>
+              <option value="name">Namn</option>
+              <option value="lowestPrice">Lägsta pris</option>
+              <option value="highestprice">Högsta pris</option>
+              <option value="rating">Rating</option>
+              <option value="category">Kategori</option>
+
             </select>
           </form>
-        <section id="donutGridWrapper" class="donutContainer">
-        </section>
+
+            <section id="donutGridWrapper" class="donutContainer">
+            </section>
             <!--<aside class=" donut-info">
 
                 <img src="./assets/photos/donut-with-sugar-hole2.jpg">
