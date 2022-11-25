@@ -25,37 +25,41 @@
     <!--Header section-->
     <header>
         <div class="heading">
-            <a href="https://www.krispykreme.co.uk/shop.html"><img src="./assets/photos/bragif.gif"
-                    alt="Gottfrids-munkfabrik-logo"></a>
-        </div>
-        <input type="checkbox" id="toggle" class="checkbox">
-        <div class="menu">
-            <button aria-label="Menu-button">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="logo">
+                <a href="index.html"><img src="./assets/photos/bragif.gif" alt="Gottfrids-munkfabrik-logo"></a>
+            </div>
+            <div class="navigation"></div>
+                <input type="checkbox" id="toggle" class="checkbox">
+                <button aria-label="Menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             <nav id="checkbox">
                 <ul class="nav-menu">
                     <li><a href=#choklad-sida id="nav-links">Munkar med choklad</a></li>
                     <li><a href="resume.html" id="nav-links">Munkar med strössel</a></li>
-                    <li><a href="#" id="nav-links">Övriga munkar</a></li>
+                    <li><a href="#" id="nav-links">Klassiska munkar</a></li>
                 </ul>
             </nav>
         </div>
+        <section class="headerBackground">
+        </section>
     </header>
     <main>
-        <nav>
-            <!--Här kommer det finnas varukorg och summa-->
-        </nav>
-        <ul>
-            <!--Här kommer det finnas en sorteringsmeny-->
-            <li><a href=#> Lägsta pris</a></li>
-            <li><a href=#> Högsta pris</a></li>
-        </ul>
-
-            <section id="donutGridWrapper" class="donutContainer">
-            </section>
+        <form action="/action_page.php">
+            <label for="donuts"></label>
+            <select name="donuts" id="sortDonuts">
+              <option value="sort" disabled selected>Sortering</option>
+              <option value="lowestPricve">Lägsta pris</option>
+              <option value="highestPrice">Högsta pris</option>
+              <option value="donutName">Namn</option>
+              <option value="donutRating">Rating</option>
+              <option value="donutCategory">Kategori</option>
+            </select>
+          </form>
+        <section id="donutGridWrapper" class="donutContainer">
+        </section>
             <!--<aside class=" donut-info">
 
                 <img src="./assets/photos/donut-with-sugar-hole2.jpg">
@@ -150,6 +154,11 @@
         <section class="priceContainer">
             
         </section>
+        <section class="secondFooter">
+            <div class="attribution">
+                <a href="https://www.freepik.com/free-photo/group-happy-friends-having-fun-while-eating-donuts-cafe_26401670.htm#query=donut%20cafe&position=15&from_view=search&track=sph">Image by Drazen Zigic</a> on Freepik
+            </div>
+        </section>
     </footer>
 
     <!--Scripts-->
@@ -158,5 +167,4 @@
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/bf03cab5e8.js" crossorigin="anonymous"></script>
 </body>
-
 </html>

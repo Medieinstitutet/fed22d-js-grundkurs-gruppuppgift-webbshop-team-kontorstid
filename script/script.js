@@ -13,10 +13,11 @@ let donutAmount; //Amount of each donut
 
 
 const donuts = [ //Array which stores all info about the donut, e.g. name
-  { images: [ { img: "assets/photos/bild1.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Classic ", category: "Övrigt", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild2.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Övrigt", price: 36, rating: 4, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild3.jpg", alt: "Munk-med-florsocker", width: 100, height: "auto" } ], name: "Sugar dream ", category: "Övrigt", price: 37, rating: 5, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild5.jpg", alt: "Munk-med-topping", width: 100, height: "auto" } ], name: "Dragon Tail ", category: "Övrigt", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
+
+  { images: [ { img: "assets/photos/bild1.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Gottfrids ", category: "Klassisk", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild2.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Klassisk", price: 36, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild3.jpg", alt: "Munk-med-florsocker", width: 100, height: "auto" } ], name: "Sugar dream ", category: "Klassisk", price: 37, rating: 5, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild5.jpg", alt: "Munk-med-topping", width: 100, height: "auto" } ], name: "Dragon Tail ", category: "Klassisk", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild4.jpg", alt: "Munk-med-strossel", width: 100, height: "auto" } ], name: "Unicorn ", category: "Strössel", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild6.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Hungover ", category: "Strössel", price: 45, rating: 3, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild7.jpg", alt: "Munk-med-smarties", width: 100, height: "auto" } ], name: "Smarties ", category: "Strössel", price: 42, rating: 4, totPrice: 0, totAmount: 0 },
@@ -24,7 +25,8 @@ const donuts = [ //Array which stores all info about the donut, e.g. name
   { images: [ { img: "assets/photos/bild9.jpg", alt: "Munk-med-choklad", width: 100, height: "auto" } ], name: "Chocoholic ", category: "Choklad", price: 39, rating: 4, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild10.jpg", alt: "Munk-med-chokladbitar", width: 100, height: "auto" } ], name: "Chocoloco ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild11.jpg", alt: "Munk-med-chokladstrossel", width: 100, height: "auto" } ], name: "Chocolate rain ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild12.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Övrigt", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild12.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Choklad", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
+
 ];
 
 
@@ -36,7 +38,7 @@ function init() { //Function to declare HTML elements
 } //End init
 
 
-function initButtons() {
+function initButtons() { //Function to declare buttons
   //Declare variables
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
@@ -52,7 +54,7 @@ function initButtons() {
 } //End init
 
 
-function showDonuts() {
+function showDonuts() {  //Function to display what is in the array/the donuts
   donutContainer.innerHTML = "";
   //For-loop to loop through every donut
   for (let i = 0; i < donuts.length; i++) {
@@ -74,13 +76,34 @@ function showDonuts() {
     </section>
     `;
   }
-  priceContainer.innerHTML += `
-  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
 
-  initButtons();
+  priceContainer.innerHTML += `
+  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>
+  `;
 }
 
-function showShoppingCart() {
+function updateSorting(e) { //Function to update sorting
+  const selectedSortingValue = e.currentTarget.value;
+  if (selectedSortingValue === 'donutName') {
+    sortAfterName();
+  }
+}
+
+function sortAfterName () { //Function to sort array after name
+  donuts.sort((donut1, donut2) => {
+    if (donut1.name > donut2.name) {
+      return 1;
+    } else if(donut1.name < donut2.name) {
+      return -1;
+    }
+    return 0;
+  });
+  console.table(donuts);
+  showDonuts();
+
+}
+
+function showShoppingCart() { //Function to display shopping cart
   priceContainer.innerHTML = "";
   const sum = donuts.reduce(
     (previousValue, donut) => {
@@ -125,16 +148,17 @@ function increaseTotDonut(e) { //Function to increase total amount of donuts
 }
 
 
-function updateDonutSum() {
+function updateDonutSum() { //Function to update donut sum
   //Declaration of local variables
 
   const monday = new Date();
 
   for (let i = 0; i < donuts.length; i++) {
-      if (donuts[i].totAmount >= 0) {
-          donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
+      /*if (donuts[i].totAmount >= 0) {
+         
           //console.log(donuts[i].totPrice);
-      }
+      }*/
+      donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
   }
 
   showDonuts();
@@ -251,6 +275,8 @@ function showCardContent() {
 document.getElementById("nav-links").onclick = function () {
   document.getElementById("toggle").click();
 };
+
+document.querySelector("#sortDonuts").addEventListener('change', updateSorting);
 
 init();
 showDonuts();
