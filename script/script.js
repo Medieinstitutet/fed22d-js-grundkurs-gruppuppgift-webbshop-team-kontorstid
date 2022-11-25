@@ -73,17 +73,17 @@ function init() {
 
 
 function initButtons() {
-  //Declares variables
+  //Declare variables
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
   
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
     btnLower[i].addEventListener("click", reduceTotDonut);
-    console.log("Added an event listener");
   }
   for (let i = 0; i < btnHigher.length; i++) {
     btnHigher[i].addEventListener("click", increaseTotDonut);
+
   }
 } //End init
  
@@ -216,11 +216,9 @@ function autoPlay() {
 
 
 function showDonuts() {
-  // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
+  donutContainer.innerHTML = "";
+  //For-loop to loop through every donut
   for (let i = 0; i < donuts.length; i++) {
-    //For-loop to loop through every donut
-
-
     donutContainer.innerHTML += `
     <section class="donut-container">
       <div class="donut-image-container">
@@ -233,64 +231,93 @@ function showDonuts() {
           
           <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
           <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
-          <button data-operator="decreaseBtn">-</button>
-          <button data-operator="increaseBtn">+</button>
+          <button data-operator="decreaseBtn" data-id = "${i}">-</button>
+          <button data-operator="increaseBtn" data-id = "${i}">+</button>
       </div>
     </section>
     `;
-    console.log(donuts[i].name);
+  }
+  priceContainer.innerHTML += `
+  <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
+}
+
+function showShoppingCart() {
+  priceContainer.innerHTML = "";
+  const sum = donuts.reduce(
+    (previousValue, donut) => {
+      return (donut.totAmount * donut.price) + previousValue;
+    },
+    0
+  );
+
+  printOrdredDonuts();
+
+  priceContainer.innerHTML += `
+  <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+}
+
+function printOrdredDonuts() {
+  priceContainer.innerHTML = "";
+
+  for(let i = 0; i < donuts.length; i++) {
+    if (donuts[i].amount > 0) {
+      pr.innerHTML += `<p>${donuts[i].name}</p>`;
+    }
   }
 }
 
-//Function to reduce total amount of donuts
-function reduceTotDonut(e) {
-  const amountLevel =
-    e.currentTarget.parentElement.querySelector(".tot-amount"); //Const which goes through the parent element to find .tot-amount
-  console.log("+In reduceTotDonut"+standardPrice); //Console log to make sure that it is done correctly
-  newAmount = Number(amountLevel.innerText); //Specifies the variable newAmount equal to amountLevel. Uses Number to convert it from string to number, innerText to read.
 
-  if (newAmount <= 0) {
-    //If the total amount of donuts allready is at 0, don't do the function
+function reduceTotDonut(e) { //Function to reduce total amount of donuts
+  if (donuts[e.currentTarget.dataset.id].totAmount <= 0) {
     return;
   }
+  donuts[e.currentTarget.dataset.id].totAmount -= 1;
 
-  amountLevel.innerHTML = newAmount - 1; //Reduces the total amount of donuts by one each btn klick
-  console.log(amountLevel.innerText); //Console log to make sure that it is done correctly
-
-  newPrice = Number(standardPrice.innerText); //Specifies  newPrice equal to Number standardPrice
-  console.log(newPrice.innerText);
-
-  updateDonutSum(e.currentTarget.parentElement); //Calls the function updateDonutSum with parameters
+  updateDonutSum();
+  showShoppingCart();
 }
 
-//Function to increase total amount of donuts
-function increaseTotDonut(e) {
-  const amountLevel =
-    e.currentTarget.parentElement.querySelector(".tot-amount");
-  console.log(amountLevel.innerText);
-  newAmount = Number(amountLevel.innerText);
+                                
+function increaseTotDonut(e) { //Function to increase total amount of donuts
+  donuts[e.currentTarget.dataset.id].totAmount += 1;
 
-  amountLevel.innerHTML = newAmount + 1;
-  console.log(amountLevel.innerText);
-
-  updateDonutSum(e.currentTarget.parentElement);
+  updateDonutSum();
+  showShoppingCart();
 }
 
-function updateDonutSum(donutElement) {
-  const donutSinglePrice = donutElement.querySelector(".donut-price").innerText;
-  const orderedAmount = donutElement.querySelector(".tot-amount").innerText;
 
-  const sum = donutSinglePrice * orderedAmount;
+function updateDonutSum() {
+  //Declaration of local variables
 
-  donutElement.querySelector(".tot-price").innerHTML = sum;
-  console.log(sum);
+  const monday = new Date();
+
+  for (let i = 0; i < donuts.length; i++) {
+      if (donuts[i].totAmount >= 0) {
+          donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
+          //console.log(donuts[i].totPrice);
+      }
+  }
+
+  showDonuts();
+  initButtons();
+
+  //const reducedPriceMonday = totalPrice * 0.9;
+
+  /*if (monday.getDay() === 1) {
+    console.log(reducedPriceMonday);
+    totalSum.innerHTML = reducedPriceMonday;
+  } else {
+    totalSum.innerHTML = totalPrice;
+  }*/
+
 }
 
 // Tillagt 221109 av Sussie
 // generella variabler
 
 const orderButton = document.querySelector("#order");
-const nameField = document.querySelector("#name");
+const nameField1 = document.querySelector("#name1");
+const nameField2 = document.querySelector("#name2");
 const addressField = document.querySelector("#address");
 const zipcodeField = document.querySelector("#zipcode");
 const cityField = document.querySelector("#city");
@@ -299,33 +326,77 @@ const phoneField = document.querySelector("#phone");
 const emailField = document.querySelector("#email");
 const paymentMethodChoice = document.querySelector("#paymentmethod");
 let nameIsOk = false;
-const paymentMethod1 = document.querySelector("#card");
-const paymentMethod2 = document.querySelector("#invoice");
+const paymentMethodCard = document.querySelector("#card");
+const paymentMethodInvoice = document.querySelector("#invoice");
 
 // formulär
 
-nameField.addEventListener("change", checkName);
+nameField1.addEventListener("change", checkFormAndToggleOrderButton);
+nameField2.addEventListener("change", checkFormAndToggleOrderButton);
+addressField.addEventListener("change", checkFormAndToggleOrderButton);
+zipcodeField.addEventListener("change", checkFormAndToggleOrderButton);
+cityField.addEventListener("change", checkFormAndToggleOrderButton);
 
-function checkName() {
-  console.log("+In function checkName: nameField = " + nameField.value);
-  if (nameField.value.indexOf(" ") > -1) {
-    //Kollar att det finns mellanslag i namnet
-    nameIsOk = true;
+function checkFormAndToggleOrderButton() {
+  if (checkName1() && checkName2() && checkAddress() && checkZipcode()) {
+    activateOrderButton();
   } else {
-    nameIsOk = false;
+    disableOrderButton();
   }
-  activateOrderButton();
+}
+
+function checkName1() {
+  if (nameField1.value.length > 1) {
+    //Kollar att det finns mellanslag i namnet
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkName2() {
+  if (nameField2.value.length > 1) {
+    //Kollar att det finns mellanslag i namnet
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkAddress() {
+  if (addressField.value.indexOf(" ") > -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkZipcode() {
+  if (zipcodeField.value.length == 5) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkCity() {
+  if (cityField.value.length > 1) {
+    //Kollar att det finns mellanslag i namnet
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function activateOrderButton() {
-  if (nameIsOk) {
-    orderButton.removeAttribute("disabled");
-  } else {
-    orderButton.setAttribute("disabled", true);
-  }
+  orderButton.removeAttribute("disabled");
 }
-paymentMethod1.addEventListener("click", showCardContent);
-paymentMethod2.addEventListener("click", showInvoiceContent);
+function disableOrderButton() {
+  orderButton.setAttribute("disabled", true);
+}
+
+paymentMethodCard.addEventListener("click", showCardContent);
+paymentMethodInvoice.addEventListener("click", showInvoiceContent);
 
 function showInvoiceContent() {
   document.querySelector(".paymentCardContainer").classList.remove("visible");
@@ -334,8 +405,7 @@ function showInvoiceContent() {
 
 function showCardContent() {
   document
-    .querySelector(".paymentInvoiceContainer")
-    .classList.remove("visible");
+    .querySelector(".paymentInvoiceContainer").classList.remove("visible");
   document.querySelector(".paymentCardContainer").classList.add("visible");
 }
 
