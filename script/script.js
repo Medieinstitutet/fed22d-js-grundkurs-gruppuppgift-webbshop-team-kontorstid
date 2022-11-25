@@ -9,6 +9,7 @@ let donutContainer; //Variable to select donutContainer from
 let priceContainer; //Variable to select the container surrounding the shopping cart
 let donutPrice; //Price of each donut
 let donutAmount; //Amount of each donut
+let sortDonuts; //Variable to sort donuts e.g. after pricv
 
 
 const donuts = [ //Array which stores all info about the donut, e.g. name
@@ -32,6 +33,7 @@ function init() { //Function to declare HTML elements
   donutContainer = document.querySelector(".donutContainer"); //Container surrounding each donut
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum 
   priceContainer = document.querySelector(".priceContainer");
+  sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", sortDonuts);
 } //End init
 
 
@@ -39,6 +41,7 @@ function initButtons() {
   //Declare variables
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
+
   
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
@@ -75,8 +78,6 @@ function showDonuts() {
   }
   priceContainer.innerHTML += `
   <p> Totalsumma: <span class="totSum"></span> 0 kr </p>`
-
-  sortAfterName();
 }
 
 
@@ -87,7 +88,7 @@ function showDonuts() {
  * Kör en console.table för att se att det fungerar
  */
 
-function sortAfterName() {
+function sortDonuts() {
   donuts.sort((donut1, donut2) => {
     return donut1.name > donut2.name; 
   });
