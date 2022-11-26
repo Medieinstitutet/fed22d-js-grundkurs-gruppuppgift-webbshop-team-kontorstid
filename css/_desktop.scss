@@ -1,3 +1,30 @@
+/*Variables*/
+
+/*Colors*/
+$primaryColor: #f8f8f8;
+$secondaryColor: #f96c9e;
+$textColor: #0e0e0e;
+
+
+/*Header section*/
+
+header {
+  display: block;
+  padding: 0;
+
+  .headerBackground {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    background-image: url("../assets/photos/donutHeader.webp");
+    background-size: cover; 
+    background-position: center;
+    height: 730px;
+    background-color: aqua;
+  }
+}
+
+
 .donutContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

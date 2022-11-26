@@ -15,46 +15,59 @@
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!--Google icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
 
 </head>
 
 <body>
     <!--Header section-->
     <header>
-        <div class="heading">
-            <a href="https://www.krispykreme.co.uk/shop.html"><img src="./assets/photos/bragif.gif"
-                    alt="Gottfrids-munkfabrik-logo"></a>
-        </div>
-        <input type="checkbox" id="toggle" class="checkbox">
-        <div class="menu">
-            <button aria-label="Menu-button">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav id="checkbox">
-                <ul class="nav-menu">
-                    <li><a href=#choklad-sida id="nav-links">Munkar med choklad</a></li>
-                    <li><a href="resume.html" id="nav-links">Munkar med strössel</a></li>
-                    <li><a href="#" id="nav-links">Övriga munkar</a></li>
-                </ul>
-            </nav>
-        </div>
+            <div class="heading">
+                <div class="logo">
+                    <a href="index.html"><img src="./assets/photos/bragif.gif" alt="Gottfrids-munkfabrik-logo"></a>
+                </div>
+                <div class="menu">
+                    <input type="checkbox" id="toggle" class="checkbox">
+                    <button aria-label="Menu-button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                <nav id="checkbox">
+                    <ul class="nav-menu">
+                        <li><a href=#choklad-sida id="nav-links">Munkar med choklad</a></li>
+                        <li><a href="resume.html" id="nav-links">Munkar med strössel</a></li>
+                        <li><a href="#" id="nav-links">Övriga munkar</a></li>
+                    </ul>
+                </nav>
+            </div>
+        <section class="headerBackground">
+        </section>
     </header>
     <main>
+
         <div class="dimmer">
         </div>
         <nav>
             <!--Här kommer det finnas varukorg och summa-->
         </nav>
-        <ul>
-            <!--Här kommer det finnas en sorteringsmeny-->
-            <li><a href=#> Lägsta pris</a></li>
-            <li><a href=#> Högsta pris</a></li>
-        </ul>
+           <form action="/action_page.php">
+            <label for="donuts"></label>
+            <select name="donuts" class="sortDonuts">
+              <option value="sort">Sortering</option>
+              <option value="name">Namn</option>
+              <option value="lowestPrice">Lägsta pris</option>
+              <option value="highestprice">Högsta pris</option>
+              <option value="rating">Rating</option>
+              <option value="category">Kategori</option>
+
+            </select>
+          </form>
         <div class="donutBox">
             <div class="slideshow" id="slideshow">
                 <div class="slideControl">
@@ -89,7 +102,6 @@
                 citronsyra
             </p>
         </div>
-
         <section class="donutContainer">
 
             <!---   <div class="donutImageContainer">
@@ -201,6 +213,11 @@
         <section class="priceContainer">
 
         </section>
+        <section class="secondFooter">
+            <div class="attribution">
+                <a href="https://www.freepik.com/free-photo/group-happy-friends-having-fun-while-eating-donuts-cafe_26401670.htm#query=donut%20cafe&position=15&from_view=search&track=sph">Image by Drazen Zigic</a> on Freepik
+            </div>
+        </section>
     </footer>
 
     <!--Scripts-->
@@ -209,5 +226,4 @@
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/bf03cab5e8.js" crossorigin="anonymous"></script>
 </body>
-
 </html>
