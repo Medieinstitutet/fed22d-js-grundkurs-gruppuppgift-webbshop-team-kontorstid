@@ -74,7 +74,7 @@ function init() { //Function to declare HTML elements
   donutContainer = document.querySelector(".donutContainer"); //Container surrounding each donut
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum 
   priceContainer = document.querySelector(".priceContainer");
-  sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", sort1Donuts);
+  sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
 } //End init
 
 
@@ -82,7 +82,6 @@ function initButtons() { //Function to declare buttons
   //Declare variables
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
-
   
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
@@ -245,12 +244,23 @@ function showDonuts() {  //Function to display what is in the array/the donuts
   initButtons();
 }
 
+
 function updateSorting(e) { //Function to update sorting
   const selectedSortingValue = e.currentTarget.value;
+
   if (selectedSortingValue === 'donutName') {
     sortAfterName();
   }
+
+  if (selectedSortingValue === 'donutLowestPrice') {
+    sortAfterLowPrice();
+  }
+
+  if (selectedSortingValue === 'donutHighestPrice') {
+    sortAfterHighPrice();
+  }
 }
+
 
 function sortAfterName () { //Function to sort array after name
   donuts.sort((donut1, donut2) => {
@@ -263,24 +273,29 @@ function sortAfterName () { //Function to sort array after name
   });
   console.table(donuts);
   showDonuts();
+  initButtons()
 }
 
 
-/**Todo
- * Skapa en product.sort funktion = donuts.sort()
- * Lägg in två parametrar 
- * Returnera värdet
- * Kör en console.table för att se att det fungerar
- */
-
-function sort1Donuts() {
+function sortAfterLowPrice() {
   donuts.sort((donut1, donut2) => {
-    return donut1.name > donut2.name; 
+    return donut1.price - donut2.price;
   });
-  console.table(donuts)
+
   showDonuts();
   initButtons();
 }
+
+
+function sortAfterHighPrice() {
+  donuts.sort((donut1, donut2) => {
+    return donut2.price - donut1.price;
+  });
+
+  showDonuts();
+  initButtons();
+}
+
 
 function showShoppingCart() {
   //EJ DEFINERAD//priceContainer.innerHTML = "";
@@ -445,7 +460,6 @@ document.getElementById("nav-links").onclick = function () {
 nextBtn.addEventListener('click', nextImage);
 nextBtn2.addEventListener('click', nextImage);
 createDots();
-document.querySelector(".sortDonuts").addEventListener('change', updateSorting);
 
 
 init();
