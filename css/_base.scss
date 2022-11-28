@@ -141,6 +141,18 @@ header input:checked + .menu nav {
 /*Main section*/
 main {
   padding: 15px;
+
+  .dimmer {
+    display: none;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: #0e0e0e;
+  }
 }
 main .donut-container {
   margin-bottom: 50px;
@@ -201,17 +213,7 @@ main #img2 {
   top: 0;
   left: 0;
 }
-main .dimmer {
-  display: none;
-  opacity: 0.5;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  background-color: #0e0e0e;
-}
+
 main .indicator {
   text-align: center;
 }
