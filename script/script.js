@@ -15,13 +15,13 @@ let donutBox; //Variable to select donut pop up
 const img1 = document.querySelector("#img1");
 const img2 = document.querySelector("#img2");
 
-const nextBtn = document.querySelector('#nextImage');
-const nextBtn2 = document.querySelector('#nextImage2');
+const nextBtn = document.querySelector('#previousImage');
+const nextBtn2 = document.querySelector('#nextImage');
 
-let currentImageIndex = 0;
+const slideshow = document.querySelector('#slideshow');
 
-let indicatorDots = [];
-
+let currentImgIndex = 0;
+let indicatorDots;
 let moveForwardTimer = null;
 
 // Fade-related variables
@@ -45,27 +45,26 @@ let last_clicked=0;
       }, // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
     ],*/
 const donuts = [ //Array which stores all info about the donut, e.g. name
-  { images: [ { img: "assets/photos/bild1.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Gottfrids ", category: "Klassisk", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild2.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Klassisk", price: 36, rating: 4, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild3.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-florsocker", width: 100, height: "auto" } ], name: "Sugar dream ", category: "Klassisk", price: 37, rating: 5, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild5.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-topping", width: 100, height: "auto" } ], name: "Dragon Tail ", category: "Klassisk", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild4.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-strossel", width: 100, height: "auto" } ], name: "Unicorn ", category: "Strössel", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild6.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Hungover ", category: "Strössel", price: 45, rating: 3, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild7.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-smarties", width: 100, height: "auto" } ], name: "Smarties ", category: "Strössel", price: 42, rating: 4, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild8.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-figur", width: 100, height: "auto" } ], name: "Monster ", category: "Strössel", price: 40, rating: 3, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild9.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-choklad", width: 100, height: "auto" } ], name: "Chocoholic ", category: "Choklad", price: 39, rating: 4, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild10.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-chokladbitar", width: 100, height: "auto" } ], name: "Chocoloco ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild11.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-chokladstrossel", width: 100, height: "auto" } ], name: "Chocolate rain ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
-  { images: [ { img: "assets/photos/bild12.jpg",img2:"assets/photos/bild11.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Choklad", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
-
+  { images: [ { img: "assets/photos/bild1.jpg", img2:"assets/photos/donut-with-sugar-hole2.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Gottfrids ", category: "Klassisk", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild2.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Klassisk", price: 36, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild3.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-florsocker", width: 100, height: "auto" } ], name: "Sugar dream ", category: "Klassisk", price: 37, rating: 5, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild5.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-topping", width: 100, height: "auto" } ], name: "Dragon Tail ", category: "Klassisk", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild4.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-strossel", width: 100, height: "auto" } ], name: "Unicorn ", category: "Strössel", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild6.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Hungover ", category: "Strössel", price: 45, rating: 3, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild7.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-smarties", width: 100, height: "auto" } ], name: "Smarties ", category: "Strössel", price: 42, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild8.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-figur", width: 100, height: "auto" } ], name: "Monster ", category: "Strössel", price: 40, rating: 3, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild9.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-choklad", width: 100, height: "auto" } ], name: "Chocoholic ", category: "Choklad", price: 39, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild10.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-chokladbitar", width: 100, height: "auto" } ], name: "Chocoloco ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild11.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-chokladstrossel", width: 100, height: "auto" } ], name: "Chocolate rain ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
+  { images: [ { img: "assets/photos/bild12.jpg", img2:"assets/photos/bild11.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Choklad", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
 ];
 
 let images = [
   {
-    url: '',
+    url: "",
   },
   {
-    url: '',
+    url: "",
   },
 ];
 
@@ -76,6 +75,8 @@ function init() { //Function to declare HTML elements
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum 
   priceContainer = document.querySelector(".priceContainer");
   sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", sort1Donuts);
+  dimmer.addEventListener("click", removePopUp);
+  
 } //End init
 
 
@@ -93,7 +94,7 @@ function initButtons() { //Function to declare buttons
     btnHigher[i].addEventListener("click", increaseTotDonut);
 
   }
-} //End init
+} //End initButtons
  
 function initImg() {
   donutBox = document.querySelector(".donutBox");
@@ -103,8 +104,16 @@ function initImg() {
   // if the popup is clicked on. At last the else is used to remove the popup if a click event occurs outside the popup box by displaying none.
 
   document.addEventListener("click", function (e) {
-    if(lockState==0){
-      //document.html.style.backgroundColor="black";
+    for (let i = 0; i < donuts.length; i++) {
+      img1.setAttribute('src', donuts[i].images[0].img);
+      img1.setAttribute('alt', donuts[i].images[0].alt);
+  
+      img2.setAttribute('src', donuts[i].images[0].img2);
+      img2.setAttribute('alt', donuts[i].images[0].alt);
+    }
+
+    if(lockState == 0){
+
     if (e.target.closest(".donut-image-container")) {
       img1.setAttribute('src',e.target.getAttribute('src'));
       donutName.innerHTML=e.target.parentElement.parentElement.querySelector("h2").innerHTML;
@@ -115,6 +124,7 @@ function initImg() {
       donutBox.style.display = 'block';
       document.body.style.overflow="hidden";
     }
+
     displayState=1;
     lockState=1;
       }}
@@ -148,13 +158,14 @@ function initImg() {
 
 function highlightDot() {
   indicatorDots.forEach((dot, index) => {
-    if (index === currentImageIndex) { // = * 3
+    if (index === currentImgIndex) { // = * 3
       dot.classList.add('selected');
     } else {
       dot.classList.remove('selected');
     }
   });
 }
+
 
 function changeOpacity() {
   opacity -= 10;
@@ -179,9 +190,12 @@ function swapImages(fadeOut, fadeIn) {
   console.log(img1X)
   console.log(img2X)
   img1X.setAttribute('src', images[fadeOut].url);
-  img2X.setAttribute('src', images[fadeIn].url);
+  img1X.setAttribute('alt', images[fadeOut].alt);
 
-  opacityTimer = setInterval(changeOpacity, (fadeTimeInSec * 1000) / 25);
+  img2X.setAttribute('src', images[fadeIn].url);
+  img2X.setAttribute('alt', images[fadeIn].alt);
+
+  opacityTimer = setInterval(changeOpacity, (fadeTimeInSec * 1000) / 10);
 }
 
 function nextImage() {
@@ -193,12 +207,10 @@ function nextImage() {
     currentImageIndex = 0;
     swapImages(images.length - 1, currentImageIndex);
   } else {
-    currentImageIndex += 1;
-    swapImages(currentImageIndex - 1, currentImageIndex);
+    currentImgIndex -= 1;
+    swapImages(currentImgIndex + 1, currentImgIndex);
   }
-
-  console.log('nextImage', currentImageIndex);
-
+  console.log('prevImage', currentImgIndex);
   highlightDot();
 }
 
@@ -206,16 +218,26 @@ function createDots() {
   const dotsContainer = document.querySelector('#indicatorDots');
   console.log(images.length)
   for (let i = 0; i < images.length; i++) {
-    dotsContainer.innerHTML += '<span class="dot"></span>';
+    dotsContainer.innerHTML += `<span class="dot" data-index="${i}"></span>`;
   }
   indicatorDots = document.querySelectorAll('.dot');
+  
+  indicatorDots.forEach((dot) => {
+    dot.addEventListener('click', goToImageIndex);
+  });
+
   highlightDot();
 }
 
-function autoPlay() {
+/*function autoPlay() {
   moveForwardTimer = setInterval(nextImage, 1000);
 }
+*/
 
+/*function pauseAutoplay() {
+  console.log('autoplay paused');
+  clearInterval(moveForwardTimer);
+}*/
 
 function showDonuts() {  //Function to display what is in the array/the donuts
   donutContainer.innerHTML = "";
@@ -242,7 +264,6 @@ function showDonuts() {  //Function to display what is in the array/the donuts
 
   showShoppingCart();
   initButtons();
-
 }
 
 function updateSorting(e) { //Function to update sorting
@@ -263,7 +284,6 @@ function sortAfterName () { //Function to sort array after name
   });
   console.table(donuts);
   showDonuts();
-
 }
 
 
@@ -339,16 +359,6 @@ function updateDonutSum() { //Function to update donut sum
   }
 
   showDonuts();
-
-  //const reducedPriceMonday = totalPrice * 0.9;
-
-  /*if (monday.getDay() === 1) {
-    console.log(reducedPriceMonday);
-    totalSum.innerHTML = reducedPriceMonday;
-  } else {
-    totalSum.innerHTML = totalPrice;
-  }*/
-
 }
 
 // Tillagt 221109 av Sussie
