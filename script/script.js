@@ -20,7 +20,7 @@ const nextBtn2 = document.querySelector('#nextImage');
 
 const slideshow = document.querySelector('#slideshow');
 
-let currentImgIndex = 0;
+let currentImageIndex = 0;
 let indicatorDots;
 let moveForwardTimer = null;
 
@@ -75,8 +75,6 @@ function init() { //Function to declare HTML elements
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum 
   priceContainer = document.querySelector(".priceContainer");
   sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", sort1Donuts);
-  dimmer.addEventListener("click", removePopUp);
-  
 } //End init
 
 
@@ -104,22 +102,12 @@ function initImg() {
   // if the popup is clicked on. At last the else is used to remove the popup if a click event occurs outside the popup box by displaying none.
 
   document.addEventListener("click", function (e) {
-    for (let i = 0; i < donuts.length; i++) {
-      img1.setAttribute('src', donuts[i].images[0].img);
-      img1.setAttribute('alt', donuts[i].images[0].alt);
-  
-      img2.setAttribute('src', donuts[i].images[0].img2);
-      img2.setAttribute('alt', donuts[i].images[0].alt);
-    }
-
     if(lockState == 0){
-
     if (e.target.closest(".donut-image-container")) {
       img1.setAttribute('src',e.target.getAttribute('src'));
       donutName.innerHTML=e.target.parentElement.parentElement.querySelector("h2").innerHTML;
     if (displayState==0){
-      images[0].url=img1.getAttribute('src');
-      images[1].url=img2.getAttribute('src');
+
       dimmer.style.display="block";
       donutBox.style.display = 'block';
       document.body.style.overflow="hidden";
@@ -133,8 +121,6 @@ function initImg() {
     }
     else{
       //document.html.style.backgroundColor="white";
-      images[0].url=img1.getAttribute('src');
-      images[1].url=img2.getAttribute('src');
       dimmer.style.display="none";
       donutBox.style.display = 'none';
       document.body.style.overflow="scroll";
@@ -153,12 +139,14 @@ function initImg() {
         img2.setAttribute('src', donuts[i].images[0].img2);
       }
     }}
+    images[0].url=img1.getAttribute('src');
+    images[1].url=img2.getAttribute('src');
   });
 }
 
 function highlightDot() {
   indicatorDots.forEach((dot, index) => {
-    if (index === currentImgIndex) { // = * 3
+    if (index === currentImageIndex) { // = * 3
       dot.classList.add('selected');
     } else {
       dot.classList.remove('selected');
@@ -190,12 +178,8 @@ function swapImages(fadeOut, fadeIn) {
   console.log(img1X)
   console.log(img2X)
   img1X.setAttribute('src', images[fadeOut].url);
-  img1X.setAttribute('alt', images[fadeOut].alt);
-
   img2X.setAttribute('src', images[fadeIn].url);
-  img2X.setAttribute('alt', images[fadeIn].alt);
-
-  opacityTimer = setInterval(changeOpacity, (fadeTimeInSec * 1000) / 10);
+  opacityTimer = setInterval(changeOpacity, (fadeTimeInSec * 1000) / 25);
 }
 
 function nextImage() {
@@ -207,10 +191,10 @@ function nextImage() {
     currentImageIndex = 0;
     swapImages(images.length - 1, currentImageIndex);
   } else {
-    currentImgIndex -= 1;
-    swapImages(currentImgIndex + 1, currentImgIndex);
+    currentImageIndex += 1;
+    swapImages(currentImageIndex - 1, currentImageIndex);
   }
-  console.log('prevImage', currentImgIndex);
+  console.log('prevImage', currentImageIndex);
   highlightDot();
 }
 
@@ -218,14 +202,9 @@ function createDots() {
   const dotsContainer = document.querySelector('#indicatorDots');
   console.log(images.length)
   for (let i = 0; i < images.length; i++) {
-    dotsContainer.innerHTML += `<span class="dot" data-index="${i}"></span>`;
+    dotsContainer.innerHTML += `<span class="dot"></span>`;
   }
   indicatorDots = document.querySelectorAll('.dot');
-  
-  indicatorDots.forEach((dot) => {
-    dot.addEventListener('click', goToImageIndex);
-  });
-
   highlightDot();
 }
 
