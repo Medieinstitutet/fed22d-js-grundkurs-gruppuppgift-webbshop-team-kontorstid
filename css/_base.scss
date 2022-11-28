@@ -189,10 +189,10 @@ main {
   }
 
   .donutBox { 
-    position: absolute;
+    position: fixed;
     background-color: #f8f8f8;
-    left: 50%;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid rgb(103, 103, 103);
     z-index: 6;

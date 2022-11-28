@@ -31,8 +31,9 @@ let firstImageOnTop = true;
 const fadeTimeInSec = 1;
 let displayState=0;
 let lockState=0;
-let donutName;
+let donutName = document.querySelector('.donutName');
 let dimmer = document.querySelector('.dimmer');
+let last_clicked=0;
 
 //Donuts
     /*images: [
@@ -97,7 +98,6 @@ function initButtons() { //Function to declare buttons
 function initImg() {
   donutBox = document.querySelector(".donutBox");
   donutBox.style.display='none';
-
   //This is a click event for the donut popups. The click function first checksa if the donut image container is clicked.
   // If the donut image container is clicked, the HTML code is written and displayed as a block. A elif is used to make sure that the popup does not disappear,
   // if the popup is clicked on. At last the else is used to remove the popup if a click event occurs outside the popup box by displaying none.
@@ -106,28 +106,37 @@ function initImg() {
     if(lockState==0){
       //document.html.style.backgroundColor="black";
     if (e.target.closest(".donut-image-container")) {
-      dimmer.style.display="block";
-      donutBox.style.display = 'block';
       img1.setAttribute('src',e.target.getAttribute('src'));
       donutName.innerHTML=e.target.parentElement.parentElement.querySelector("h2").innerHTML;
-      if (displayState==0){
+    if (displayState==0){
       images[0].url=img1.getAttribute('src');
       images[1].url=img2.getAttribute('src');
+      dimmer.style.display="block";
+      donutBox.style.display = 'block';
       document.body.style.overflow="hidden";
     }
     displayState=1;
     lockState=1;
       }}
-      else{
+    else{
     if (e.target.closest(".donutBox")) {
     }
     else{
       //document.html.style.backgroundColor="white";
+      images[0].url=img1.getAttribute('src');
+      images[1].url=img2.getAttribute('src');
       dimmer.style.display="none";
       donutBox.style.display = 'none';
       document.body.style.overflow="scroll";
       displayState=0;
       lockState=0;
+      if (currentImageIndex + 1 > images.length - 1) {
+        // Restart from beginning
+        currentImageIndex = 0;
+        swapImages(images.length - 1, currentImageIndex);
+      } else {
+        }
+      highlightDot();
     }
     for (let i = 0; i < donuts.length; i++) {
       if(donuts[i].images[0].img===img1.getAttribute('src')){
@@ -136,8 +145,6 @@ function initImg() {
     }}
   });
 }
-
-
 
 function highlightDot() {
   indicatorDots.forEach((dot, index) => {
@@ -178,6 +185,9 @@ function swapImages(fadeOut, fadeIn) {
 }
 
 function nextImage() {
+  
+  if (Date.now()-last_clicked<500) return;
+  last_clicked=Date.now()
   if (currentImageIndex + 1 > images.length - 1) {
     // Restart from beginning
     currentImageIndex = 0;
@@ -191,22 +201,6 @@ function nextImage() {
 
   highlightDot();
 }
-
-function nextImage2() {
-  if (currentImageIndex + 1 > images.length - 1) {
-    // Restart from beginning
-    currentImageIndex = 0;
-    swapImages(images.length - 1, currentImageIndex);
-  } else {
-    currentImageIndex += 1;
-    swapImages(currentImageIndex - 1, currentImageIndex);
-  }
-
-  console.log('nextImage', currentImageIndex);
-
-  highlightDot();
-}
-
 
 function createDots() {
   const dotsContainer = document.querySelector('#indicatorDots');
@@ -460,7 +454,7 @@ document.getElementById("nav-links").onclick = function () {
 
 
 nextBtn.addEventListener('click', nextImage);
-nextBtn2.addEventListener('click', nextImage2);
+nextBtn2.addEventListener('click', nextImage);
 createDots();
 document.querySelector(".sortDonuts").addEventListener('change', updateSorting);
 
