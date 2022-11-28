@@ -118,7 +118,7 @@ function initImg() {
     displayState=1;
     lockState=1;
       }}
-      else{
+    else{
     if (e.target.closest(".donutBox")) {
     }
     else{
