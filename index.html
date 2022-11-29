@@ -123,7 +123,7 @@
             <div class="postal-address-container">
                 <label>
                     <p>* Postnummer:</p>
-                    <input type="number" id="zipcode" min="10000" max="99999" class="postalcode">
+                    <input type="number" id="zipcode" class="postalcode">
                 </label>
                 <label>
                     <p>* Ort:</p>
@@ -147,7 +147,7 @@
                 <input type="radio" name="payment-method" value="kort" id="card"> Kort <br>
                 <input type="radio" name="payment-method" value="faktura" id="invoice"> Faktura
                 <br>
-
+    
                 <div class="paymentCardContainer">
                     <label> Kortnummer
                         <input type="number" id="cardnumber">
@@ -159,25 +159,25 @@
                     <label> CVC
                         <input type="number">
                     </label>
-
+    
                 </div>
                 <div class="paymentInvoiceContainer">
                     <label> Personnummer</label>
                     <!--OBS! Denna är ej fixad i JS, behöver validera att det är ett korrekt personnummer!!-->
                     <input type="number" id="personalnumber">
-
+    
                 </div>
             </section>
             <label>
                 <p>Godkänn behandling av dina personuppgifter</p>
-                <input type="checkbox" id="acknowledge">
+                <input type="checkbox" id="consent">
             </label>
             <label>
                 <p>Jag vill gärna ta emot Gottfrids munkfabriks nyhetsbrev!</p>
                 <input type="checkbox" id="news" checked>
             </label><br>
             <button id="order" disabled> Beställ</button>
-            <button id="discard">Rensa varukorg</button>
+            <button id="discard">Rensa beställning</button>
         </section>
     </main>
     <footer>
