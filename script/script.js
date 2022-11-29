@@ -74,8 +74,12 @@ function init() { //Function to declare HTML elements
   sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
   shoppingCartContainer = document.querySelector(".shoppingCartContainer");
 
-  if((isFriday && time >= 15) && (isMonday && time <= 3)) {
-    let newDonutPrice = Math.round(donuts[i].price * 1.15);
+  if ((isFriday && time >= 15) && (isMonday && time <= 18)) {
+    for (let i = 0; i < donuts.length; i++) {
+      console.log("Öka pris")
+      donuts[i].price = Math.round(donuts[i].price * 1.15);
+      console.log(donuts[i].price)
+    }
   }
 
 } //End init
@@ -105,7 +109,7 @@ function initImg() {
   // if the popup is clicked on. At last the else is used to remove the popup if a click event occurs outside the popup box by displaying none.
 
   document.addEventListener("click", function (e) {
-    if(lockState == 0){
+    if (lockState == 0){
     if (e.target.closest(".donut-image-container")) {
       img1.setAttribute('src',e.target.getAttribute('src'));
       img1.setAttribute('alt',e.target.getAttribute('alt'));
@@ -528,7 +532,7 @@ document.querySelector(".menuCloser").onclick = function () {
   document.querySelector(".menuOpener").style.display ="block";
 }
 
-function time() {
+/*function time() {
   let d = new Date();
   let s = d.getSeconds();
   let m = d.getMinutes();
@@ -536,7 +540,7 @@ function time() {
   let days = d.getDay(); // Fredagar == 5, Måndag == 1
   hour= h
   day=days
-}
+}*/
 
 /*document.addEventListener("click", showShoppingCartView);*/
 nextBtn.addEventListener('click', nextImage);
