@@ -326,6 +326,16 @@ main .payment {
   display: block;
 }
 
+.shoppingCartContainer {
+  position: fixed;
+  background-color: $secondaryColor;
+  color: $primaryColor;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(103, 103, 103);
+  z-index: 6;
+}
 /*Footer section*/
 footer {
   background-color: #f96c9e;
