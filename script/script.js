@@ -394,6 +394,7 @@ const paymentMethodChoice = document.querySelector("#paymentmethod");
 let nameIsOk = false;
 const paymentMethodCard = document.querySelector("#card");
 const paymentMethodInvoice = document.querySelector("#invoice");
+const consentOfPersonalData = document.querySelector("#consent")
 
 // formulär
 
@@ -402,9 +403,12 @@ nameField2.addEventListener("change", checkFormAndToggleOrderButton);
 addressField.addEventListener("change", checkFormAndToggleOrderButton);
 zipcodeField.addEventListener("change", checkFormAndToggleOrderButton);
 cityField.addEventListener("change", checkFormAndToggleOrderButton);
+phoneField.addEventListener("change", checkFormAndToggleOrderButton);
+emailField.addEventListener("change", checkFormAndToggleOrderButton);
+consentOfPersonalData.addEventListener("change", checkFormAndToggleOrderButton);
 
 function checkFormAndToggleOrderButton() {
-  if (checkName1() && checkName2() && checkAddress() && checkZipcode()) {
+  if (checkName1() && checkName2() && checkAddress() && checkZipcode() && checkCity() && checkPhoneNumber() && checkEmail() && checkConsent()) {
     activateOrderButton();
   } else {
     disableOrderButton();
@@ -413,7 +417,7 @@ function checkFormAndToggleOrderButton() {
 
 function checkName1() {
   if (nameField1.value.length > 1) {
-    //Kollar att det finns mellanslag i namnet
+   //Kollar att det är mer än ett tecken
     return true;
   } else {
     return false;
@@ -422,7 +426,7 @@ function checkName1() {
 
 function checkName2() {
   if (nameField2.value.length > 1) {
-    //Kollar att det finns mellanslag i namnet
+    //Kollar att det är mer än ett tecken
     return true;
   } else {
     return false;
@@ -430,7 +434,7 @@ function checkName2() {
 }
 
 function checkAddress() {
-  if (addressField.value.indexOf(" ") > -1) {
+  if (/^.{1,}\s{1,}[^\s]{1,}$/.test(addressField.value)) {
     return true;
   } else {
     return false;
@@ -438,7 +442,7 @@ function checkAddress() {
 }
 
 function checkZipcode() {
-  if (zipcodeField.value.length == 5) {
+  if (/^[0-9]{3}\s?[0-9]{2}$/.test(zipcodeField.value)) {
     return true;
   } else {
     return false;
@@ -447,13 +451,32 @@ function checkZipcode() {
 
 function checkCity() {
   if (cityField.value.length > 1) {
-    //Kollar att det finns mellanslag i namnet
+    //Kollar att det är minst ett tecken
     return true;
   } else {
     return false;
   }
 }
 
+function checkPhoneNumber () {
+    if(/^(\+?46|0)7\d{8}$/.test(phoneField.value)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkEmail () {
+    if(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailField.value)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function checkConsent() {
+    return consentOfPersonalData.checked;
+}
 function activateOrderButton() {
   orderButton.removeAttribute("disabled");
 }
@@ -470,10 +493,10 @@ function showInvoiceContent() {
 }
 
 function showCardContent() {
-  document
-    .querySelector(".paymentInvoiceContainer").classList.remove("visible");
+  document.querySelector(".paymentInvoiceContainer").classList.remove("visible");
   document.querySelector(".paymentCardContainer").classList.add("visible");
 }
+
 
 document.getElementById("nav-links").onclick = function () {
 document.getElementById("checkbox").style.display= "none";
