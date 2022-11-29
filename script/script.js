@@ -11,7 +11,7 @@ let donutPrice; //Price of each donut
 let donutAmount; //Amount of each donut
 let sortDonuts; //Variable to sort donuts e.g. after pricv
 let donutBox; //Variable to select donut pop up
-
+let donutsOver10 = 0;
 
 const img1 = document.querySelector("#img1");
 const img2 = document.querySelector("#img2");
@@ -189,14 +189,12 @@ function nextImage() {
     currentImageIndex += 1;
     swapImages(currentImageIndex - 1, currentImageIndex);
   }
-  console.log('prevImage', currentImageIndex);
   highlightDot();
 }
 
 
 function createDots() {
   const dotsContainer = document.querySelector('#indicatorDots');
-  console.log(images.length)
   for (let i = 0; i < images.length; i++) {
     dotsContainer.innerHTML += `<span class="dot"></span>`;
   }
@@ -288,24 +286,35 @@ function showShoppingCart() {
   //EJ DEFINERAD//priceContainer.innerHTML = "";
   const sum = donuts.reduce(
     (previousValue, donut) => {
-      if (donut.totAmount<10){
-      return (donut.totAmount * donut.price) + previousValue;
+      if (donut.totAmount <= 10){
+      return donut.totAmount * donut.price + previousValue;
     }
     else{
-      return (donut.totAmount * donut.price*0.9) + previousValue;
+      return Math.round(donut.totAmount * donut.price*0.9) + previousValue;
     }
     },
     0
   );
 
+  
+  /*for (let i = 0; i < donuts.length; i++) {
+    if (monday.getDay() === 2) { 
+      donuts[i].totPrice * 0.9;
+      console.log(donuts[i].totPrice);
+      priceContainer.innerHTML = `
+      <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+    }
+  }*/
+
   printOrdredDonuts();
 
   priceContainer.innerHTML = `
   <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+
 }
 
 function printOrdredDonuts() {
-  //EJ DEFINERAD// priceContainer.innerHTML = "";
+  priceContainer.innerHTML = "";
 
   for(let i = 0; i < donuts.length; i++) {
     if (donuts[i].amount > 0) {
@@ -340,16 +349,34 @@ function updateDonutSum() { //Function to update donut sum
   const monday = new Date();
 
   for (let i = 0; i < donuts.length; i++) {
-    if (donuts[i].totAmount<10){
+    if (donuts[i].totAmount <= 10){
       donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
-    }
-    else{
-      donuts[i].totPrice = donuts[i].price * donuts[i].totAmount*0.9;
+    } else{
+      donuts[i].totPrice = Math.round(donuts[i].price * donuts[i].totAmount*0.9);
+      console.log(donutsOver10);
     }
   }
-
+  
   showDonuts();
+
 }
+
+
+/*function showShoppingCartView() {  //Function to display what is in the shopping cart
+  shoppingCart.innerHTML = "";
+  for (let i = 0; i < donuts.length; i++) {
+    .innerHTML += `
+    <section class="shoppingCart">
+      <div class="shoppingCartContainer">
+          <h2 class="shoppingCartName">Varukorg<span class="donutShoppingCart">${donuts[i].totAmount}</span> kr</h2>
+          <p class="donutOrdered">//Lägg in beställda munkar här</p>
+          
+          <button data-operator="moveOnBtn" data-id = #></button>
+      </div>
+    </section>
+    `;
+}*/
+
 
 // Tillagt 221109 av Sussie
 // generella variabler
