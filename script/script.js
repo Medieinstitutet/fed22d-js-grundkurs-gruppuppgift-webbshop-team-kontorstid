@@ -68,6 +68,7 @@ function init() { //Function to declare HTML elements
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum 
   priceContainer = document.querySelector(".priceContainer");
   sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
+  shoppingCartContainer = document.querySelector(".shoppingCartContainer");
 } //End init
 
 
@@ -332,6 +333,7 @@ function reduceTotDonut(e) { //Function to reduce total amount of donuts
 
   updateDonutSum();
   showShoppingCart();
+  showShoppingCartView();
 }
 
                                 
@@ -340,6 +342,7 @@ function increaseTotDonut(e) { //Function to increase total amount of donuts
 
   updateDonutSum();
   showShoppingCart();
+  showShoppingCartView();
 }
 
 
@@ -359,21 +362,22 @@ function updateDonutSum() { //Function to update donut sum
 
 }
 
-
-/*function showShoppingCartView() {  //Function to display what is in the shopping cart
-  shoppingCart.innerHTML = "";
+function showShoppingCartView() {  //Function to display what is in the shopping cart
+  shoppingCartContainer.innerHTML = "";
   for (let i = 0; i < donuts.length; i++) {
-    .innerHTML += `
-    <section class="shoppingCart">
-      <div class="shoppingCartContainer">
+    if (donuts[i].totAmount === 0) {
+    } else{
+    shoppingCartContainer.innerHTML += `
+      <div class="shoppingCart">
           <h2 class="shoppingCartName">Varukorg<span class="donutShoppingCart">${donuts[i].totAmount}</span> kr</h2>
-          <p class="donutOrdered">//Lägg in beställda munkar här</p>
+          <p class="donutOrdered">${donuts[i].name}</p>
           
-          <button data-operator="moveOnBtn" data-id = #></button>
+          <button data-operator="moveOnBtn" data-id=orderDonut>Beställ</button>
       </div>
-    </section>
     `;
-}*/
+    }
+  }
+}
 
 
 // Tillagt 221109 av Sussie
@@ -524,6 +528,7 @@ function time() {
   day=days
 }
 
+/*document.addEventListener("click", showShoppingCartView);*/
 nextBtn.addEventListener('click', nextImage);
 nextBtn2.addEventListener('click', nextImage);
 createDots();
