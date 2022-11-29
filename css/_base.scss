@@ -41,7 +41,7 @@ body {
 header {
   display: block;
   padding: 0;
-
+  
   .headerBackground {
     margin: auto;
     display: flex;
@@ -50,7 +50,12 @@ header {
     background-size: cover; 
     background-position: center;
     height: 730px;
-    background-color: aqua;
+  }
+  .headerBanner{
+    position: relative;
+    text-align: center;
+    color: white;
+    border: 2px solid green;
   }
 
   .heading {
@@ -64,17 +69,14 @@ header {
     max-width: 65%;
     margin-top: -5px;
   }
-
   nav {
     background-color: rgba(255, 255, 255, 0.85);
     width: 100vw;
     height: 100vh;
     top: 0;
     transition: all 0.4s ease-in-out;
-    right: -100vw;
     position: fixed;
-    z-index: 2;
-
+    z-index: 3;
     ul {
       margin: 0;
       padding: 0;
@@ -97,17 +99,6 @@ header {
     }
   }
 
-  .checkbox {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 3;
-    width: 45px;
-    height: 45px;
-    opacity: 0;
-    cursor: pointer;
-  }
-
   button {
     width: 45px;
     height: 45px;
@@ -117,8 +108,19 @@ header {
     right: 20px;
     top: 10px;
     z-index: 3;
-    pointer-events: none;
+    cursor:pointer;
   }
+  #checkbox{
+    display:none;
+  }
+.menuOpener{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
 
   span {
     display: block;
@@ -129,25 +131,34 @@ header {
     position: relative;
     left: 0;
     margin-left: 6px;
+    cursor: pointer;
   }
 
   span:nth-child(2) {
     margin-left: 0;
     transition: all 0.4s ease-in-out;
   }
-
-  input:hover + .menu button span:nth-child(2) {
-    left: 6px;
-  }
-
-  input:checked + .menu nav {
-    visibility: visible;
-    opacity: 1;
-    transition: all 0.4s ease-in-out;
-    right: 0vw;
-  }
+}
+div.menu button:hover span:nth-child(2){
+  left: 6px;
+}
 }
 
+.menuCloser{
+display:none;
+font-size: 60px;
+font-weight: bold;
+color: #f96c9e;
+z-index:4;
+right: 10px;
+top: 0px;
+width: 45px;
+height: 45px;
+cursor: pointer;
+position:fixed;
+
+
+}
 
 /*Main section*/
 main {

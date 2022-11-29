@@ -12,6 +12,7 @@ let donutAmount; //Amount of each donut
 let sortDonuts; //Variable to sort donuts e.g. after pricv
 let donutBox; //Variable to select donut pop up
 
+
 const img1 = document.querySelector("#img1");
 const img2 = document.querySelector("#img2");
 
@@ -97,6 +98,7 @@ function initImg() {
     if(lockState == 0){
     if (e.target.closest(".donut-image-container")) {
       img1.setAttribute('src',e.target.getAttribute('src'));
+      img1.setAttribute('alt',e.target.getAttribute('alt'));
       donutName.innerHTML=e.target.parentElement.parentElement.querySelector("h2").innerHTML;
     if (displayState==0){
 
@@ -133,6 +135,7 @@ function initImg() {
     }}
     images[0].url=img1.getAttribute('src');
     images[1].url=img2.getAttribute('src');
+    img2.setAttribute('alt',img1.getAttribute('alt'))
   });
 }
 
@@ -169,8 +172,6 @@ function swapImages(fadeOut, fadeIn) {
   const img1X = firstImageOnTop ? img1 : img2;
   const img2X = firstImageOnTop ? img2 : img1;
 
-  console.log(img1X)
-  console.log(img2X)
   img1X.setAttribute('src', images[fadeOut].url);
   img2X.setAttribute('src', images[fadeIn].url);
   opacityTimer = setInterval(changeOpacity, (fadeTimeInSec * 1000) / 25);
@@ -287,7 +288,12 @@ function showShoppingCart() {
   //EJ DEFINERAD//priceContainer.innerHTML = "";
   const sum = donuts.reduce(
     (previousValue, donut) => {
+      if (donut.totAmount<10){
       return (donut.totAmount * donut.price) + previousValue;
+    }
+    else{
+      return (donut.totAmount * donut.price*0.9) + previousValue;
+    }
     },
     0
   );
@@ -334,7 +340,12 @@ function updateDonutSum() { //Function to update donut sum
   const monday = new Date();
 
   for (let i = 0; i < donuts.length; i++) {
+    if (donuts[i].totAmount<10){
       donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
+    }
+    else{
+      donuts[i].totPrice = donuts[i].price * donuts[i].totAmount*0.9;
+    }
   }
 
   showDonuts();
@@ -438,14 +449,37 @@ function showCardContent() {
 }
 
 document.getElementById("nav-links").onclick = function () {
-  document.getElementById("toggle").click();
+document.getElementById("checkbox").style.display= "none";
+document.querySelector(".menuCloser").style.display ="none";
+document.querySelector(".menuOpener").style.display ="block";
 };
 
+document.querySelector(".menuOpener").onclick = function () {
+document.getElementById("checkbox").style.display= "block";
+document.querySelector(".menuCloser").style.display ="block";
+document.querySelector(".menuOpener").style.display ="none";
+}
+
+document.querySelector(".menuCloser").onclick = function () {
+  document.getElementById("checkbox").style.display= "none";
+  document.querySelector(".menuCloser").style.display ="none";
+  document.querySelector(".menuOpener").style.display ="block";
+}
+
+function time() {
+  let d = new Date();
+  let s = d.getSeconds();
+  let m = d.getMinutes();
+  let h = d.getHours(); // 15:00 == 15, 03:00 == 3
+  let days = d.getDay(); // Fredagar == 5, Måndag == 1
+  hour= h
+  day=days
+}
 
 nextBtn.addEventListener('click', nextImage);
 nextBtn2.addEventListener('click', nextImage);
 createDots();
-
+setInterval(time,1000);
 
 init();
 showDonuts();

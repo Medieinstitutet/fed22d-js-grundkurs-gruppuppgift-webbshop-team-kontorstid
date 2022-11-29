@@ -35,34 +35,34 @@
                 <a href="index.html"><img src="./assets/photos/bragif.gif" alt="Gottfrids-munkfabrik-logo"></a>
             </div>
             <div class="menu">
-                <input type="checkbox" id="toggle" class="checkbox">
-                <button aria-label="Menu-button">
+                <button class="menuOpener" aria-label="Menu-button">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
+                <span class="menuCloser">&times;</span>
                 <nav id="checkbox">
                     <ul class="nav-menu">
                         <li><a href=#choklad-sida id="nav-links">Munkar med choklad</a></li>
-                        <li><a href="resume.html" id="nav-links">Munkar med strössel</a></li>
+                        <li><a href="#" id="nav-links">Munkar med strössel</a></li>
                         <li><a href="#" id="nav-links">Övriga munkar</a></li>
                     </ul>
                 </nav>
             </div>
             <section class="headerBackground">
+
             </section>
     </header>
     <main>
 
-        <div class="dimmer">
-        </div>
+        <div class="dimmer"></div>
         <nav>
             <!--Här kommer det finnas varukorg och summa-->
         </nav>
         <form action="/action_page.php">
             <label for="donuts"></label>
             <select name="donuts" class="sortDonuts">
-                <option value="originalSort" disabled selected >Sortering</option>
+                <option value="originalSort" selected>Sortering</option>
                 <option value="donutName">Namn</option>
                 <option value="donutLowestPrice">Lägsta pris</option>
                 <option value="donutHighestPrice">Högsta pris</option>
@@ -71,7 +71,7 @@
 
             </select>
         </form>
-        <div class="donutBox">
+        <div class="donutBox" id="donutB">
             <div class="slideshow" id="slideshow">
                 <div class="slideControl">
                     <div class="controls">
