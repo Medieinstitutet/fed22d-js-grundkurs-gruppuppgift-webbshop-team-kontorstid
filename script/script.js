@@ -11,7 +11,6 @@ let donutPrice; //Price of each donut
 let donutAmount; //Amount of each donut
 let sortDonuts; //Variable to sort donuts e.g. after pricv
 let donutBox; //Variable to select donut pop up
-let donutsOver10 = 0;
 
 const img1 = document.querySelector("#img1");
 const img2 = document.querySelector("#img2");
@@ -20,6 +19,11 @@ const nextBtn = document.querySelector('#previousImage');
 const nextBtn2 = document.querySelector('#nextImage');
 
 const slideshow = document.querySelector('#slideshow');
+
+const weekendPrice = new Date(); //Variable to adjust the price of each donut during the weekend
+const isFriday = weekendPrice.getDay() === 5;
+const isMonday = weekendPrice.getDay() === 1;
+const time = weekendPrice.getHours();
 
 let currentImageIndex = 0;
 let indicatorDots;
@@ -68,6 +72,11 @@ function init() { //Function to declare HTML elements
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum 
   priceContainer = document.querySelector(".priceContainer");
   sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
+
+  if((isFriday && time >= 15) && (isMonday && time <= 3)) {
+    let newDonutPrice = Math.round(donuts[i].price * 1.15);
+  }
+
 } //End init
 
 
@@ -298,10 +307,12 @@ function showShoppingCart() {
     0
   );
 
+  console.log(monday.getDay(), monday.getHours());
+
   printOrdredDonuts();
-  if (monday.getDay() === 2) { 
+  if (monday.getDay() === 2 && monday.getHours() < 10 ) { 
     newSum = Math.round(sum * 0.9);
-    console.log(newSum);
+
 
     priceContainer.innerHTML = `
     <p> Totalsumma: <span class="totSum"> ${newSum} </span> kr </p>`
@@ -351,7 +362,6 @@ function updateDonutSum() { //Function to update donut sum
       donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
     } else{
       donuts[i].totPrice = Math.round(donuts[i].price * donuts[i].totAmount*0.9);
-      console.log(donutsOver10);
     }
   }
   
