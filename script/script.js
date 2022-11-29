@@ -283,6 +283,8 @@ function sortAfterHighPrice() {
 
 
 function showShoppingCart() {
+  const monday = new Date();
+  let newSum; 
   //EJ DEFINERAD//priceContainer.innerHTML = "";
   const sum = donuts.reduce(
     (previousValue, donut) => {
@@ -296,21 +298,19 @@ function showShoppingCart() {
     0
   );
 
-  
-  /*for (let i = 0; i < donuts.length; i++) {
-    if (monday.getDay() === 2) { 
-      donuts[i].totPrice * 0.9;
-      console.log(donuts[i].totPrice);
-      priceContainer.innerHTML = `
-      <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
-    }
-  }*/
-
   printOrdredDonuts();
+  if (monday.getDay() === 2) { 
+    newSum = Math.round(sum * 0.9);
+    console.log(newSum);
 
-  priceContainer.innerHTML = `
-  <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+    priceContainer.innerHTML = `
+    <p> Totalsumma: <span class="totSum"> ${newSum} </span> kr </p>`
+  } else {
+    priceContainer.innerHTML = `
+    <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+  }
 
+  
 }
 
 function printOrdredDonuts() {
@@ -345,8 +345,6 @@ function increaseTotDonut(e) { //Function to increase total amount of donuts
 
 function updateDonutSum() { //Function to update donut sum
   //Declaration of local variables
-
-  const monday = new Date();
 
   for (let i = 0; i < donuts.length; i++) {
     if (donuts[i].totAmount <= 10){
