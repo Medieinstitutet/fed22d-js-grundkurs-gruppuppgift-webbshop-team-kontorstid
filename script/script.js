@@ -35,15 +35,7 @@ let donutName = document.querySelector('.donutName');
 let dimmer = document.querySelector('.dimmer');
 let last_clicked=0;
 
-//Donuts
-    /*images: [
-      {
-        url: 'assets/photos/bild1.jpg',
-        alt: 'Munk 1',
-        width: 100,
-        height: 'auto'
-      }, // `<img src='${images[i].url}' alt='${images[i].alt}' width='${images[i].width}' class="donut-img">`
-    ],*/
+
 const donuts = [ //Array which stores all info about the donut, e.g. name
   { images: [ { img: "assets/photos/bild1.jpg", img2:"assets/photos/donut-with-sugar-hole2.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Gottfrids ", category: "Klassisk", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
   { images: [ { img: "assets/photos/bild2.jpg", img2:"assets/photos/donut-with-sugar.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Klassisk", price: 36, rating: 4, totPrice: 0, totAmount: 0 },
@@ -93,6 +85,7 @@ function initButtons() { //Function to declare buttons
   }
 } //End initButtons
  
+
 function initImg() {
   donutBox = document.querySelector(".donutBox");
   donutBox.style.display='none';
@@ -143,6 +136,7 @@ function initImg() {
   });
 }
 
+
 function highlightDot() {
   indicatorDots.forEach((dot, index) => {
     if (index === currentImageIndex) { // = * 3
@@ -170,6 +164,7 @@ function changeOpacity() {
   }
 }
 
+
 function swapImages(fadeOut, fadeIn) {
   const img1X = firstImageOnTop ? img1 : img2;
   const img2X = firstImageOnTop ? img2 : img1;
@@ -181,8 +176,8 @@ function swapImages(fadeOut, fadeIn) {
   opacityTimer = setInterval(changeOpacity, (fadeTimeInSec * 1000) / 25);
 }
 
+
 function nextImage() {
-  
   if (Date.now()-last_clicked<500) return;
   last_clicked=Date.now()
   if (currentImageIndex + 1 > images.length - 1) {
@@ -197,6 +192,7 @@ function nextImage() {
   highlightDot();
 }
 
+
 function createDots() {
   const dotsContainer = document.querySelector('#indicatorDots');
   console.log(images.length)
@@ -207,15 +203,6 @@ function createDots() {
   highlightDot();
 }
 
-/*function autoPlay() {
-  moveForwardTimer = setInterval(nextImage, 1000);
-}
-*/
-
-/*function pauseAutoplay() {
-  console.log('autoplay paused');
-  clearInterval(moveForwardTimer);
-}*/
 
 function showDonuts() {  //Function to display what is in the array/the donuts
   donutContainer.innerHTML = "";
@@ -239,7 +226,6 @@ function showDonuts() {  //Function to display what is in the array/the donuts
     </section>
     `;
   }
-
   showShoppingCart();
   initButtons();
 }
@@ -307,7 +293,6 @@ function showShoppingCart() {
   );
 
   printOrdredDonuts();
-
 
   priceContainer.innerHTML = `
   <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
@@ -466,4 +451,3 @@ init();
 showDonuts();
 initButtons();
 initImg();
-
