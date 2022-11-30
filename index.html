@@ -106,7 +106,11 @@
         </div>
         <section class="donutContainer"></section>
 
-        <section class="shoppingCartContainer"></section>
+        <section class="shoppingCartContainer">
+            <h2 class="shoppingCartName">Varukorg<span class="donutShoppingCart"></span></h2>
+            <div class="shoppingCart"> </div>
+            <button class="shoppingCartButton" data-operator="moveOnBtn" data-id=orderDonut>Beställ</button>
+        </section>
 
         <section class="checkout-container">
             <label>
@@ -148,7 +152,7 @@
                 <input type="radio" name="payment-method" value="kort" id="card"> Kort <br>
                 <input type="radio" name="payment-method" value="faktura" id="invoice"> Faktura
                 <br>
-    
+
                 <div class="paymentCardContainer">
                     <label> Kortnummer
                         <input type="number" id="cardnumber">
@@ -160,13 +164,13 @@
                     <label> CVC
                         <input type="number">
                     </label>
-    
+
                 </div>
                 <div class="paymentInvoiceContainer">
                     <label> Personnummer</label>
                     <!--OBS! Denna är ej fixad i JS, behöver validera att det är ett korrekt personnummer!!-->
                     <input type="number" id="personalnumber">
-    
+
                 </div>
             </section>
             <label>

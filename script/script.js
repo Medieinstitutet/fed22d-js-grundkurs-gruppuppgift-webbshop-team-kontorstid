@@ -28,6 +28,7 @@ const time = weekendPrice.getHours();
 let currentImageIndex = 0;
 let indicatorDots;
 let moveForwardTimer = null;
+let shoppingCart;
 
 // Fade-related variables
 let opacityTimer = null;
@@ -73,6 +74,9 @@ function init() { //Function to declare HTML elements
   priceContainer = document.querySelector(".priceContainer");
   sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
   shoppingCartContainer = document.querySelector(".shoppingCartContainer");
+  donutOrderedName = document.querySelector(".donutOrderedName");
+  donutOrderedPrice =document.querySelector(".donutOrderedPrice");
+  shoppingCart=document.querySelector(".shoppingCart")
 
   if ((isFriday && time >= 15) && (isMonday && time <= 18)) {
     for (let i = 0; i < donuts.length; i++) {
@@ -302,9 +306,12 @@ function showShoppingCart() {
   //EJ DEFINERAD//priceContainer.innerHTML = "";
   const sum = donuts.reduce(
     (previousValue, donut) => {
-      if (donut.totAmount <= 10){
+      // Om kunden har beställt minst 10 munkar av samma sort
+      //ska munkpriset för just denna munksort rabatteras med 10 %
+      // Detta betydyder att , om antalet donuts <10 så ska vi inte ge rabatt.
+      if (donut.totAmount < 10){ 
       return donut.totAmount * donut.price + previousValue;
-    }
+    } // Om vi har 10 eller fler munkar av samma sort så lägger vi till 10% rabatt.
     else{
       return Math.round(donut.totAmount * donut.price*0.9) + previousValue;
     }
@@ -365,7 +372,7 @@ function updateDonutSum() { //Function to update donut sum
   //Declaration of local variables
 
   for (let i = 0; i < donuts.length; i++) {
-    if (donuts[i].totAmount <= 10){
+    if (donuts[i].totAmount < 10){
       donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
     } else{
       donuts[i].totPrice = Math.round(donuts[i].price * donuts[i].totAmount*0.9);
@@ -376,20 +383,47 @@ function updateDonutSum() { //Function to update donut sum
 
 }
 
+const sum = donuts.reduce(
+  (previousValue, donut) => {
+    // Om kunden har beställt minst 10 munkar av samma sort
+    //ska munkpriset för just denna munksort rabatteras med 10 %
+    // Detta betydyder att , om antalet donuts <10 så ska vi inte ge rabatt.
+    if (donut.totAmount < 10){ 
+    return donut.totAmount * donut.price + previousValue;
+  } // Om vi har 10 eller fler munkar av samma sort så lägger vi till 10% rabatt.
+  else{
+    return Math.round(donut.totAmount * donut.price*0.9) + previousValue;
+  }
+  },
+  0
+);
 function showShoppingCartView() {  //Function to display what is in the shopping cart
-  shoppingCartContainer.innerHTML = "";
+  donutAmount=0; // Tittar ifall det finns någon donut i våran varukorg.
   for (let i = 0; i < donuts.length; i++) {
-    if (donuts[i].totAmount === 0) {
+    if (donuts[i].totAmount == 0) {
+      if(shoppingCart.innerHTML.search(donuts[i].name)>0)
+      {
+        if(donuts[i].name == document.getElementById(donuts[i].name).innerHTML){
+          document.getElementById(donuts[i].name).parentElement.remove();
+        }
+      }
     } else{
-    shoppingCartContainer.innerHTML += `
-      <div class="shoppingCart">
-          <h2 class="shoppingCartName">Varukorg<span class="donutShoppingCart">${donuts[i].totAmount}</span> kr</h2>
-          <p class="donutOrdered">${donuts[i].name}</p>
-          
-          <button data-operator="moveOnBtn" data-id=orderDonut>Beställ</button>
-      </div>
-    `;
+      donutAmount+=donuts[i].totAmount;
+      if(shoppingCart.innerHTML.search(donuts[i].name)<0)
+      {
+        shoppingCart.innerHTML+=`
+        <div class="donutOrderedContainer">
+      <p class="donutOrderedName" id="${donuts[i].name}">${donuts[i].name}</p>
+      <p class="donutOrderedPrice" id="${donuts[i].price}"> ${donuts[i].price} kr</p>
+      </div>`;
+      }
     }
+  }
+  if(donutAmount>0){ // Ifall varukorgen har mer en 0, alltså 1+ så visar vi varukorgen.
+    shoppingCartContainer.style.display ="block";
+  }
+  else{ // Om vi har noll varor så visar vi inte varukorgen mer.
+    shoppingCartContainer.style.display ="none";
   }
 }
 
@@ -531,16 +565,6 @@ document.querySelector(".menuCloser").onclick = function () {
   document.querySelector(".menuCloser").style.display ="none";
   document.querySelector(".menuOpener").style.display ="block";
 }
-
-/*function time() {
-  let d = new Date();
-  let s = d.getSeconds();
-  let m = d.getMinutes();
-  let h = d.getHours(); // 15:00 == 15, 03:00 == 3
-  let days = d.getDay(); // Fredagar == 5, Måndag == 1
-  hour= h
-  day=days
-}*/
 
 /*document.addEventListener("click", showShoppingCartView);*/
 nextBtn.addEventListener('click', nextImage);

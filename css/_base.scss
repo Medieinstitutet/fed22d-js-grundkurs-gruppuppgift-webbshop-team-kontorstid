@@ -40,7 +40,7 @@ body {
 /*Header section*/
 header {
   display: block;
-  padding: 0;
+  padding: 0; 
   
   .headerBackground {
     margin: auto;
@@ -327,6 +327,7 @@ main .payment {
 }
 
 .shoppingCartContainer {
+  display:none;
   position: fixed;
   background-color: $secondaryColor;
   color: $primaryColor;
@@ -335,6 +336,11 @@ main .payment {
   transform: translate(-50%, -50%);
   border: 1px solid rgb(103, 103, 103);
   z-index: 6;
+}
+
+.donutOrderedContainer{
+  display:flex;
+  flex-direction: row;
 }
 /*Footer section*/
 footer {
