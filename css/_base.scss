@@ -40,7 +40,7 @@ body {
 /*Header section*/
 header {
   display: block;
-  padding: 0;
+  padding: 0; 
   
   .headerBackground {
     margin: auto;
@@ -327,14 +327,42 @@ main .payment {
 }
 
 .shoppingCartContainer {
+  display:none;
   position: fixed;
   background-color: $secondaryColor;
-  color: $primaryColor;
-  top: 50%;
-  left: 50%;
+  top: 70%;
+  left: 85%;
   transform: translate(-50%, -50%);
   border: 1px solid rgb(103, 103, 103);
   z-index: 6;
+  border-radius: 10px;
+}
+
+.shoppingCartName {
+  color: $primaryColor;
+  margin: 10px;
+  padding: 5px;
+}
+
+.shoppingCart {
+  color: $primaryColor;
+}
+.donutOrderedContainer{
+  display:flex;
+  flex-direction: row;
+  line-height: 1.5rem;
+  justify-content: space-around;
+  color: $primaryColor;
+}
+.donutOrderedContainer p {
+  line-height: 1.5rem;
+  padding: 15px;
+  justify-content: space-around;
+  color: $primaryColor; 
+}
+.donutTotalPrice {
+  line-height: 1.5rem;
+  font-size: 1.5rem;
 }
 /*Footer section*/
 footer {

@@ -20,6 +20,8 @@ const nextBtn2 = document.querySelector('#nextImage');
 
 const slideshow = document.querySelector('#slideshow');
 
+const orderForm = document.querySelector(".checkout-container");
+const showOrderFormButton = document.querySelector("button[data-operator='moveOnBtn']");
 const weekendPrice = new Date(); //Variable to adjust the price of each donut during the weekend
 const isFriday = weekendPrice.getDay() === 5;
 const isMonday = weekendPrice.getDay() === 1;
@@ -28,6 +30,7 @@ const time = weekendPrice.getHours();
 let currentImageIndex = 0;
 let indicatorDots;
 let moveForwardTimer = null;
+let shoppingCart;
 
 // Fade-related variables
 let opacityTimer = null;
@@ -73,6 +76,9 @@ function init() { //Function to declare HTML elements
   priceContainer = document.querySelector(".priceContainer");
   sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
   shoppingCartContainer = document.querySelector(".shoppingCartContainer");
+  donutOrderedName = document.querySelector(".donutOrderedName");
+  donutOrderedPrice =document.querySelector(".donutOrderedPrice");
+  shoppingCart=document.querySelector(".shoppingCart")
 
   if ((isFriday && time >= 15) && (isMonday && time <= 03)) {
     for (let i = 0; i < donuts.length; i++) {
@@ -296,35 +302,40 @@ function sortAfterHighPrice() {
 }
 
 
-function showShoppingCart() {
+function calculateTotalPrice() {
   const monday = new Date();
   let newSum; 
   //EJ DEFINERAD//priceContainer.innerHTML = "";
   const sum = donuts.reduce(
     (previousValue, donut) => {
-      if (donut.totAmount <= 10){
+      // Om kunden har beställt minst 10 munkar av samma sort
+      //ska munkpriset för just denna munksort rabatteras med 10 %
+      // Detta betydyder att , om antalet donuts <10 så ska vi inte ge rabatt.
+      if (donut.totAmount < 10){ 
       return donut.totAmount * donut.price + previousValue;
-    }
+    } // Om vi har 10 eller fler munkar av samma sort så lägger vi till 10% rabatt.
     else{
       return Math.round(donut.totAmount * donut.price*0.9) + previousValue;
     }
     },
     0
   );
-
-  console.log(monday.getDay(), monday.getHours());
-
-  printOrdredDonuts();
   if (monday.getDay() === 2 && monday.getHours() < 10 ) { 
     newSum = Math.round(sum * 0.9);
-
-
-    priceContainer.innerHTML = `
-    <p> Totalsumma: <span class="totSum"> ${newSum} </span> kr </p>`
+    return newSum;
   } else {
-    priceContainer.innerHTML = `
-    <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+    return sum;
   }
+
+}
+
+function showShoppingCart() {
+  let sum = calculateTotalPrice();
+  priceContainer.innerHTML = `
+  <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+
+  //printOrdredDonuts();
+
 
   
 }
@@ -365,7 +376,7 @@ function updateDonutSum() { //Function to update donut sum
   //Declaration of local variables
 
   for (let i = 0; i < donuts.length; i++) {
-    if (donuts[i].totAmount <= 10){
+    if (donuts[i].totAmount < 10){
       donuts[i].totPrice = donuts[i].price * donuts[i].totAmount;
     } else{
       donuts[i].totPrice = Math.round(donuts[i].price * donuts[i].totAmount*0.9);
@@ -376,21 +387,49 @@ function updateDonutSum() { //Function to update donut sum
 
 }
 
-function showShoppingCartView() {  //Function to display what is in the shopping cart
-  shoppingCartContainer.innerHTML = "";
-  for (let i = 0; i < donuts.length; i++) {
-    if (donuts[i].totAmount === 0) {
-    } else{
-    shoppingCartContainer.innerHTML += `
-      <div class="shoppingCart">
-          <h2 class="shoppingCartName">Varukorg<span class="donutShoppingCart">${donuts[i].totAmount}</span> kr</h2>
-          <p class="donutOrdered">${donuts[i].name}</p>
-          
-          <button data-operator="moveOnBtn" data-id=orderDonut>Beställ</button>
-      </div>
-    `;
-    }
+const sum = donuts.reduce(
+  (previousValue, donut) => {
+    // Om kunden har beställt minst 10 munkar av samma sort
+    //ska munkpriset för just denna munksort rabatteras med 10 %
+    // Detta betydyder att , om antalet donuts <10 så ska vi inte ge rabatt.
+    if (donut.totAmount < 10){ 
+    return donut.totAmount * donut.price + previousValue;
+  } // Om vi har 10 eller fler munkar av samma sort så lägger vi till 10% rabatt.
+  else{
+    return Math.round(donut.totAmount * donut.price*0.9) + previousValue;
   }
+  },
+  0
+);
+function showShoppingCartView() {  //Function to display what is in the shopping cart
+  shoppingCart.innerHTML = "";
+  for (let i = 0; i < donuts.length; i++) {
+    if (donuts[i].totAmount == 0) {
+    } else {
+
+        shoppingCart.innerHTML += `
+        <div class="donutOrderedContainer">
+      <p class="donutOrderedName" id="${donuts[i].name}">Namn: ${donuts[i].name}</p>
+      <p class="donutOrderedTotAmount" id="${donuts[i].totAmount}">Antal: ${donuts[i].totAmount}</p>
+      <p class="donutOrderedPrice" id="${donuts[i].totPrice}"> Belopp: ${donuts[i].totPrice} kr</p>
+      </div>`;
+      }
+  }
+  if (shoppingCart.innerHTML.length > 0) { // Ifall varukorgen har mer en 0, alltså 1+ så visar vi varukorgen.
+    let donutTotalPrice = calculateTotalPrice();
+    shoppingCart.innerHTML += `<div class="donutTotalPrice">Totalpris: ${donutTotalPrice} kr</div>`;
+    // visa det totala priset för alla valda munkar
+    
+    shoppingCartContainer.style.display ="block";
+  }
+  else{ // Om vi har noll varor så visar vi inte varukorgen mer.
+    shoppingCartContainer.style.display ="none";
+  }
+}
+
+function showOrderForm() {
+    shoppingCartContainer.style.display = "none";
+    orderForm.style.display = "block";
 }
 
 
@@ -532,19 +571,10 @@ document.querySelector(".menuCloser").onclick = function () {
   document.querySelector(".menuOpener").style.display ="block";
 }
 
-/*function time() {
-  let d = new Date();
-  let s = d.getSeconds();
-  let m = d.getMinutes();
-  let h = d.getHours(); // 15:00 == 15, 03:00 == 3
-  let days = d.getDay(); // Fredagar == 5, Måndag == 1
-  hour= h
-  day=days
-}*/
-
 /*document.addEventListener("click", showShoppingCartView);*/
 nextBtn.addEventListener('click', nextImage);
 nextBtn2.addEventListener('click', nextImage);
+showOrderFormButton.addEventListener('click',showOrderForm);
 createDots();
 setInterval(time,1000);
 
