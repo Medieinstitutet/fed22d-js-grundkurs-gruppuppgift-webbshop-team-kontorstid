@@ -407,15 +407,15 @@ function showShoppingCartView() {  //Function to display what is in the shopping
 
         shoppingCart.innerHTML += `
         <div class="donutOrderedContainer">
-      <p class="donutOrderedName" id="${donuts[i].name}">${donuts[i].name}</p>
-      <p class="donutOrderedTotAmount" id="${donuts[i].totAmount}">${donuts[i].totAmount}</p>
-      <p class="donutOrderedPrice" id="${donuts[i].totPrice}"> ${donuts[i].totPrice} kr</p>
+      <p class="donutOrderedName" id="${donuts[i].name}">Namn: ${donuts[i].name}</p>
+      <p class="donutOrderedTotAmount" id="${donuts[i].totAmount}">Antal: ${donuts[i].totAmount}</p>
+      <p class="donutOrderedPrice" id="${donuts[i].totPrice}"> Belopp: ${donuts[i].totPrice} kr</p>
       </div>`;
       }
   }
   if (shoppingCart.innerHTML.length > 0) { // Ifall varukorgen har mer en 0, alltså 1+ så visar vi varukorgen.
     let donutTotalPrice = calculateTotalPrice();
-    shoppingCart.innerHTML += `<div class="donutTotalPrice">${donutTotalPrice}</div>`;
+    shoppingCart.innerHTML += `<div class="donutTotalPrice">Totalpris: ${donutTotalPrice} kr</div>`;
     // visa det totala priset för alla valda munkar
     
     shoppingCartContainer.style.display ="block";
