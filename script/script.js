@@ -11,6 +11,7 @@ let donutPrice; //Price of each donut
 let donutAmount; //Amount of each donut
 let sortDonuts; //Variable to sort donuts e.g. after pricv
 let donutBox; //Variable to select donut pop up
+let discountCodeFactor = 1; //Variable to set discount to 1 or 0
 
 const img1 = document.querySelector("#img1");
 const img2 = document.querySelector("#img2");
@@ -26,6 +27,7 @@ const weekendPrice = new Date(); //Variable to adjust the price of each donut du
 const isFriday = weekendPrice.getDay() === 5;
 const isMonday = weekendPrice.getDay() === 1;
 const time = weekendPrice.getHours();
+const discountElement = document.querySelector("#discountCode");
 
 let currentImageIndex = 0;
 let indicatorDots;
@@ -322,9 +324,9 @@ function calculateTotalPrice() {
   );
   if (monday.getDay() === 2 && monday.getHours() < 10 ) { 
     newSum = Math.round(sum * 0.9);
-    return newSum;
+    return newSum * discountCodeFactor;
   } else {
-    return sum;
+    return sum * discountCodeFactor;
   }
 
 }
@@ -461,6 +463,7 @@ cityField.addEventListener("change", checkFormAndToggleOrderButton);
 phoneField.addEventListener("change", checkFormAndToggleOrderButton);
 emailField.addEventListener("change", checkFormAndToggleOrderButton);
 consentOfPersonalData.addEventListener("change", checkFormAndToggleOrderButton);
+discountElement.addEventListener("change", changeDiscountFactor);
 
 function checkFormAndToggleOrderButton() {
   if (checkName1() && checkName2() && checkAddress() && checkZipcode() && checkCity() && checkPhoneNumber() && checkEmail() && checkConsent()) {
@@ -539,6 +542,14 @@ function disableOrderButton() {
   orderButton.setAttribute("disabled", true);
 }
 
+function changeDiscountFactor () {
+  if (discountElement.value === 'a_damn_fine-cup_of-coffee') {
+    discountCodeFactor = 0;
+
+  } else
+  discountCodeFactor = 1;
+  showShoppingCart();
+}
 paymentMethodCard.addEventListener("click", showCardContent);
 paymentMethodInvoice.addEventListener("click", showInvoiceContent);
 
