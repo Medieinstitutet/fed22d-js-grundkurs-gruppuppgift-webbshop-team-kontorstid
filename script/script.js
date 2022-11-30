@@ -245,10 +245,10 @@ function showDonuts() {  //Function to display what is in the array/the donuts
     </section>
     `;
   }
-  for (let i = 0; i < donuts.rating; i++) {
+  /*for (let i = 0; i < donuts.rating; i++) {
     rating += `<div class="ratingContainer">fa fa-star checked</div>`
     }
-    console.log(donuts[i].rating);
+    console.log(donuts[i].rating);*/
   showShoppingCart();
   initButtons();
 
