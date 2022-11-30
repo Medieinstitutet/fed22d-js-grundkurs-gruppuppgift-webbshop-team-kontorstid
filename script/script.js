@@ -74,7 +74,7 @@ function init() { //Function to declare HTML elements
   sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
   shoppingCartContainer = document.querySelector(".shoppingCartContainer");
 
-  if ((isFriday && time >= 15) && (isMonday && time <= 18)) {
+  if ((isFriday && time >= 15) && (isMonday && time <= 03)) {
     for (let i = 0; i < donuts.length; i++) {
       console.log("Öka pris")
       donuts[i].price = Math.round(donuts[i].price * 1.15);
