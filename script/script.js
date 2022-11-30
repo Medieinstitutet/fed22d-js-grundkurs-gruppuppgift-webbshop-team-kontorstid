@@ -300,7 +300,7 @@ function sortAfterHighPrice() {
 }
 
 
-function showShoppingCart() {
+function calculateTotalPrice() {
   const monday = new Date();
   let newSum; 
   //EJ DEFINERAD//priceContainer.innerHTML = "";
@@ -318,20 +318,22 @@ function showShoppingCart() {
     },
     0
   );
-
-  console.log(monday.getDay(), monday.getHours());
-
-  printOrdredDonuts();
   if (monday.getDay() === 2 && monday.getHours() < 10 ) { 
     newSum = Math.round(sum * 0.9);
-
-
-    priceContainer.innerHTML = `
-    <p> Totalsumma: <span class="totSum"> ${newSum} </span> kr </p>`
+    return newSum;
   } else {
-    priceContainer.innerHTML = `
-    <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+    return sum;
   }
+
+}
+
+function showShoppingCart() {
+  let sum = calculateTotalPrice();
+  priceContainer.innerHTML = `
+  <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
+
+  //printOrdredDonuts();
+
 
   
 }
@@ -398,28 +400,24 @@ const sum = donuts.reduce(
   0
 );
 function showShoppingCartView() {  //Function to display what is in the shopping cart
-  donutAmount=0; // Tittar ifall det finns någon donut i våran varukorg.
+  shoppingCart.innerHTML = "";
   for (let i = 0; i < donuts.length; i++) {
     if (donuts[i].totAmount == 0) {
-      if(shoppingCart.innerHTML.search(donuts[i].name)>0)
-      {
-        if(donuts[i].name == document.getElementById(donuts[i].name).innerHTML){
-          document.getElementById(donuts[i].name).parentElement.remove();
-        }
-      }
-    } else{
-      donutAmount+=donuts[i].totAmount;
-      if(shoppingCart.innerHTML.search(donuts[i].name)<0)
-      {
-        shoppingCart.innerHTML+=`
+    } else {
+
+        shoppingCart.innerHTML += `
         <div class="donutOrderedContainer">
       <p class="donutOrderedName" id="${donuts[i].name}">${donuts[i].name}</p>
-      <p class="donutOrderedPrice" id="${donuts[i].price}"> ${donuts[i].price} kr</p>
+      <p class="donutOrderedTotAmount" id="${donuts[i].totAmount}">${donuts[i].totAmount}</p>
+      <p class="donutOrderedPrice" id="${donuts[i].totPrice}"> ${donuts[i].totPrice} kr</p>
       </div>`;
       }
-    }
   }
-  if(donutAmount>0){ // Ifall varukorgen har mer en 0, alltså 1+ så visar vi varukorgen.
+  if (shoppingCart.innerHTML.length > 0) { // Ifall varukorgen har mer en 0, alltså 1+ så visar vi varukorgen.
+    let donutTotalPrice = calculateTotalPrice();
+    shoppingCart.innerHTML += `<div class="donutTotalPrice">${donutTotalPrice}</div>`;
+    // visa det totala priset för alla valda munkar
+    
     shoppingCartContainer.style.display ="block";
   }
   else{ // Om vi har noll varor så visar vi inte varukorgen mer.
