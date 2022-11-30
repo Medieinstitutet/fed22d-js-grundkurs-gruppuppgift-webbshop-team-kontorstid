@@ -363,7 +363,7 @@ function reduceTotDonut(e) { //Function to reduce total amount of donuts
     return;
   }
   donuts[e.currentTarget.dataset.id].totAmount -= 1;
-
+  checkSumInvoice();
   updateDonutSum();
   showShoppingCart();
   showShoppingCartView();
@@ -372,7 +372,7 @@ function reduceTotDonut(e) { //Function to reduce total amount of donuts
                                 
 function increaseTotDonut(e) { //Function to increase total amount of donuts
   donuts[e.currentTarget.dataset.id].totAmount += 1;
-
+  checkSumInvoice();
   updateDonutSum();
   showShoppingCart();
   showShoppingCartView();
@@ -456,7 +456,8 @@ const paymentMethodChoice = document.querySelector("#paymentmethod");
 let nameIsOk = false;
 const paymentMethodCard = document.querySelector("#card");
 const paymentMethodInvoice = document.querySelector("#invoice");
-const consentOfPersonalData = document.querySelector("#consent")
+const consentOfPersonalData = document.querySelector("#consent");
+
 
 // formulär
 
@@ -535,6 +536,15 @@ function checkEmail () {
     } else {
         return false;
     }
+}
+
+function checkSumInvoice() {
+  if (calculateTotalPrice() <= 800) {
+      paymentMethodInvoice.removeAttribute('disabled');
+  } else {
+      paymentMethodInvoice.setAttribute('disabled', true);
+      //Här behöver vi lägga till så att "card" väljs så att kunden inte kan välja faktura och sedan höja priset
+  }
 }
 
 function checkConsent() {
