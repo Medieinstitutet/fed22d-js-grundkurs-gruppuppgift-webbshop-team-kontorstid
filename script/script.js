@@ -20,6 +20,8 @@ const nextBtn2 = document.querySelector('#nextImage');
 
 const slideshow = document.querySelector('#slideshow');
 
+const orderForm = document.querySelector(".checkout-container");
+const showOrderFormButton = document.querySelector("button[data-operator='moveOnBtn']");
 const weekendPrice = new Date(); //Variable to adjust the price of each donut during the weekend
 const isFriday = weekendPrice.getDay() === 5;
 const isMonday = weekendPrice.getDay() === 1;
@@ -425,6 +427,11 @@ function showShoppingCartView() {  //Function to display what is in the shopping
   }
 }
 
+function showOrderForm() {
+    shoppingCartContainer.style.display = "none";
+    orderForm.style.display = "block";
+}
+
 
 // Tillagt 221109 av Sussie
 // generella variabler
@@ -567,6 +574,7 @@ document.querySelector(".menuCloser").onclick = function () {
 /*document.addEventListener("click", showShoppingCartView);*/
 nextBtn.addEventListener('click', nextImage);
 nextBtn2.addEventListener('click', nextImage);
+showOrderFormButton.addEventListener('click',showOrderForm);
 createDots();
 setInterval(time,1000);
 
