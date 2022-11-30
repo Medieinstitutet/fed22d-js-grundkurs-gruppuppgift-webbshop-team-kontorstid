@@ -59,6 +59,8 @@ const donuts = [ //Array which stores all info about the donut, e.g. name
   { images: [ { img: "assets/photos/bild12.jpg", img2:"assets/photos/donut-with-sprinkles-on-chocolate2.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Choklad", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
 ];
 
+
+
 let images = [
   {
     url: "",
@@ -227,6 +229,14 @@ function showDonuts() {  //Function to display what is in the array/the donuts
   donutContainer.innerHTML = "";
   //For-loop to loop through every donut
   for (let i = 0; i < donuts.length; i++) {
+    let donutRating = "";
+    for (let j = 0; j < donuts[i].rating; j++){
+      donutRating += "<span class='fa fa-star checked'></span>";
+    }
+    for (let j = 0; j < 5 - donuts[i].rating; j++){
+      donutRating += "<span class='fa fa-star'></span>";
+    }    
+    
     donutContainer.innerHTML += `
     <section class="donut-container">
       <div class="donut-image-container">
@@ -235,7 +245,7 @@ function showDonuts() {  //Function to display what is in the array/the donuts
       <div class="donut-info-container">
           <h2 class="donutName">${donuts[i].name}<span class="donut-price">${donuts[i].price}</span> kr</h2>
           <p class="donutCategory">${donuts[i].category}</p>
-          <div class="ratingContainer">${donuts[i].rating}</div>
+          <div class="ratingContainer">${donutRating}</div>
           
           <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
           <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
