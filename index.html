@@ -35,7 +35,7 @@
                 <a href="index.html"><img src="./assets/photos/bragif.gif" alt="Gottfrids-munkfabrik-logo"></a>
             </div>
             <div class="menu">
-                <button class="menuOpener" aria-label="Menu-button">
+                <button class="menuOpener" aria-label="Menu-button" tabindex="0">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -43,9 +43,9 @@
                 <span class="menuCloser">&times;</span>
                 <nav id="checkbox">
                     <ul class="nav-menu">
-                        <li><a href="#choklad-sida" id="nav-links">Munkar med choklad</a></li>
-                        <li><a href="#" id="nav-links">Munkar med strössel</a></li>
-                        <li><a href="#" id="nav-links">Övriga munkar</a></li>
+                        <li><a href="#choklad-sida" id="nav-links" tabindex="0">Munkar med choklad</a></li>
+                        <li><a href="#" id="nav-links" tabindex="0">Munkar med strössel</a></li>
+                        <li><a href="#" id="nav-links" tabindex="0">Övriga munkar</a></li>
                     </ul>
                 </nav>
             </div>
@@ -63,12 +63,12 @@
         <form action="/action_page.php">
             <label for="donuts"></label>
             <select name="donuts" class="sortDonuts">
-                <option value="originalSort" disabled selected>Sortering</option>
-                <option value="donutName">Namn</option>
-                <option value="donutLowestPrice">Lägsta pris</option>
-                <option value="donutHighestPrice">Högsta pris</option>
-                <option value="donutRating">Rating</option>
-                <option value="donutCategory">Kategori</option>
+                <option value="originalSort" tabindex="0" disabled selected>Sortering</option>
+                <option value="donutName" tabindex="0">Namn</option>
+                <option value="donutLowestPrice" tabindex="0">Lägsta pris</option>
+                <option value="donutHighestPrice" tabindex="0">Högsta pris</option>
+                <option value="donutRating" tabindex="0">Rating</option>
+                <option value="donutCategory" tabindex="0">Kategori</option>
             </select>
         </form>
         <label>
@@ -84,7 +84,7 @@
             <div class="slideshow" id="slideshow">
                 <div class="slideControl">
                     <div class="controls">
-                        <button class="left" id="previousImage">
+                        <button class="left" id="previousImage" tabindex="0">
                             <span class="material-symbols-outlined">chevron_left</span>
                         </button>
                     </div>
@@ -93,7 +93,7 @@
                         <img id="img2" class="img-2" src="" alt="" width="400" height="400">
                     </div>
                     <div class="controls">
-                        <button class="right" id="nextImage">
+                        <button class="right" id="nextImage" tabindex="0">
                             <span class="material-symbols-outlined">chevron_right</span>
                         </button>
                     </div>
@@ -119,84 +119,84 @@
         <section class="shoppingCartContainer">
             <h2 class="shoppingCartName">Varukorg<span class="donutShoppingCart"></span></h2>
             <div class="shoppingCart"> </div>
-            <button class="shoppingCartButton" data-operator="moveOnBtn" data-id="orderDonut">Beställ</button>
+            <button class="shoppingCartButton" data-operator="moveOnBtn" data-id="orderDonut" tabindex="0">Beställ</button>
         </section>
 
         <section class="checkout-container">
             <label>
                 <p>* Förnamn:</p>
-                <input type="text" id="name1">
+                <input type="text" id="name1" tabindex="0">
             </label> <br>
             <label>
                 <p>* Efternamn:</p>
-                <input type="text" id="name2">
+                <input type="text" id="name2" tabindex="0">
             </label> <br>
             <label>
                 <p>* Adress:</p>
-                <input type="text" id="address">
+                <input type="text" id="address" tabindex="0">
             </label><br>
             <div class="postal-address-container">
                 <label>
                     <p>* Postnummer:</p>
-                    <input type="number" id="zipcode" class="postalcode">
+                    <input type="number" id="zipcode" class="postalcode" tabindex="0">
                 </label>
                 <label>
                     <p>* Ort:</p>
-                    <input type="text" id="city">
+                    <input type="text" id="city" tabindex="0">
                 </label><br>
             </div>
             <label>
                 <p>ev. Portkod:</p>
-                <input type="number" id="code">
+                <input type="number" id="code" tabindex="0">
             </label><br>
             <label>
                 <p>* Telefonnummer:</p>
-                <input type="number" id="phone">
+                <input type="number" id="phone" tabindex="0">
             </label><br>
             <label>
                 <p>* E-mail:</p>
-                <input type="email" id="email">
+                <input type="email" id="email" tabindex="0">
             </label><br>
             <label>
                 <p> Rabattkod</p>
-                <input type="text" id="discountCode">
+                <input type="text" id="discountCode" tabindex="0">
             </label>
             <section class="payment">
                 <label> Välj betalsätt</label> <br>
-                <input type="radio" name="payment-method" value="kort" id="card"> Kort <br>
-                <input type="radio" name="payment-method" value="faktura" id="invoice"> Faktura
+                <input type="radio" name="payment-method" value="kort" id="card" tabindex="0"> Kort <br>
+                <input type="radio" name="payment-method" value="faktura" id="invoice" tabindex="0"> Faktura
                 <br>
 
                 <div class="paymentCardContainer">
                     <label> Kortnummer
-                        <input type="number" id="cardnumber">
+                        <input type="number" id="cardnumber" tabindex="0">
                     </label>
                     <br>
                     <label>Månad/År
-                        <input type="number">
+                        <input type="number" tabindex="0">
                     </label>
                     <label> CVC
-                        <input type="number">
+                        <input type="number" tabindex="0">
                     </label>
 
                 </div>
                 <div class="paymentInvoiceContainer">
                     <label> Personnummer</label>
                     <!--OBS! Denna är ej fixad i JS, behöver validera att det är ett korrekt personnummer!!-->
-                    <input type="number" id="personalnumber">
+                    <input type="number" id="personalnumber" tabindex="0">
 
                 </div>
             </section>
             <label>
                 <p>Godkänn behandling av dina personuppgifter</p>
-                <input type="checkbox" id="consent">
+                <input type="checkbox" id="consent" tabindex="0">
             </label>
             <label>
                 <p>Jag vill gärna ta emot Gottfrids munkfabriks nyhetsbrev!</p>
-                <input type="checkbox" id="news" checked>
+                <input type="checkbox" id="news" checked tabindex="0">
             </label><br>
-            <button class="buttonOrder" id="order" disabled> Beställ</button>
-            <button id="discard">Rensa beställning</button>
+            <button class="buttonOrder" id="order" tabindex="0" disabled> Beställ</button>
+            <button id="discard" tabindex="0">Rensa beställning</button>
         </section>
     </main>
     <footer>
