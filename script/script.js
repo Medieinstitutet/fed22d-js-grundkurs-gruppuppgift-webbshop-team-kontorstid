@@ -251,7 +251,7 @@ function showDonuts() {  //Function to display what is in the array/the donuts
     donutContainer.innerHTML += `
     <section class="donut-container">
       <div class="donut-image-container">
-          <img src="${donuts[i].images[0].img}" alt="${donuts[i].images[0].alt}">
+          <img src="${donuts[i].images[0].img}" alt="${donuts[i].images[0].alt}" tabindex="0">
       </div>
       <div class="donut-info-container">
           <h2 class="donutName">${donuts[i].name}<span class="donut-price">${donuts[i].price}</span> kr</h2>
@@ -260,8 +260,8 @@ function showDonuts() {  //Function to display what is in the array/the donuts
           
           <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
           <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
-          <button data-operator="decreaseBtn" data-id = "${i}">-</button>
-          <button data-operator="increaseBtn" data-id = "${i}">+</button>
+          <button data-operator="decreaseBtn" data-id = "${i}" tabindex="0">-</button>
+          <button data-operator="increaseBtn" data-id = "${i}" tabindex="0">+</button>
       </div>
     </section>
     `;
