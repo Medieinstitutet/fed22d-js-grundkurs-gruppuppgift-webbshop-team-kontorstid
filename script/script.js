@@ -13,6 +13,8 @@ let sortDonuts; //Variable to sort donuts e.g. after pricv
 let donutBox; //Variable to select donut pop up
 let discountCodeFactor = 1; //Variable to set discount to 1 or 0
 
+
+
 const img1 = document.querySelector("#img1");
 const img2 = document.querySelector("#img2");
 
@@ -34,6 +36,8 @@ let indicatorDots;
 let moveForwardTimer = null;
 let shoppingCart;
 
+let minuteTimer;//Används för att veta när vi öppnat orderformuläret.
+let deliveryInfo = 30; // Denna variabel är leveranstiden.
 // Fade-related variables
 let opacityTimer = null;
 let opacity = 100;
@@ -367,25 +371,28 @@ function printOrdredDonuts() {
   }
 }
 
-
 function reduceTotDonut(e) { //Function to reduce total amount of donuts
   if (donuts[e.currentTarget.dataset.id].totAmount <= 0) {
     return;
   }
+  if(orderForm.style.display==='' || orderForm.style.display==='none'){
   donuts[e.currentTarget.dataset.id].totAmount -= 1;
   checkSumInvoice();
   updateDonutSum();
   showShoppingCart();
   showShoppingCartView();
+  }
 }
 
                                 
 function increaseTotDonut(e) { //Function to increase total amount of donuts
+  if(orderForm.style.display==='' || orderForm.style.display==='none'){
   donuts[e.currentTarget.dataset.id].totAmount += 1;
   checkSumInvoice();
   updateDonutSum();
   showShoppingCart();
   showShoppingCartView();
+}
 }
 
 
@@ -447,6 +454,7 @@ function showShoppingCartView() {  //Function to display what is in the shopping
 function showOrderForm() {
     shoppingCartContainer.style.display = "none";
     orderForm.style.display = "block";
+    minuteTimer = new Date().getTime();
 }
 
 
@@ -607,13 +615,31 @@ document.querySelector(".menuCloser").onclick = function () {
   document.querySelector(".menuOpener").style.display ="block";
 }
 
+document.querySelector('.buttonOrder').onclick = function () {
+  shoppingCartContainer.querySelector("h2").innerHTML="Tack för din beställning! Beräknad leveranstid: "+deliveryInfo.toString()+" min"+"<br/>"+"Din beställning består av följande:";
+  shoppingCartContainer.style.display = "block";
+  orderForm.style.display = "none";
+  shoppingCartContainer.style.top="50%";
+  shoppingCartContainer.style.left="50%";
+  document.querySelector(".shoppingCartButton").style.display="none";
+}
 /*document.addEventListener("click", showShoppingCartView);*/
 nextBtn.addEventListener('click', nextImage);
 nextBtn2.addEventListener('click', nextImage);
 showOrderFormButton.addEventListener('click',showOrderForm);
+
+function orderCloseTimer(){
+  let countDown = new Date().getTime();
+  let minuteWaited = Math.floor(((countDown-minuteTimer)%(1000*60*60))/(1000*60));
+  if (minuteWaited>=15){
+    orderForm.style.display = "none";
+  }
+} 
+
+
 createDots();
 setInterval(time,1000);
-
+setInterval(orderCloseTimer,5000)
 init();
 showDonuts();
 initButtons();
