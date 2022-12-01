@@ -207,7 +207,7 @@ function swapImages(fadeOut, fadeIn) {
 
 
 function nextImage() {
-  if (Date.now()-last_clicked<500) return;
+  if (Date.now()-last_clicked<500) return; //Tittar ifall ett klick på knappen har skett inom en halv sekund. Ifall man tryckt på knappen inom en halv sekund så kommer man inte kunna gå vidare i koden.
   last_clicked=Date.now()
   if (currentImageIndex + 1 > images.length - 1) {
     // Restart from beginning
