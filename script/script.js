@@ -117,7 +117,7 @@ function initButtons() { //Function to declare buttons
 
 function initImg() {
   donutBox = document.querySelector(".donutBox");
-  donutBox.style.display='none';
+  donutBox.style.display = "none";
   //This is a click event for the donut popups. The click function first checksa if the donut image container is clicked.
   // If the donut image container is clicked, the HTML code is written and displayed as a block. A elif is used to make sure that the popup does not disappear,
   // if the popup is clicked on. At last the else is used to remove the popup if a click event occurs outside the popup box by displaying none.
@@ -130,9 +130,9 @@ function initImg() {
       donutName.innerHTML=e.target.parentElement.parentElement.querySelector("h2").innerHTML;
     if (displayState==0){
 
-      dimmer.style.display="block";
-      donutBox.style.display = 'block';
-      document.body.style.overflow="hidden";
+      dimmer.style.display = "block";
+      donutBox.style.display = "block";
+      document.body.style.overflow = "hidden";
     }
 
     displayState=1;
@@ -143,17 +143,16 @@ function initImg() {
     }
     else{
       //document.html.style.backgroundColor="white";
-      dimmer.style.display="none";
-      donutBox.style.display = 'none';
-      document.body.style.overflow="scroll";
+      dimmer.style.display = "none";
+      donutBox.style.display = "none";
+      document.body.style.overflow = "scroll";
       displayState=0;
       lockState=0;
       if (currentImageIndex + 1 > images.length - 1) {
         // Restart from beginning
         currentImageIndex = 0;
         swapImages(images.length - 1, currentImageIndex);
-      } else {
-        }
+      } 
       highlightDot();
     }
     for (let i = 0; i < donuts.length; i++) {
@@ -267,7 +266,6 @@ function showDonuts() {  //Function to display what is in the array/the donuts
     console.log(donuts[i].rating);*/
   showShoppingCart();
   initButtons();
-
 }
 
 
@@ -350,16 +348,13 @@ function calculateTotalPrice() {
 
 }
 
+
 function showShoppingCart() {
   let sum = calculateTotalPrice();
   priceContainer.innerHTML = `
   <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`
-
-  //printOrdredDonuts();
-
-
-  
 }
+
 
 function printOrdredDonuts() {
   priceContainer.innerHTML = "";
@@ -370,6 +365,7 @@ function printOrdredDonuts() {
     }
   }
 }
+
 
 function reduceTotDonut(e) { //Function to reduce total amount of donuts
   if (donuts[e.currentTarget.dataset.id].totAmount <= 0) {
@@ -408,8 +404,8 @@ function updateDonutSum() { //Function to update donut sum
   }
   
   showDonuts();
-
 }
+
 
 const sum = donuts.reduce(
   (previousValue, donut) => {
@@ -425,6 +421,8 @@ const sum = donuts.reduce(
   },
   0
 );
+
+
 function showShoppingCartView() {  //Function to display what is in the shopping cart
   shoppingCart.innerHTML = "";
   for (let i = 0; i < donuts.length; i++) {
@@ -450,6 +448,7 @@ function showShoppingCartView() {  //Function to display what is in the shopping
     shoppingCartContainer.style.display ="none";
   }
 }
+
 
 function showOrderForm() {
     shoppingCartContainer.style.display = "none";
@@ -489,6 +488,7 @@ emailField.addEventListener("change", checkFormAndToggleOrderButton);
 consentOfPersonalData.addEventListener("change", checkFormAndToggleOrderButton);
 discountElement.addEventListener("change", changeDiscountFactor);
 
+
 function checkFormAndToggleOrderButton() {
   if (checkName1() && checkName2() && checkAddress() && checkZipcode() && checkCity() && checkPhoneNumber() && checkEmail() && checkConsent()) {
     activateOrderButton();
@@ -496,6 +496,7 @@ function checkFormAndToggleOrderButton() {
     disableOrderButton();
   }
 }
+
 
 function checkName1() {
   if (nameField1.value.length > 1) {
@@ -506,6 +507,7 @@ function checkName1() {
   }
 }
 
+
 function checkName2() {
   if (nameField2.value.length > 1) {
     //Kollar att det är mer än ett tecken
@@ -515,6 +517,7 @@ function checkName2() {
   }
 }
 
+
 function checkAddress() {
   if (/^.{1,}\s{1,}[^\s]{1,}$/.test(addressField.value)) {
     return true;
@@ -523,6 +526,7 @@ function checkAddress() {
   }
 }
 
+
 function checkZipcode() {
   if (/^[0-9]{3}\s?[0-9]{2}$/.test(zipcodeField.value)) {
     return true;
@@ -530,6 +534,7 @@ function checkZipcode() {
     return false;
   }
 }
+
 
 function checkCity() {
   if (cityField.value.length > 1) {
@@ -540,6 +545,7 @@ function checkCity() {
   }
 }
 
+
 function checkPhoneNumber () {
     if(/^(\+?46|0)7\d{8}$/.test(phoneField.value)) {
         return true;
@@ -548,6 +554,7 @@ function checkPhoneNumber () {
     }
 }
 
+
 function checkEmail () {
     if(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailField.value)) {
         return true;
@@ -555,6 +562,7 @@ function checkEmail () {
         return false;
     }
 }
+
 
 function checkSumInvoice() {
   if (calculateTotalPrice() <= 800) {
@@ -565,15 +573,21 @@ function checkSumInvoice() {
   }
 }
 
+
 function checkConsent() {
     return consentOfPersonalData.checked;
 }
+
+
 function activateOrderButton() {
   orderButton.removeAttribute("disabled");
 }
+
+
 function disableOrderButton() {
   orderButton.setAttribute("disabled", true);
 }
+
 
 function changeDiscountFactor () {
   if (discountElement.value === 'a_damn_fine-cup_of-coffee') {
@@ -583,13 +597,17 @@ function changeDiscountFactor () {
   discountCodeFactor = 1;
   showShoppingCart();
 }
+
+
 paymentMethodCard.addEventListener("click", showCardContent);
 paymentMethodInvoice.addEventListener("click", showInvoiceContent);
+
 
 function showInvoiceContent() {
   document.querySelector(".paymentCardContainer").classList.remove("visible");
   document.querySelector(".paymentInvoiceContainer").classList.add("visible");
 }
+
 
 function showCardContent() {
   document.querySelector(".paymentInvoiceContainer").classList.remove("visible");
@@ -623,15 +641,18 @@ document.querySelector('.buttonOrder').onclick = function () {
   shoppingCartContainer.style.left="50%";
   document.querySelector(".shoppingCartButton").style.display="none";
 }
+
+
 /*document.addEventListener("click", showShoppingCartView);*/
 nextBtn.addEventListener('click', nextImage);
 nextBtn2.addEventListener('click', nextImage);
 showOrderFormButton.addEventListener('click',showOrderForm);
 
+
 function orderCloseTimer(){
   let countDown = new Date().getTime();
   let minuteWaited = Math.floor(((countDown-minuteTimer)%(1000*60*60))/(1000*60));
-  if (minuteWaited>=15){
+  if (minuteWaited>=1){
     orderForm.style.display = "none";
   }
 } 

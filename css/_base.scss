@@ -17,7 +17,7 @@ html {
 
 /*text*/
 p, h1, h2 {
-  color: #0e0e0e;
+  color: $textColor;
 }
 
 h1, h2, h3 {
@@ -34,7 +34,7 @@ p {
 
 /*body*/
 body {
-  background-color: #f8f8f8;
+  background-color: $primaryColor;
 }
 
 /*Header section*/
@@ -54,12 +54,12 @@ header {
   .headerBanner{
     position: relative;
     text-align: center;
-    color: white;
+    color: $primaryColor;
     border: 2px solid green;
   }
 
   .heading {
-    background-color: #f8f8f8;
+    background-color: $primaryColor;
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
@@ -77,6 +77,7 @@ header {
     transition: all 0.4s ease-in-out;
     position: fixed;
     z-index: 3;
+    
     ul {
       margin: 0;
       padding: 0;
@@ -95,7 +96,7 @@ header {
 
     a {
       text-decoration: none;
-      color: #0e0e0e;
+      color: $textColor;
     }
   }
 
@@ -110,9 +111,11 @@ header {
     z-index: 3;
     cursor:pointer;
   }
+
   #checkbox{
     display:none;
   }
+  
 .menuOpener{
   position: fixed;
   top: 20px;
@@ -122,45 +125,44 @@ header {
   height: 45px;
   cursor: pointer;
 
-  span {
-    display: block;
-    width: 35px;
-    height: 5px;
-    background-color: #f96c9e;
-    margin-bottom: 5px;
-    position: relative;
-    left: 0;
-    margin-left: 6px;
-    cursor: pointer;
-  }
+    span {
+      display: block;
+      width: 35px;
+      height: 5px;
+      background-color: $secondaryColor;
+      margin-bottom: 5px;
+      position: relative;
+      left: 0;
+      margin-left: 6px;
+      cursor: pointer;
+    }
 
-  span:nth-child(2) {
-    margin-left: 0;
-    transition: all 0.4s ease-in-out;
+    span:nth-child(2) {
+      margin-left: 0;
+      transition: all 0.4s ease-in-out;
+    }
   }
-}
-div.menu button:hover span:nth-child(2){
-  left: 6px;
-}
-}
-
+  div.menu button:hover span:nth-child(2){
+    left: 6px;
+  }
 .menuCloser{
-display:none;
-font-size: 60px;
-font-weight: bold;
-color: #f96c9e;
-z-index:4;
-right: 10px;
-top: 0px;
-width: 45px;
-height: 45px;
-cursor: pointer;
-position:fixed;
-
-
+  display:none;
+  font-size: 60px;
+  font-weight: bold;
+  color: $secondaryColor;
+  z-index:4;
+  right: 10px;
+  top: 0px;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  position:fixed;
 }
+}
+
 
 /*Main section*/
+
 main {
   padding: 15px;
 
@@ -173,7 +175,7 @@ main {
     width: 100%;
     height: 100%;
     z-index: 5;
-    background-color: #0e0e0e;
+    background-color: $textColor;
   }
 
   .donut-container {
@@ -193,242 +195,189 @@ main {
       border: none;
     }
   }
-}
-
   .donut-image-container {
     width: 100%;
   }
-
   .donutBox { 
     position: fixed;
-    background-color: #f8f8f8;
+    background-color: $primaryColor;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid rgb(103, 103, 103);
     z-index: 6;
   }
-
-  .donutBox p,
-  h3 {
+  .donutBox p, h3 {
     margin: 10px;
-    font-size: 0.7rem;
-   
+    font-size: 0.7rem; 
   }
-
-.slideControl{
-  display:flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-main .images {
-  position: relative;
-  top: 0;
-  left: 0;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  min-height: 400px;
-}
-main #img1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-main #img2 {
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
-main .indicator {
-  text-align: center;
-}
-main .dot {
-  height: 25px;
-  width: 25px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-main .selected {
-  height: 25px;
-  width: 25px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-main .donutBox h1 {
-  margin: 10px;
-  font-size: 1.3rem;
-  text-align: center;
-}
-main .donut-info-container {
-  margin-left: 2rem;
-  width: 100%;
-}
-main .donut-info-container h2,
-main span,
-main p {
-  color: #0e0e0e;
-}
-main .donut-info-container button {
-  background-color: #d9d9d9;
-  color: #0e0e0e;
-  margin-top: 1rem;
-  margin-right: 1.2rem;
-  height: 30px;
-  width: 30px;
-}
-main .donut-info-container .checked,
-main .unchecked {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-main .donut-info {
-  display: none;
-}
-main .unchecked {
-  color: #a7a7a7;
-}
-main img {
-  max-width: 100%;
-}
-main .checked {
-  color: #f96c9e;
-}
-main .checkout-container {
-  display: none;
-  background-color: #616161;
-}
-main .checkout-container p,
-main input {
-  margin-left: 3rem;
-}
-main .checkout-container p,
-main .payment {
-  color: #f8f8f8;
-}
-
-.paymentCardContainer {
-  display: none;
-}
-
-.paymentInvoiceContainer {
-  display: none;
-}
-
-.visible {
-  display: block;
-}
-
-.shoppingCartContainer {
-  display:none;
-  position: fixed;
-  background-color: $secondaryColor;
-  top: 70%;
-  left: 85%;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgb(103, 103, 103);
-  z-index: 6;
-  border-radius: 10px;
-}
-
-.shoppingCartName {
-  color: $primaryColor;
-  margin: 10px;
-  padding: 5px;
-}
-
-.shoppingCart {
-  color: $primaryColor;
-}
-.donutOrderedContainer{
-  display:flex;
-  flex-direction: row;
-  line-height: 1.5rem;
-  justify-content: space-around;
-  color: $primaryColor;
-}
-.donutOrderedContainer p {
-  line-height: 1.5rem;
-  padding: 15px;
-  justify-content: space-around;
-  color: $primaryColor; 
-}
-.donutTotalPrice {
-  line-height: 1.5rem;
-  font-size: 1.5rem;
+  .slideControl{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .images {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    min-height: 400px;
+  }
+  #img1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  #img2 {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .indicator {
+    text-align: center;
+    }
+  .dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+  .selected {
+    height: 25px;
+    width: 25px;
+    background-color: $textColor;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+  .donutBox h1 {
+    margin: 10px;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  .donut-info-container {
+    margin-left: 2rem;
+    width: 100%;
+  }
+  .donut-info-container h2,
+  span,
+  p {
+    color: $textColor;
+  }
+  .donut-info-container button {
+    background-color: $textColor;
+    color: $primaryColor;
+    margin-top: 1rem;
+    margin-right: 1.2rem;
+    height: 30px;
+    width: 30px;
+  }
+  .donut-info-container .checked,
+  .unchecked {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .donut-info {
+    display: none;
+  }
+  .unchecked {
+    color: #a7a7a7;
+  }
+  img {
+    max-width: 100%;
+  }
+  .checked {
+    color: $secondaryColor;
+  }
+  .checkout-container {
+    display: none;
+    background-color: #616161;
+  }
+  .checkout-container p, input {
+    margin-left: 3rem;
+  }
+  .checkout-container p,
+  .payment {
+    color: $primaryColor;
+  }
+  .paymentCardContainer {
+    display: none;
+  }
+  .paymentInvoiceContainer {
+    display: none;
+  }
+  .visible {
+    display: block;
+  }
+  .shoppingCartContainer {
+    display:none;
+    position: fixed;
+    background-color: $secondaryColor;
+    top: 70%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgb(103, 103, 103);
+    z-index: 6;
+    border-radius: 10px;
+  }
+  .shoppingCartName {
+    color: $primaryColor;
+    margin: 10px;
+    padding: 5px;
+  }
+  .shoppingCart {
+    color: $primaryColor;
+  }
+  .donutOrderedContainer{
+    display:flex;
+    flex-direction: row;
+    line-height: 1.5rem;
+    justify-content: space-around;
+    color: $primaryColor;
+  }
+  .donutOrderedContainer p {
+    line-height: 1.5rem;
+    padding: 15px;
+    justify-content: space-around;
+    color: $primaryColor; 
+  }
+  .donutTotalPrice {
+    line-height: 1.5rem;
+    font-size: 1.5rem;
+  }
 }
 /*Footer section*/
 footer {
-  background-color: #f96c9e;
+  background-color: $secondaryColor;
   padding: 25px 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-footer .fa-cart-shopping {
-  color: #f8f8f8;
-  font-size: 2.1rem;
-  margin: 0;
-  margin-top: 7px;
-}
-footer h2 {
-  margin: 0;
-  color: #f8f8f8;
-}
-footer p {
-  color: #f8f8f8;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-footer .tot-sum {
-  color: #f8f8f8;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-@media screen and (min-width: 768px) {
-  .donutContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  .fa-cart-shopping {
+    color: $primaryColor;
+    font-size: 2.1rem;
+    margin: 0;
+    margin-top: 7px;
   }
-}
-@media screen and (min-width: 1264px) {
-  .donutContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  h2 {
+    margin: 0;
+    color: $primaryColor;
   }
-  .postal-address-container {
-    display: flex;
-    gap: 15px;
+  p {
+    color: $primaryColor;
+    font-weight: bold;
+    font-size: 1.1rem;
   }
-  .postal-address-container .postalcode {
-    max-width: 100px;
-  }
-  .postal-address-container {
-    display: flex;
-    gap: 15px;
-  }
-  .postal-address-container .postalcode {
-    max-width: 100px;
-  }
-  main {
-    padding: 15px;
-    max-width: 1400px;
-    margin: auto;
-  }
-  .postal-address-container {
-    display: flex;
-    gap: 15px;
-  }
-  .postal-address-container .postalcode {
-    max-width: 100px;
+  .tot-sum {
+    color: $primaryColor;
+    font-weight: bold;
+    font-size: 1.1rem;
   }
 }
