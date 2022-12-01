@@ -51,6 +51,7 @@ header {
     background-position: center;
     height: 730px;
   }
+
   .headerBanner{
     position: relative;
     text-align: center;
@@ -69,6 +70,7 @@ header {
     max-width: 65%;
     margin-top: -5px;
   }
+
   nav {
     background-color: rgba(255, 255, 255, 0.85);
     width: 100vw;
@@ -142,9 +144,11 @@ header {
       transition: all 0.4s ease-in-out;
     }
   }
+
   div.menu button:hover span:nth-child(2){
     left: 6px;
   }
+
 .menuCloser{
   display:none;
   font-size: 60px;
@@ -195,9 +199,11 @@ main {
       border: none;
     }
   }
+
   .donut-image-container {
     width: 100%;
   }
+
   .donutBox { 
     position: fixed;
     background-color: $primaryColor;
@@ -207,16 +213,19 @@ main {
     border: 1px solid rgb(103, 103, 103);
     z-index: 6;
   }
+
   .donutBox p, h3 {
     margin: 10px;
     font-size: 0.7rem; 
   }
+
   .slideControl{
     display:flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
   }
+
   .images {
     position: relative;
     top: 0;
@@ -227,17 +236,20 @@ main {
     width: 50%;
     min-height: 400px;
   }
+
   #img1 {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
   }
+
   #img2 {
     position: relative;
     top: 0;
     left: 0;
   }
+  
   .indicator {
     text-align: center;
     }
