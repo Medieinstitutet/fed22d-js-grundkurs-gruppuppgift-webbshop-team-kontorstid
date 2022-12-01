@@ -31,6 +31,10 @@ const isMonday = weekendPrice.getDay() === 1;
 const time = weekendPrice.getHours();
 const discountElement = document.querySelector("#discountCode");
 
+
+const priceRangeSlider = document.querySelector("#priceRange"); //Constant to refer to the HTML element priceRange
+const currentRangeValue = document.querySelector("#currentRangeValue"); //Constant to refer to the HTML element currentRangeValue
+
 let currentImageIndex = 0;
 let indicatorDots;
 let moveForwardTimer = null;
@@ -65,7 +69,8 @@ const donuts = [ //Array which stores all info about the donut, e.g. name
   { images: [ { img: "assets/photos/bild12.jpg", img2:"assets/photos/donut-with-sprinkles-on-chocolate2.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Choklad", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
 ];
 
-
+let filteredDonuts = [... donuts];
+let filteredDonutsInPriceRange = [... donuts];
 
 let images = [
   {
@@ -87,6 +92,7 @@ function init() { //Function to declare HTML elements
   donutOrderedName = document.querySelector(".donutOrderedName");
   donutOrderedPrice =document.querySelector(".donutOrderedPrice");
   shoppingCart=document.querySelector(".shoppingCart")
+  priceRangeSlider.addEventListener("input", changePriceRange) //Adds an eventlistener to changePriceRange
 
   if ((isFriday && time >= 15) && (isMonday && time <= 03)) {
     for (let i = 0; i < donuts.length; i++) {
@@ -260,28 +266,42 @@ function showDonuts() {  //Function to display what is in the array/the donuts
     </section>
     `;
   }
-  /*for (let i = 0; i < donuts.rating; i++) {
-    rating += `<div class="ratingContainer">fa fa-star checked</div>`
-    }
-    console.log(donuts[i].rating);*/
+  
   showShoppingCart();
   initButtons();
+}
+
+
+function changePriceRange(e) {
+  for (let i = 0; i < donuts.length; i++){
+    const currentPrice = priceRangeSlider.value;
+    currentRangeValue.innerHTML = currentPrice;
+
+    filteredDonutsInPriceRange = filteredDonuts.filter((donut) => donut.price <= currentPrice);
+    console.log(filteredDonutsInPriceRange);
+  }
+
+  showDonuts()
 }
 
 
 function updateSorting(e) { //Function to update sorting
   const selectedSortingValue = e.currentTarget.value;
 
-  if (selectedSortingValue === 'donutName') {
+  if (selectedSortingValue === "donutName") {
     sortAfterName();
   }
 
-  if (selectedSortingValue === 'donutLowestPrice') {
+  if (selectedSortingValue === "donutLowestPrice") {
     sortAfterLowPrice();
   }
 
-  if (selectedSortingValue === 'donutHighestPrice') {
+  if (selectedSortingValue === "donutHighestPrice") {
     sortAfterHighPrice();
+  }
+
+  if (selectedSortingValue === "donutRating") {
+    sortAfterRating();
   }
 }
 
@@ -314,6 +334,15 @@ function sortAfterLowPrice() {
 function sortAfterHighPrice() {
   donuts.sort((donut1, donut2) => {
     return donut2.price - donut1.price;
+  });
+
+  showDonuts();
+  initButtons();
+}
+
+function sortAfterRating() {
+  donuts.sort((donut1, donut2) => {
+    return donut2.rating - donut1.rating;
   });
 
   showDonuts();
