@@ -31,6 +31,9 @@ const isMonday = weekendPrice.getDay() === 1;
 const time = weekendPrice.getHours();
 const discountElement = document.querySelector("#discountCode");
 
+const priceRangeSlider = document.querySelector("#priceRange"); //Constant to refer to the HTML element priceRange
+const currentRangeValue = document.querySelector("#currentRangeValue"); //Constant to refer to the HTML element currentRangeValue
+
 let currentImageIndex = 0;
 let indicatorDots;
 let moveForwardTimer = null;
@@ -48,6 +51,7 @@ let lockState = 0;
 let donutName = document.querySelector(".donutName");
 let dimmer = document.querySelector(".dimmer");
 let last_clicked = 0;
+let maxFilterPrice = 500;
 
 const donuts = [
   //Array which stores all info about the donut, e.g. name
@@ -279,6 +283,7 @@ function init() {
   donutOrderedName = document.querySelector(".donutOrderedName");
   donutOrderedPrice = document.querySelector(".donutOrderedPrice");
   shoppingCart = document.querySelector(".shoppingCart");
+  priceRangeSlider.addEventListener("input", changePriceRange); //Adds an eventlistener to changePriceRange
 
   if (isFriday && time >= 15 && isMonday && time <= 03) {
     for (let i = 0; i < donuts.length; i++) {
@@ -287,6 +292,15 @@ function init() {
       console.log(donuts[i].price);
     }
   }
+  checkName1() ||
+    checkName2() ||
+    checkAddress() ||
+    checkZipcode() ||
+    checkCity() ||
+    checkPhoneNumber() ||
+    checkEmail() ||
+    checkConsent() ||
+    checkPersonalNumber();
 } //End init
 
 function initButtons() {
@@ -340,7 +354,6 @@ function initImg() {
           // Restart from beginning
           currentImageIndex = 0;
           swapImages(images.length - 1, currentImageIndex);
-        } else {
         }
         highlightDot();
       }
@@ -393,7 +406,7 @@ function swapImages(fadeOut, fadeIn) {
 }
 
 function nextImage() {
-  if (Date.now() - last_clicked < 500) return; //Tittar ifall ett klick på knappen har skett inom en halv sekund. Ifall man tryckt på knappen inom en halv sekund så kommer man inte kunna gå vidare i koden. (tar bort spam)
+  if (Date.now() - last_clicked < 500) return; //Tittar ifall ett klick på knappen har skett inom en halv sekund. Ifall man tryckt på knappen inom en halv sekund så kommer man inte kunna gå vidare i koden.
   last_clicked = Date.now();
   if (currentImageIndex + 1 > images.length - 1) {
     // Restart from beginning
@@ -427,31 +440,38 @@ function showDonuts() {
     for (let j = 0; j < 5 - donuts[i].rating; j++) {
       donutRating += "<span class='fa fa-star'></span>";
     }
-
-    donutContainer.innerHTML += `
-    <section class="donut-container">
-      <div class="donut-image-container">
-          <img src="${donuts[i].images[0].img}" alt="${donuts[i].images[0].alt}">
-      </div>
-      <div class="donut-info-container">
-          <h2 class="donutName">${donuts[i].name}<span class="donut-price">${donuts[i].price}</span> kr</h2>
-          <p class="donutCategory">${donuts[i].category}</p>
-          <div class="ratingContainer">${donutRating}</div>
-          
-          <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
-          <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
-          <button data-operator="decreaseBtn" data-id = "${i}">-</button>
-          <button data-operator="increaseBtn" data-id = "${i}">+</button>
-      </div>
-    </section>
-    `;
-  }
-  /*for (let i = 0; i < donuts.rating; i++) {
-    rating += `<div class="ratingContainer">fa fa-star checked</div>`
+    if (donuts[i].price <= maxFilterPrice) {
+      donutContainer.innerHTML += `
+      <section class="donut-container">
+        <div class="donut-image-container">
+            <img src="${donuts[i].images[0].img}" alt="${donuts[i].images[0].alt}">
+        </div>
+        <div class="donut-info-container">
+            <h2 class="donutName">${donuts[i].name}<span class="donut-price">${donuts[i].price}</span> kr</h2>
+            <p class="donutCategory">${donuts[i].category}</p>
+            <div class="ratingContainer">${donutRating}</div>
+            
+            <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
+            <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
+            <button data-operator="decreaseBtn" data-id = "${i}">-</button>
+            <button data-operator="increaseBtn" data-id = "${i}">+</button>
+        </div>
+      </section>
+      `;
     }
-    console.log(donuts[i].rating);*/
+  }
+
   showShoppingCart();
   initButtons();
+}
+
+function changePriceRange(e) {
+  maxFilterPrice = priceRangeSlider.value;
+  currentRangeValue.innerHTML = maxFilterPrice;
+
+  //filteredDonutsInPriceRange = filteredDonuts.filter((donut) => donut.price <= currentPrice);
+
+  showDonuts();
 }
 
 function updateSorting(e) {
@@ -468,6 +488,10 @@ function updateSorting(e) {
 
   if (selectedSortingValue === "donutHighestPrice") {
     sortAfterHighPrice();
+  }
+
+  if (selectedSortingValue === "donutRating") {
+    sortAfterRating();
   }
 }
 
@@ -504,6 +528,15 @@ function sortAfterHighPrice() {
   initButtons();
 }
 
+function sortAfterRating() {
+  donuts.sort((donut1, donut2) => {
+    return donut2.rating - donut1.rating;
+  });
+
+  showDonuts();
+  initButtons();
+}
+
 function calculateTotalPrice() {
   const monday = new Date();
   let newSum;
@@ -531,8 +564,6 @@ function showShoppingCart() {
   let sum = calculateTotalPrice();
   priceContainer.innerHTML = `
   <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`;
-
-  //printOrdredDonuts();
 }
 
 function printOrdredDonuts() {
@@ -587,17 +618,6 @@ function updateDonutSum() {
   showDonuts();
 }
 
-const sum = donuts.reduce((previousValue, donut) => {
-  // Om kunden har beställt minst 10 munkar av samma sort
-  //ska munkpriset för just denna munksort rabatteras med 10 %
-  // Detta betydyder att , om antalet donuts <10 så ska vi inte ge rabatt.
-  if (donut.totAmount < 10) {
-    return donut.totAmount * donut.price + previousValue;
-  } // Om vi har 10 eller fler munkar av samma sort så lägger vi till 10% rabatt.
-  else {
-    return Math.round(donut.totAmount * donut.price * 0.9) + previousValue;
-  }
-}, 0);
 function showShoppingCartView() {
   //Function to display what is in the shopping cart
   shoppingCart.innerHTML = "";
@@ -647,6 +667,7 @@ const paymentMethodChoice = document.querySelector("#paymentmethod");
 let nameIsOk = false;
 const paymentMethodCard = document.querySelector("#card");
 const paymentMethodInvoice = document.querySelector("#invoice");
+const personalNumber = document.querySelector("#personalnumber");
 const consentOfPersonalData = document.querySelector("#consent");
 
 // formulär
@@ -660,6 +681,8 @@ phoneField.addEventListener("change", checkFormAndToggleOrderButton);
 emailField.addEventListener("change", checkFormAndToggleOrderButton);
 consentOfPersonalData.addEventListener("change", checkFormAndToggleOrderButton);
 discountElement.addEventListener("change", changeDiscountFactor);
+paymentMethodInvoice.addEventListener("change", checkFormAndToggleOrderButton);
+personalNumber.addEventListener("change", checkFormAndToggleOrderButton);
 
 function checkFormAndToggleOrderButton() {
   if (
@@ -670,7 +693,8 @@ function checkFormAndToggleOrderButton() {
     checkCity() &&
     checkPhoneNumber() &&
     checkEmail() &&
-    checkConsent()
+    checkConsent() &&
+    checkPersonalNumber()
   ) {
     activateOrderButton();
   } else {
@@ -681,8 +705,18 @@ function checkFormAndToggleOrderButton() {
 function checkName1() {
   if (nameField1.value.length > 1) {
     //Kollar att det är mer än ett tecken
+    const errormMessageFirstname = document.querySelector(
+      "#errormessagefirstname"
+    );
+    errormMessageFirstname.innerHTML = "";
+    errormMessageFirstname.style.border = "";
     return true;
   } else {
+    const errormMessageFirstname = document.querySelector(
+      "#errormessagefirstname"
+    );
+    errormMessageFirstname.innerHTML = "Vänligen fyll i ditt förnamn!";
+    errormMessageFirstname.style.border = "solid 2px red";
     return false;
   }
 }
@@ -690,24 +724,43 @@ function checkName1() {
 function checkName2() {
   if (nameField2.value.length > 1) {
     //Kollar att det är mer än ett tecken
+    const errormMessageSurname = document.querySelector("#errormessagesurname");
+    errormMessageSurname.innerHTML = "";
+    errormMessageSurname.style.border = "";
     return true;
   } else {
+    const errormMessageSurname = document.querySelector("#errormessagesurname");
+    errormMessageSurname.innerHTML = "Vänligen fyll i ditt efternamn!";
+    errormMessageSurname.style.border = "solid 2px red";
     return false;
   }
 }
 
 function checkAddress() {
   if (/^.{1,}\s{1,}[^\s]{1,}$/.test(addressField.value)) {
+    const errormMessageAddress = document.querySelector("#errormessageaddress");
+    errormMessageAddress.innerHTML = "";
+    errormMessageAddress.style.border = "";
     return true;
   } else {
+    const errormMessageAddress = document.querySelector("#errormessageaddress");
+    errormMessageAddress.innerHTML = "Vänligen fyll i din adress!";
+    errormMessageAddress.style.border = "solid 2px red";
     return false;
   }
 }
 
 function checkZipcode() {
   if (/^[0-9]{3}\s?[0-9]{2}$/.test(zipcodeField.value)) {
+    const errormMessageZipcode = document.querySelector("#errormessagezipcode");
+    errormMessageZipcode.innerHTML = "";
+    errormMessageZipcode.style.border = "";
     return true;
   } else {
+    const errormMessageZipcode = document.querySelector("#errormessagezipcode");
+    errormMessageZipcode.innerHTML =
+      "Vänligen fyll i din postnummer, fem siffror!";
+    errormMessageZipcode.style.border = "solid 2px red";
     return false;
   }
 }
@@ -715,24 +768,69 @@ function checkZipcode() {
 function checkCity() {
   if (cityField.value.length > 1) {
     //Kollar att det är minst ett tecken
+    const errormMessageCity = document.querySelector("#errormessagecity");
+    errormMessageCity.innerHTML = "";
+    errormMessageCity.style.border = "";
     return true;
   } else {
+    const errormMessageCity = document.querySelector("#errormessagecity");
+    errormMessageCity.innerHTML = "Vänligen fyll i din postort!";
+    errormMessageCity.style.border = "solid 2px red";
     return false;
   }
 }
 
 function checkPhoneNumber() {
   if (/^(\+?46|0)7\d{8}$/.test(phoneField.value)) {
+    const errormMessagePhone = document.querySelector("#errormessagephone");
+    errormMessagePhone.innerHTML = "";
+    errormMessagePhone.style.border = "";
     return true;
   } else {
+    const errormMessagePhone = document.querySelector("#errormessagephone");
+    errormMessagePhone.innerHTML = "Vänligen fyll i ditt svenska mobilnummer!";
+    errormMessagePhone.style.border = "solid 2px red";
     return false;
   }
 }
 
 function checkEmail() {
   if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailField.value)) {
+    const errormMessageEmail = document.querySelector("#errormessageemail");
+    errormMessageEmail.innerHTML = "";
+    errormMessageEmail.style.border = "";
     return true;
   } else {
+    const errormMessageEmail = document.querySelector("#errormessageemail");
+    errormMessageEmail.innerHTML = "Vänligen fyll i din email, ex abc@123.com";
+    errormMessageEmail.style.border = "solid 2px red";
+    return false;
+  }
+}
+
+function checkPersonalNumber() {
+  if (paymentMethodCard.checked) {
+    return true;
+  }
+
+  if (
+    /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})$/.test(
+      personalNumber.value
+    )
+  ) {
+    const errorMessagePersonalNumber = document.querySelector(
+      "#errormessagepersonalnumber"
+    );
+    errorMessagePersonalNumber.innerHTML = "";
+    errorMessagePersonalNumber.style.border = "";
+    return true;
+  } else {
+    const errorMessagePersonalNumber = document.querySelector(
+      "#errormessagepersonalnumber"
+    );
+    errorMessagePersonalNumber.innerHTML =
+      "Vänligen fyll i ditt personnummer enligt format yymmdd-xxxx";
+    errorMessagePersonalNumber.style.border = "solid 2px red";
     return false;
   }
 }
@@ -749,9 +847,11 @@ function checkSumInvoice() {
 function checkConsent() {
   return consentOfPersonalData.checked;
 }
+
 function activateOrderButton() {
   orderButton.removeAttribute("disabled");
 }
+
 function disableOrderButton() {
   orderButton.setAttribute("disabled", true);
 }
@@ -762,11 +862,11 @@ function changeDiscountFactor() {
   } else discountCodeFactor = 1;
   showShoppingCart();
 }
+
 paymentMethodCard.addEventListener("click", showCardContent);
 paymentMethodInvoice.addEventListener("click", showInvoiceContent);
 
 function showInvoiceContent() {
-  t;
   document.querySelector(".paymentCardContainer").classList.remove("visible");
   document.querySelector(".paymentInvoiceContainer").classList.add("visible");
 }
@@ -809,6 +909,7 @@ document.querySelector(".buttonOrder").onclick = function () {
   shoppingCartContainer.style.left = "50%";
   document.querySelector(".shoppingCartButton").style.display = "none";
 };
+
 /*document.addEventListener("click", showShoppingCartView);*/
 nextBtn.addEventListener("click", nextImage);
 nextBtn2.addEventListener("click", nextImage);
