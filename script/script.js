@@ -252,7 +252,6 @@ function showDonuts() {  //Function to display what is in the array/the donuts
     <section class="donut-container">
       <div class="donut-image-container">
           <img src="${filteredDonutsInPriceRange[i].images[0].img}" alt="${filteredDonutsInPriceRange[i].images[0].alt}">
-          <img src="${filteredDonutsInPriceRange[i].images[0].img}" alt="${filteredDonutsInPriceRange[i].images[0].alt}" tabindex="0">
       </div>
       <div class="donut-info-container">
           <h2 class="donutName">${filteredDonutsInPriceRange[i].name}<span class="donut-price">${filteredDonutsInPriceRange[i].price}</span> kr</h2>
