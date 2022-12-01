@@ -70,9 +70,6 @@ const donuts = [ //Array which stores all info about the donut, e.g. name
   { images: [ { img: "assets/photos/bild12.jpg", img2:"assets/photos/donut-with-sprinkles-on-chocolate2.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Choklad", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
 ];
 
-let filteredDonuts = [... donuts];
-let filteredDonutsInPriceRange = [... donuts];
-
 let images = [
   {
     url: "",
@@ -102,7 +99,7 @@ function init() { //Function to declare HTML elements
       console.log(donuts[i].price)
     }
   }
-
+  checkName1() || checkName2() || checkAddress() || checkZipcode() || checkCity() || checkPhoneNumber() || checkEmail() || checkConsent() || checkPersonalNumber();
 } //End init
 
 
@@ -435,20 +432,7 @@ function updateDonutSum() { //Function to update donut sum
 }
 
 
-const sum = donuts.reduce(
-  (previousValue, donut) => {
-    // Om kunden har beställt minst 10 munkar av samma sort
-    //ska munkpriset för just denna munksort rabatteras med 10 %
-    // Detta betydyder att , om antalet donuts <10 så ska vi inte ge rabatt.
-    if (donut.totAmount < 10){ 
-    return donut.totAmount * donut.price + previousValue;
-  } // Om vi har 10 eller fler munkar av samma sort så lägger vi till 10% rabatt.
-  else{
-    return Math.round(donut.totAmount * donut.price*0.9) + previousValue;
-  }
-  },
-  0
-);
+
 
 
 function showShoppingCartView() {  //Function to display what is in the shopping cart
@@ -501,6 +485,7 @@ const paymentMethodChoice = document.querySelector("#paymentmethod");
 let nameIsOk = false;
 const paymentMethodCard = document.querySelector("#card");
 const paymentMethodInvoice = document.querySelector("#invoice");
+const personalNumber = document.querySelector("#personalnumber");
 const consentOfPersonalData = document.querySelector("#consent");
 
 
@@ -515,10 +500,12 @@ phoneField.addEventListener("change", checkFormAndToggleOrderButton);
 emailField.addEventListener("change", checkFormAndToggleOrderButton);
 consentOfPersonalData.addEventListener("change", checkFormAndToggleOrderButton);
 discountElement.addEventListener("change", changeDiscountFactor);
+paymentMethodInvoice.addEventListener("change", checkFormAndToggleOrderButton);
+personalNumber.addEventListener("change", checkFormAndToggleOrderButton);
 
 
 function checkFormAndToggleOrderButton() {
-  if (checkName1() && checkName2() && checkAddress() && checkZipcode() && checkCity() && checkPhoneNumber() && checkEmail() && checkConsent()) {
+  if (checkName1() && checkName2() && checkAddress() && checkZipcode() && checkCity() && checkPhoneNumber() && checkEmail() && checkConsent() && checkPersonalNumber()) {
     activateOrderButton();
   } else {
     disableOrderButton();
@@ -529,8 +516,14 @@ function checkFormAndToggleOrderButton() {
 function checkName1() {
   if (nameField1.value.length > 1) {
    //Kollar att det är mer än ett tecken
+   const errormMessageFirstname = document.querySelector("#errormessagefirstname");
+   errormMessageFirstname.innerHTML = "";
+   errormMessageFirstname.style.border = "";
     return true;
   } else {
+    const errormMessageFirstname = document.querySelector("#errormessagefirstname");
+    errormMessageFirstname.innerHTML = "Vänligen fyll i ditt förnamn!";
+    errormMessageFirstname.style.border = "solid 2px red";
     return false;
   }
 }
@@ -539,58 +532,113 @@ function checkName1() {
 function checkName2() {
   if (nameField2.value.length > 1) {
     //Kollar att det är mer än ett tecken
-    return true;
-  } else {
-    return false;
-  }
+    const errormMessageSurname = document.querySelector("#errormessagesurname");
+    errormMessageSurname.innerHTML = "";
+    errormMessageSurname.style.border = "";
+     return true;
+   } else {
+     const errormMessageSurname = document.querySelector("#errormessagesurname");
+     errormMessageSurname.innerHTML = "Vänligen fyll i ditt efternamn!";
+     errormMessageSurname.style.border = "solid 2px red";
+     return false;
+   }
 }
 
 
 function checkAddress() {
   if (/^.{1,}\s{1,}[^\s]{1,}$/.test(addressField.value)) {
-    return true;
-  } else {
-    return false;
-  }
+    const errormMessageAddress = document.querySelector("#errormessageaddress");
+    errormMessageAddress.innerHTML = "";
+    errormMessageAddress.style.border = "";
+     return true;
+   } else {
+     const errormMessageAddress = document.querySelector("#errormessageaddress");
+     errormMessageAddress.innerHTML = "Vänligen fyll i din adress!";
+     errormMessageAddress.style.border = "solid 2px red";
+     return false;
+   }
 }
 
 
 function checkZipcode() {
   if (/^[0-9]{3}\s?[0-9]{2}$/.test(zipcodeField.value)) {
-    return true;
-  } else {
-    return false;
-  }
+    const errormMessageZipcode = document.querySelector("#errormessagezipcode");
+    errormMessageZipcode.innerHTML = "";
+    errormMessageZipcode.style.border = "";
+     return true;
+   } else {
+     const errormMessageZipcode = document.querySelector("#errormessagezipcode");
+     errormMessageZipcode.innerHTML = "Vänligen fyll i din postnummer, fem siffror!";
+     errormMessageZipcode.style.border = "solid 2px red";
+     return false;
+    }
 }
 
 
 function checkCity() {
   if (cityField.value.length > 1) {
     //Kollar att det är minst ett tecken
-    return true;
-  } else {
-    return false;
-  }
+    const errormMessageCity = document.querySelector("#errormessagecity");
+    errormMessageCity.innerHTML = "";
+    errormMessageCity.style.border = "";
+     return true;
+   } else {
+     const errormMessageCity = document.querySelector("#errormessagecity");
+     errormMessageCity.innerHTML = "Vänligen fyll i din postort!";
+     errormMessageCity.style.border = "solid 2px red";
+     return false;
+    }
 }
 
 
 function checkPhoneNumber () {
     if(/^(\+?46|0)7\d{8}$/.test(phoneField.value)) {
-        return true;
-    } else {
-        return false;
-    }
-}
+      const errormMessagePhone = document.querySelector("#errormessagephone");
+      errormMessagePhone.innerHTML = "";
+      errormMessagePhone.style.border = "";
+       return true;
+     } else {
+       const errormMessagePhone = document.querySelector("#errormessagephone");
+       errormMessagePhone.innerHTML = "Vänligen fyll i ditt svenska mobilnummer!";
+       errormMessagePhone.style.border = "solid 2px red";
+       return false;
+      }
+  }
 
 
 function checkEmail () {
     if(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailField.value)) {
-        return true;
-    } else {
-        return false;
-    }
-}
+      const errormMessageEmail = document.querySelector("#errormessageemail");
+      errormMessageEmail.innerHTML = "";
+      errormMessageEmail.style.border = "";
+       return true;
+     } else {
+       const errormMessageEmail = document.querySelector("#errormessageemail");
+       errormMessageEmail.innerHTML = "Vänligen fyll i din email, ex abc@123.com";
+       errormMessageEmail.style.border = "solid 2px red";
+       return false;
+      }
+  }
 
+  function checkPersonalNumber () {
+    if (paymentMethodCard.checked) {
+
+      return true;
+    }
+
+
+    if (/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})$/.test(personalNumber.value)) {
+      const errorMessagePersonalNumber = document.querySelector("#errormessagepersonalnumber");
+      errorMessagePersonalNumber.innerHTML = "";
+      errorMessagePersonalNumber.style.border = "";
+       return true;
+     } else {
+       const errorMessagePersonalNumber  = document.querySelector("#errormessagepersonalnumber");
+       errorMessagePersonalNumber.innerHTML = "Vänligen fyll i ditt personnummer enligt format yymmdd-xxxx";
+       errorMessagePersonalNumber.style.border = "solid 2px red";
+       return false;
+      }
+  }
 
 function checkSumInvoice() {
   if (calculateTotalPrice() <= 800) {
@@ -680,7 +728,7 @@ showOrderFormButton.addEventListener('click',showOrderForm);
 function orderCloseTimer(){
   let countDown = new Date().getTime();
   let minuteWaited = Math.floor(((countDown-minuteTimer)%(1000*60*60))/(1000*60));
-  if (minuteWaited>=1){
+  if (minuteWaited>=15){
     orderForm.style.display = "none";
   }
 } 

@@ -327,15 +327,16 @@ main {
   .checkout-container {
     display: none;
     background-color: #616161;
-  }
-
-  .checkout-container p, input {
+    p, input {
     margin-left: 3rem;
   }
-
-  .checkout-container p, .payment {
+    p, .payment {
     color: $primaryColor;
   }
+  span {
+    color: $primaryColor;
+  }
+}
 
   .paymentCardContainer {
     display: none;
