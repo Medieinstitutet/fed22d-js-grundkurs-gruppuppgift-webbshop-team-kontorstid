@@ -37,19 +37,33 @@ body {
   background-color: $primaryColor;
 }
 
+
 /*Header section*/
+
 header {
   display: block;
   padding: 0; 
+
+  .heading {
+    background-color: $primaryColor;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
   
   .headerBackground {
     margin: auto;
     display: flex;
     justify-content: space-between;
     background-image: url("../assets/photos/donutHeader.webp");
-    background-size: cover; 
     background-position: center;
-    height: 730px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 830px;
   }
 
   .headerBanner{
@@ -57,13 +71,6 @@ header {
     text-align: center;
     color: $primaryColor;
     border: 2px solid green;
-  }
-
-  .heading {
-    background-color: $primaryColor;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
   }
 
   .heading img {
@@ -249,10 +256,11 @@ main {
     top: 0;
     left: 0;
   }
-  
+
   .indicator {
     text-align: center;
     }
+
   .dot {
     height: 25px;
     width: 25px;
@@ -261,6 +269,7 @@ main {
     display: inline-block;
     margin-right: 0.5rem;
   }
+
   .selected {
     height: 25px;
     width: 25px;
@@ -269,20 +278,22 @@ main {
     display: inline-block;
     margin-right: 0.5rem;
   }
+
   .donutBox h1 {
     margin: 10px;
     font-size: 1.3rem;
     text-align: center;
   }
+
   .donut-info-container {
     margin-left: 2rem;
     width: 100%;
   }
-  .donut-info-container h2,
-  span,
-  p {
+
+  .donut-info-container h2, span, p {
     color: $textColor;
   }
+
   .donut-info-container button {
     background-color: $textColor;
     color: $primaryColor;
@@ -291,43 +302,54 @@ main {
     height: 30px;
     width: 30px;
   }
-  .donut-info-container .checked,
-  .unchecked {
+
+  .donut-info-container .checked, .unchecked {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
+
   .donut-info {
     display: none;
   }
+
   .unchecked {
     color: #a7a7a7;
   }
+
   img {
     max-width: 100%;
   }
+
   .checked {
     color: $secondaryColor;
   }
+
   .checkout-container {
     display: none;
     background-color: #616161;
   }
+
   .checkout-container p, input {
     margin-left: 3rem;
   }
-  .checkout-container p,
-  .payment {
+
+  .checkout-container p, .payment {
     color: $primaryColor;
   }
+
   .paymentCardContainer {
     display: none;
   }
+
   .paymentInvoiceContainer {
+    
     display: none;
   }
+
   .visible {
     display: block;
   }
+
   .shoppingCartContainer {
     display:none;
     position: fixed;
@@ -339,14 +361,17 @@ main {
     z-index: 6;
     border-radius: 10px;
   }
+
   .shoppingCartName {
     color: $primaryColor;
     margin: 10px;
     padding: 5px;
   }
+
   .shoppingCart {
     color: $primaryColor;
   }
+
   .donutOrderedContainer{
     display:flex;
     flex-direction: row;
@@ -354,12 +379,14 @@ main {
     justify-content: space-around;
     color: $primaryColor;
   }
+
   .donutOrderedContainer p {
     line-height: 1.5rem;
     padding: 15px;
     justify-content: space-around;
     color: $primaryColor; 
   }
+
   .donutTotalPrice {
     line-height: 1.5rem;
     font-size: 1.5rem;
@@ -372,21 +399,25 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   .fa-cart-shopping {
     color: $primaryColor;
     font-size: 2.1rem;
     margin: 0;
     margin-top: 7px;
   }
+
   h2 {
     margin: 0;
     color: $primaryColor;
   }
+
   p {
     color: $primaryColor;
     font-weight: bold;
     font-size: 1.1rem;
   }
+
   .tot-sum {
     color: $primaryColor;
     font-weight: bold;
