@@ -52,6 +52,7 @@ let lockState=0;
 let donutName = document.querySelector('.donutName');
 let dimmer = document.querySelector('.dimmer');
 let last_clicked=0;
+let maxFilterPrice = 500;
 
 
 const donuts = [ //Array which stores all info about the donut, e.g. name
@@ -239,32 +240,33 @@ function createDots() {
 function showDonuts() {  //Function to display what is in the array/the donuts
   donutContainer.innerHTML = "";
   //For-loop to loop through every donut
-  for (let i = 0; i < filteredDonutsInPriceRange.length; i++) {
+  for (let i = 0; i < donuts.length; i++) {
     let donutRating = "";
-    for (let j = 0; j < filteredDonutsInPriceRange[i].rating; j++){
+    for (let j = 0; j < donuts[i].rating; j++){
       donutRating += "<span class='fa fa-star checked'></span>";
     }
-    for (let j = 0; j < 5 - filteredDonutsInPriceRange[i].rating; j++){
+    for (let j = 0; j < 5 - donuts[i].rating; j++){
       donutRating += "<span class='fa fa-star'></span>";
     }    
-    
-    donutContainer.innerHTML += `
-    <section class="donut-container">
-      <div class="donut-image-container">
-          <img src="${filteredDonutsInPriceRange[i].images[0].img}" alt="${filteredDonutsInPriceRange[i].images[0].alt}">
-      </div>
-      <div class="donut-info-container">
-          <h2 class="donutName">${filteredDonutsInPriceRange[i].name}<span class="donut-price">${filteredDonutsInPriceRange[i].price}</span> kr</h2>
-          <p class="donutCategory">${filteredDonutsInPriceRange[i].category}</p>
-          <div class="ratingContainer">${donutRating}</div>
-          
-          <p>pris: <span class="tot-price">${filteredDonutsInPriceRange[i].totPrice}</span> kr</p>
-          <p>antal: <span class="tot-amount">${filteredDonutsInPriceRange[i].totAmount}</span> st</p>
-          <button data-operator="decreaseBtn" data-id = "${i}">-</button>
-          <button data-operator="increaseBtn" data-id = "${i}">+</button>
-      </div>
-    </section>
-    `;
+    if (donuts[i].price <= maxFilterPrice) {
+      donutContainer.innerHTML += `
+      <section class="donut-container">
+        <div class="donut-image-container">
+            <img src="${donuts[i].images[0].img}" alt="${donuts[i].images[0].alt}">
+        </div>
+        <div class="donut-info-container">
+            <h2 class="donutName">${donuts[i].name}<span class="donut-price">${donuts[i].price}</span> kr</h2>
+            <p class="donutCategory">${donuts[i].category}</p>
+            <div class="ratingContainer">${donutRating}</div>
+            
+            <p>pris: <span class="tot-price">${donuts[i].totPrice}</span> kr</p>
+            <p>antal: <span class="tot-amount">${donuts[i].totAmount}</span> st</p>
+            <button data-operator="decreaseBtn" data-id = "${i}">-</button>
+            <button data-operator="increaseBtn" data-id = "${i}">+</button>
+        </div>
+      </section>
+      `;
+    }
   }
   
   showShoppingCart();
@@ -273,12 +275,12 @@ function showDonuts() {  //Function to display what is in the array/the donuts
 
 
 function changePriceRange(e) {
-    const currentPrice = priceRangeSlider.value;
-    currentRangeValue.innerHTML = currentPrice;
+    maxFilterPrice = priceRangeSlider.value;
+    currentRangeValue.innerHTML = maxFilterPrice;
 
-    filteredDonutsInPriceRange = filteredDonuts.filter((donut) => donut.price <= currentPrice);
+    //filteredDonutsInPriceRange = filteredDonuts.filter((donut) => donut.price <= currentPrice);
 
-    showDonuts()
+    showDonuts();
 }
 
 
