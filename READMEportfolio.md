@@ -16,7 +16,16 @@ The project was to create a web shop selling donuts. There was a bunch of specia
 
 ## Screenshots
 
-![Screenshots]()
+![Screenshots](./assets/screenshots/firstPage.png) - This is a picture of the first page
+![](./assets/screenshots/secondPage.png) - This is the second page, the donut overview
+![](./assets/screenshots/SortOnName.png) - A picture on the name sorting, you can also sort on rating, category, price high and low.
+![](./assets/screenshots/ChangesWhenOrderingPlusShoppingCart.png) - When you order, the shopping cart price bounces and changes color. The shopping cart that tells you whatdonuts you've ordered is there aswell.
+![](./assets/screenshots/FilterOnPrice.png) - picture of price filtering
+![](./assets/screenshots/OrderFormNotFilledIn.png) - when you click order, the order form appear. It needs to be filled in properly to work
+![](./assets/screenshots/OrderFormFilledInProperly.png) - order form filled in properly
+![](./assets/screenshots/WhenOrderedView.png) - When you order, a popup appear to tell you the delivery time and what youve ordered.
+![](./assets/screenshots/tabletView.png) - When on tablet view
+![](./assets/screenshots/cellPhoneView.png) - When on cellphone view
 
 
 ## Tech Stack
