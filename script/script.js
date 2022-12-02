@@ -7,6 +7,7 @@ let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
 let donutContainer; //Variable to select donutContainer from HTML
 let priceContainer; //Variable to select the container surrounding the shopping cart
+let priceContainerText; //Variable to select text in shopping cart
 let donutPrice; //Price of each donut
 let donutAmount; //Amount of each donut
 let sortDonuts; //Variable to sort donuts e.g. after pricv
@@ -23,9 +24,7 @@ const nextBtn2 = document.querySelector("#nextImage");
 const slideshow = document.querySelector("#slideshow");
 
 const orderForm = document.querySelector(".checkout-container");
-const showOrderFormButton = document.querySelector(
-  "button[data-operator='moveOnBtn']"
-);
+const showOrderFormButton = document.querySelector("button[data-operator='moveOnBtn']");
 const weekendPrice = new Date(); //Variable to adjust the price of each donut during the weekend
 const isFriday = weekendPrice.getDay() === 5;
 const isMonday = weekendPrice.getDay() === 1;
@@ -85,6 +84,7 @@ function init() {
   donutContainer = document.querySelector(".donutContainer"); //Container surrounding each donut
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum
   priceContainer = document.querySelector(".priceContainer");
+  priceContainerText = document.querySelector(".priceContainerText");
   sortDonuts = document
     .querySelector(".sortDonuts")
     .addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
@@ -406,7 +406,12 @@ function calculateTotalPrice() {
 function showShoppingCart() {
   let sum = calculateTotalPrice();
   priceContainer.innerHTML = `
-  <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`;
+  <p class="priceContainerText"> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`;
+}
+
+function changeShoppingCartColor() { //Changes the color of shopping cart text when a change is made. To be completed by a timer.
+  priceContainerText = document.querySelector(".priceContainerText");
+  priceContainerText.style.color = "#F0C0DF";
 }
 
 function printOrdredDonuts() {
@@ -430,6 +435,7 @@ function reduceTotDonut(e) {
     updateDonutSum();
     showShoppingCart();
     showShoppingCartView();
+    changeShoppingCartColor();
   }
 }
 
@@ -441,6 +447,7 @@ function increaseTotDonut(e) {
     updateDonutSum();
     showShoppingCart();
     showShoppingCartView();
+    changeShoppingCartColor();
   }
 }
 
