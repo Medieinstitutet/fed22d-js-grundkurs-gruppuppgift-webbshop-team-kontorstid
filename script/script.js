@@ -432,7 +432,7 @@ function showDonuts() {
   //Function to display what is in the array/the donuts
   donutContainer.innerHTML = "";
   //For-loop to loop through every donut
-  for (let i = 0; i < filteredDonutsInPriceRange.length; i++) {
+  for (let i = 0; i < donuts.length; i++) {
     let donutRating = "";
     for (let j = 0; j < donuts[i].rating; j++) {
       donutRating += "<span class='fa fa-star checked'></span>";
