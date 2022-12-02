@@ -412,7 +412,17 @@ function showShoppingCart() {
 
 function changeShoppingCartColor() { //Changes the color of shopping cart text when a change is made. To be completed by a timer.
   priceContainerText = document.querySelector(".priceContainerText");
-  priceContainerText.style.color = "#F0C0DF";
+  priceContainerText.style.color = "#80E8F0";
+  priceContainerText.style.fontSize = "2rem";
+  priceContainerText.style.transition = "color 0.3s ease-out";
+  priceContainerText.style.transition = "font-size 0.3s ease-out";
+  setTimeout(clearMessage, 800);
+}
+
+function clearMessage() {
+  priceContainerText = document.querySelector(".priceContainerText");
+  priceContainerText.style.color = "";
+  priceContainerText.style.fontSize = "";
 }
 
 function printOrdredDonuts() {
