@@ -970,7 +970,7 @@ showOrderFormButton.addEventListener("click", showOrderForm);
 function orderCloseTimer() {
   let countDown = new Date().getTime();
   let minuteWaited = Math.floor(
-    ((countDown - minuteTimer) % (1000 * 60 *60)) / (1000*60 )
+    ((countDown - minuteTimer) % (1000 * 60 *60)) / (1000*60)
   );
   if (minuteWaited >= 15 && orderForm.style.display=="block") {
     orderForm.style.display = "none";
