@@ -211,7 +211,7 @@ function changeOpacity() {
 function swapImages(fadeOut, fadeIn) {
   const img1X = firstImageOnTop ? img1 : img2;
   const img2X = firstImageOnTop ? img2 : img1;
-  
+
   img1X.setAttribute("src", images[fadeOut].url);
   img2X.setAttribute("src", images[fadeIn].url);
   opacityTimer = setInterval(changeOpacity, (fadeTimeInSec * 1000) / 25);
@@ -305,6 +305,10 @@ function updateSorting(e) {
   if (selectedSortingValue === "donutRating") {
     sortAfterRating();
   }
+
+  if (selectedSortingValue === "donutCategory") {
+    sortAfterCategory();
+  }
 }
 
 function sortAfterName() {
@@ -317,10 +321,10 @@ function sortAfterName() {
     }
     return 0;
   });
-  console.table(donuts);
   showDonuts();
   initButtons();
 }
+
 
 function sortAfterLowPrice() {
   donuts.sort((donut1, donut2) => {
@@ -331,6 +335,7 @@ function sortAfterLowPrice() {
   initButtons();
 }
 
+
 function sortAfterHighPrice() {
   donuts.sort((donut1, donut2) => {
     return donut2.price - donut1.price;
@@ -340,6 +345,7 @@ function sortAfterHighPrice() {
   initButtons();
 }
 
+
 function sortAfterRating() {
   donuts.sort((donut1, donut2) => {
     return donut2.rating - donut1.rating;
@@ -348,6 +354,25 @@ function sortAfterRating() {
   showDonuts();
   initButtons();
 }
+
+
+function sortAfterCategory() {
+  donuts.sort((donut1, donut2) => {
+    if (donut1.category > donut2.category) {
+      return 1
+    } else if (donut1.category < donut2.category) {
+      return -1
+    } else {
+      return 0
+    }
+    
+      
+  });
+
+  showDonuts();
+  initButtons();
+}
+
 
 function checkKeyPressAndOpenImage(e) {
   if( e.key === 'Enter') {
