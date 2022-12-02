@@ -41,6 +41,22 @@ let shoppingCart;
 
 let minuteTimer; //Används för att veta när vi öppnat orderformuläret.
 let deliveryInfo = 30; // Denna variabel är leveranstiden.
+
+const orderButton = document.querySelector("#order"); //Button to order
+const nameField1 = document.querySelector("#name1"); //Namefield for first name
+const nameField2 = document.querySelector("#name2"); // Namefield for surnamne
+const addressField = document.querySelector("#address"); //Addressfield
+const zipcodeField = document.querySelector("#zipcode"); // Zipcodefield
+const cityField = document.querySelector("#city"); // Cityfield
+const codeField = document.querySelector("#code"); // Field for door code
+const phoneField = document.querySelector("#phone"); // Field for mobile number
+const emailField = document.querySelector("#email"); // Field for email
+const paymentMethodChoice = document.querySelector("#paymentmethod"); //Radiobutton for choicing payment method
+let nameIsOk = false;
+const paymentMethodCard = document.querySelector("#card"); // Field for card information
+const paymentMethodInvoice = document.querySelector("#invoice"); // Field for invoice information
+const personalNumber = document.querySelector("#personalnumber"); //Field for personal number
+const consentOfPersonalData = document.querySelector("#consent"); // Button for personal consent
 // Fade-related variables
 let opacityTimer = null;
 let opacity = 100;
@@ -493,7 +509,7 @@ function showShoppingCartView() {
       </div>`;
     }
   }
-  
+
   let donutTotalPrice = calculateTotalPrice();
   let shippingFeeAddon = Math.round(shippingFee + donutTotalPrice * 0.1);
   let donutWithShippingFeePrice = donutTotalPrice + shippingFeeAddon;
@@ -530,25 +546,6 @@ function showOrderForm() {
   orderForm.style.display = "block";
   minuteTimer = new Date().getTime();
 }
-
-// Tillagt 221109 av Sussie
-// generella variabler
-
-const orderButton = document.querySelector("#order");
-const nameField1 = document.querySelector("#name1");
-const nameField2 = document.querySelector("#name2");
-const addressField = document.querySelector("#address");
-const zipcodeField = document.querySelector("#zipcode");
-const cityField = document.querySelector("#city");
-const codeField = document.querySelector("#code");
-const phoneField = document.querySelector("#phone");
-const emailField = document.querySelector("#email");
-const paymentMethodChoice = document.querySelector("#paymentmethod");
-let nameIsOk = false;
-const paymentMethodCard = document.querySelector("#card");
-const paymentMethodInvoice = document.querySelector("#invoice");
-const personalNumber = document.querySelector("#personalnumber");
-const consentOfPersonalData = document.querySelector("#consent");
 
 // formulär
 
