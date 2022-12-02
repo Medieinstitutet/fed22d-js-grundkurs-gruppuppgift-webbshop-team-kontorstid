@@ -305,11 +305,11 @@ function init() {
   shoppingCart = document.querySelector(".shoppingCart");
   priceRangeSlider.addEventListener("input", changePriceRange); //Adds an eventlistener to changePriceRange
 
-  if (isFriday && time >= 15 && isMonday && time <= 03) {
+  if (isFriday && time >= 15 && isMonday && time <= 3) { 
     for (let i = 0; i < donuts.length; i++) {
       donuts[i].price = Math.round(donuts[i].price * 1.15);
     }
-  }
+}
   checkName1() ||
     checkName2() ||
     checkAddress() ||
