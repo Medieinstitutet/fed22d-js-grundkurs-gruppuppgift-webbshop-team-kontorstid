@@ -367,6 +367,49 @@ main {
     border-radius: 10px;
   }
 
+  .toSlowContainer {
+    display:none;
+    position: fixed;
+    flex-direction: column;
+    background-color: $secondaryColor;
+    top: 50%;
+    left: 50%;
+    height:100px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgb(103, 103, 103);
+    z-index: 6;
+    border-radius: 10px;
+    align-items: center;
+  }
+  .toSlowName{
+    color:$primaryColor;
+  }
+
+  .toSlowCloser{
+    font-size: 40px;
+    font-weight: bold;
+    color: $primaryColor;
+    z-index:4;
+    width: 35px;
+    height: 35px;
+    
+    cursor: pointer;
+  }
+
+  .shoppingCloser{
+    display:block;
+    font-size: 40px;
+    font-weight: bold;
+    color: $primaryColor;
+    z-index:4;
+    right: 0px;
+    top: 5px;
+    width: 35px;
+    height: 35px;
+    position:fixed;
+    cursor: pointer;
+  }
+
   .shoppingCartName {
     color: $primaryColor;
     margin: 10px;

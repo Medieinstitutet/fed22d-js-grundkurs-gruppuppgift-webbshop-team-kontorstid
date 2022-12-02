@@ -47,8 +47,6 @@ let opacityTimer = null;
 let opacity = 100;
 let firstImageOnTop = true;
 const fadeTimeInSec = 1;
-let displayState = 0;
-let lockState = 0;
 let donutName = document.querySelector(".donutName");
 let dimmer = document.querySelector(".dimmer");
 let last_clicked = 0;
@@ -85,9 +83,7 @@ function init() {
   donutContainer = document.querySelector(".donutContainer"); //Container surrounding each donut
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum
   priceContainer = document.querySelector(".priceContainer");
-  sortDonuts = document
-    .querySelector(".sortDonuts")
-    .addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
+  sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
   shoppingCartContainer = document.querySelector(".shoppingCartContainer");
   donutOrderedName = document.querySelector(".donutOrderedName");
   donutOrderedPrice = document.querySelector(".donutOrderedPrice");
@@ -133,52 +129,12 @@ function initButtons() {
 function initImg() {
   donutBox = document.querySelector(".donutBox");
   donutBox.style.display = "none";
-  //This is a click event for the donut popups. The click function first checksa if the donut image container is clicked.
-  // If the donut image container is clicked, the HTML code is written and displayed as a block. A elif is used to make sure that the popup does not disappear,
-  // if the popup is clicked on. At last the else is used to remove the popup if a click event occurs outside the popup box by displaying none.
-
-  document.addEventListener("click", function (e) {
-    if (lockState == 0) {
-      if (e.target.closest(".donut-image-container")) {
-        img1.setAttribute("src", e.target.getAttribute("src"));
-        img1.setAttribute("alt", e.target.getAttribute("alt"));
-        donutName.innerHTML =
-          e.target.parentElement.parentElement.querySelector("h2").innerHTML;
-        if (displayState == 0) {
-          dimmer.style.display = "block";
-          donutBox.style.display = "block";
-          document.body.style.overflow = "hidden";
-        }
-
-        displayState = 1;
-        lockState = 1;
-      }
-    } else {
-      if (e.target.closest(".donutBox")) {
-      } else {
-        //document.html.style.backgroundColor="white";
-        dimmer.style.display = "none";
-        donutBox.style.display = "none";
-        document.body.style.overflow = "scroll";
-        displayState = 0;
-        lockState = 0;
-        if (currentImageIndex + 1 > images.length - 1) {
-          // Restart from beginning
-          currentImageIndex = 0;
-          swapImages(images.length - 1, currentImageIndex);
-        }
-        highlightDot();
-      }
-      for (let i = 0; i < donuts.length; i++) {
-        if (donuts[i].images[0].img === img1.getAttribute("src")) {
-          img2.setAttribute("src", donuts[i].images[0].img2);
-        }
-      }
-    }
-    images[0].url = img1.getAttribute("src");
-    images[1].url = img2.getAttribute("src");
-    img2.setAttribute("alt", img1.getAttribute("alt"));
+  const donutImageContainer = document.querySelectorAll(".donut-image-container");
+  donutImageContainer.forEach((item) => {
+    item.addEventListener("click", SlideShowAttributes);
   });
+  donutBox.addEventListener("click", imageSlideShow);
+  document.querySelector("html").addEventListener("click", closeSlideShow);
 }
 
 function highlightDot() {
@@ -491,6 +447,7 @@ function showShoppingCartView() {
 function showOrderForm() {
   shoppingCartContainer.style.display = "none";
   orderForm.style.display = "block";
+  orderForm.scrollIntoView();
   minuteTimer = new Date().getTime();
 }
 
@@ -739,6 +696,25 @@ document.querySelector(".menuCloser").onclick = function () {
   document.querySelector(".menuOpener").style.display = "block";
 };
 
+document.querySelector(".shoppingCloser").onclick = function (){
+  shoppingCartContainer.style.display="none";
+  shoppingCartContainer.style.top="";
+  shoppingCartContainer.style.left="";
+  shoppingCartContainer.querySelector("h2").innerHTML="Varukorg";
+  document.querySelector(".shoppingCartButton").style.display="block";
+  for(let i=0; i< donuts.length;i++)
+  {
+    donuts[i].totPrice=0;
+    donuts[i].totAmount=0;
+  }
+  showShoppingCartView();
+  updateDonutSum();
+}
+
+document.querySelector(".toSlowCloser").onclick = function(){
+  document.querySelector(".toSlowContainer").style.display="none";
+}
+
 document.querySelector(".buttonOrder").onclick = function () {
   shoppingCartContainer.querySelector("h2").innerHTML =
     "Tack för din beställning! Beräknad leveranstid: " +
@@ -761,12 +737,70 @@ showOrderFormButton.addEventListener("click", showOrderForm);
 function orderCloseTimer() {
   let countDown = new Date().getTime();
   let minuteWaited = Math.floor(
-    ((countDown - minuteTimer) % (1000 * 60 * 60)) / (1000 * 60)
+    ((countDown - minuteTimer) % (1000 * 60 *60)) / (1000*60 )
   );
-  if (minuteWaited >= 15) {
+  if (minuteWaited >= 15 && orderForm.style.display=="block") {
     orderForm.style.display = "none";
+    document.querySelector(".toSlowContainer").style.display="flex";
   }
 }
+
+
+  // If the donut image container is clicked, the HTML code is written and displayed as a block. A elif is used to make sure that the popup does not disappear,
+  // if the popup is clicked on. At last the else is used to remove the popup if a click event occurs outside the popup box by displaying none.
+function closeSlideShow(e) {
+  const isClosest =e.target.closest(".donutBox");
+  const onImageClick = e.target.closest(".donut-image-container");
+  if(!isClosest && !onImageClick){
+    dimmer.style.display = "none";
+    donutBox.style.display = "none";
+    document.body.style.overflow ="";
+    if (currentImageIndex + 1 > images.length - 1) {
+      // Restart from beginning
+      currentImageIndex = 0;
+      swapImages(images.length - 1, currentImageIndex);
+    }
+    highlightDot();
+  }
+}
+
+function SlideShowAttributes(e) {
+  img1.setAttribute("src", e.target.getAttribute("src"));
+  img1.setAttribute("alt", e.target.getAttribute("alt"));
+  donutName.innerHTML =e.target.parentElement.parentElement.querySelector("h2").innerHTML;
+
+  document.body.style.overflow = "scroll";
+
+    dimmer.style.display = "block";
+    donutBox.style.display = "block";
+    document.body.style.overflow = "hidden";
+
+  images[0].url = img1.getAttribute("src");
+  images[1].url = img2.getAttribute("src");
+  img2.setAttribute("alt", img1.getAttribute("alt"));
+}
+
+function imageSlideShow(e) {
+  for (let i = 0; i < donuts.length; i++) {
+    if (donuts[i].images[0].img === img1.getAttribute("src")) {
+      img2.setAttribute("src", donuts[i].images[0].img2);
+    }
+  }
+}
+
+function removeCartItems(){
+  donutContainer.scrollIntoView();
+  orderForm.style.display="none";
+  for(let i=0; i< donuts.length;i++)
+  {
+    donuts[i].totPrice=0;
+    donuts[i].totAmount=0;
+  }
+  showShoppingCartView();
+  updateDonutSum();
+}
+
+document.querySelector(".discardOrder").addEventListener("click",removeCartItems);
 
 createDots();
 setInterval(time, 1000);

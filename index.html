@@ -117,10 +117,17 @@
         <section class="donutContainer"></section>
 
         <section class="shoppingCartContainer">
+            <span class="shoppingCloser">&times;</span>
             <h2 class="shoppingCartName">Varukorg<span class="donutShoppingCart"></span></h2>
             <div class="shoppingCart"> </div>
             <button class="shoppingCartButton" data-operator="moveOnBtn" data-id="orderDonut"
                 tabindex="0">Beställ</button>
+        </section>
+
+        <section class="toSlowContainer">
+            <span class="toSlowCloser">&times;</span>
+            <h2 class="toSlowName">Ops! Du var för långsam.</h2>
+            <h2 class="toSlowName"> Vakna upp!</h2>
         </section>
 
         <section class="checkout-container">
@@ -180,7 +187,6 @@
                     <label> CVC
                         <input type="number" tabindex="0"> <span id="errormessagecvc"></span>
                     </label>
-
                 </div>
                 <div class="paymentInvoiceContainer">
                     <label> Personnummer</label>
@@ -198,7 +204,7 @@
                 <input type="checkbox" id="news" checked tabindex="0">
             </label><br>
             <button class="buttonOrder" id="order" tabindex="0" disabled> Beställ</button>
-            <button id="discard" tabindex="0">Rensa beställning</button>
+            <button class="discardOrder" id="discard" tabindex="0">Rensa beställning</button>
         </section>
     </main>
     <footer>
