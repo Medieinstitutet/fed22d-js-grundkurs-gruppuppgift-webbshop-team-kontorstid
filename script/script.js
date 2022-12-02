@@ -116,6 +116,7 @@ function initButtons() {
   //Declare variables
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
+  donutImages = document.querySelectorAll("button[data-operator='donutImage']");
 
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
@@ -124,6 +125,7 @@ function initButtons() {
   for (let i = 0; i < btnHigher.length; i++) {
     btnHigher[i].addEventListener("click", increaseTotDonut);
   }
+  for (let i = 0; i < donutImages.length; i++) {donutImages[i].addEventListener("keyup", checkKeyPressAndOpenImage);}
 } //End initButtons
 
 function initImg() {
@@ -252,7 +254,7 @@ function showDonuts() {
       donutContainer.innerHTML += `
       <section class="donut-container">
         <div class="donut-image-container">
-            <img src="${donuts[i].images[0].img}" alt="${donuts[i].images[0].alt}" tabindex=0 >
+        <img src="${donuts[i].images[0].img}" alt="${donuts[i].images[0].alt}" data-operator="donutImage" tabindex=0 >
         </div>
         <div class="donut-info-container">
             <h2 class="donutName">${donuts[i].name}<span class="donut-price">${donuts[i].price}</span> kr</h2>
@@ -369,6 +371,12 @@ function sortAfterCategory() {
   initButtons();
 }
 
+
+function checkKeyPressAndOpenimage(e) {
+  if( e.key === 'enter') {
+  openImage(e.currentTarget.id);
+  }
+}
 
 function calculateTotalPrice() {
   const monday = new Date();
