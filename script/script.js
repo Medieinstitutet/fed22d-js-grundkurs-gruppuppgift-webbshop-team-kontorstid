@@ -12,6 +12,7 @@ let donutAmount; //Amount of each donut
 let sortDonuts; //Variable to sort donuts e.g. after pricv
 let donutBox; //Variable to select donut pop up
 let discountCodeFactor = 1; //Variable to set discount to 1 or 0
+let shippingFee = 25; //Standard shipping fee
 
 const img1 = document.querySelector("#img1");
 const img2 = document.querySelector("#img2");
@@ -53,212 +54,19 @@ let dimmer = document.querySelector(".dimmer");
 let last_clicked = 0;
 let maxFilterPrice = 500;
 
-const donuts = [
-  //Array which stores all info about the donut, e.g. name
-  {
-    images: [
-      {
-        img: "assets/photos/bild1.jpg",
-        img2: "assets/photos/donut-with-sugar-hole2.jpg",
-        alt: "Munk-med-socker",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Gottfrids ",
-    category: "Klassisk",
-    price: 35,
-    rating: 5,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild2.jpg",
-        img2: "assets/photos/donut-with-sugar.jpg",
-        alt: "Munk-med-sylt",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Raspberry pie ",
-    category: "Klassisk",
-    price: 36,
-    rating: 4,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild3.jpg",
-        img2: "assets/photos/donut-with-icing-sugar2.jpg",
-        alt: "Munk-med-florsocker",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Sugar dream ",
-    category: "Klassisk",
-    price: 37,
-    rating: 5,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild5.jpg",
-        img2: "assets/photos/donut-with-topping2.jpg",
-        alt: "Munk-med-topping",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Dragon Tail ",
-    category: "Klassisk",
-    price: 40,
-    rating: 4,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild4.jpg",
-        img2: "assets/photos/donut-with-sprinkles-frosting2.jpg",
-        alt: "Munk-med-strossel",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Unicorn ",
-    category: "Strössel",
-    price: 42,
-    rating: 5,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild6.jpg",
-        img2: "assets/photos/donut-with-sprinkles-chocolate2.jpg",
-        alt: "Munk-med-choklad-och-strossel",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Hungover ",
-    category: "Strössel",
-    price: 45,
-    rating: 3,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild7.jpg",
-        img2: "assets/photos/donut-with-smarties2.jpg",
-        alt: "Munk-med-smarties",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Smarties ",
-    category: "Strössel",
-    price: 42,
-    rating: 4,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild8.jpg",
-        img2: "assets/photos/donut-with-character2.jpg",
-        alt: "Munk-med-figur",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Monster ",
-    category: "Strössel",
-    price: 40,
-    rating: 3,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild9.jpg",
-        img2: "assets/photos/donut-with-chocolate-frosting2.jpg",
-        alt: "Munk-med-choklad",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Chocoholic ",
-    category: "Choklad",
-    price: 39,
-    rating: 4,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild10.jpg",
-        img2: "assets/photos/Donut-with-chocolate-bits2.jpg",
-        alt: "Munk-med-chokladbitar",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Chocoloco ",
-    category: "Choklad",
-    price: 41,
-    rating: 4,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild11.jpg",
-        img2: "assets/photos/donut-with-chocolate-sprinkles2.jpg",
-        alt: "Munk-med-chokladstrossel",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Chocolate rain ",
-    category: "Choklad",
-    price: 41,
-    rating: 4,
-    totPrice: 0,
-    totAmount: 0,
-  },
-  {
-    images: [
-      {
-        img: "assets/photos/bild12.jpg",
-        img2: "assets/photos/donut-with-sprinkles-on-chocolate2.jpg",
-        alt: "Munk-med-choklad-och-strossel",
-        width: 100,
-        height: "auto",
-      },
-    ],
-    name: "Rainbow ",
-    category: "Choklad",
-    price: 42,
-    rating: 5,
-    totPrice: 0,
-    totAmount: 0,
-  },
+const donuts = [ //Array which stores all info about the donut, e.g. name
+{ images: [ { img: "assets/photos/bild1.jpg", img2:"assets/photos/donut-with-sugar-hole2.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Gottfrids ", category: "Klassisk", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild2.jpg", img2:"assets/photos/donut-with-sugar.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Klassisk", price: 36, rating: 4, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild3.jpg", img2:"assets/photos/donut-with-icing-sugar2.jpg", alt: "Munk-med-florsocker", width: 100, height: "auto" } ], name: "Sugar dream ", category: "Klassisk", price: 37, rating: 5, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild5.jpg", img2:"assets/photos/donut-with-topping2.jpg", alt: "Munk-med-topping", width: 100, height: "auto" } ], name: "Dragon Tail ", category: "Klassisk", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild4.jpg", img2:"assets/photos/donut-with-sprinkles-frosting2.jpg", alt: "Munk-med-strossel", width: 100, height: "auto" } ], name: "Unicorn ", category: "Strössel", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild6.jpg", img2:"assets/photos/donut-with-sprinkles-chocolate2.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Hungover ", category: "Strössel", price: 45, rating: 3, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild7.jpg", img2:"assets/photos/donut-with-smarties2.jpg", alt: "Munk-med-smarties", width: 100, height: "auto" } ], name: "Smarties ", category: "Strössel", price: 42, rating: 4, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild8.jpg", img2:"assets/photos/donut-with-character2.jpg", alt: "Munk-med-figur", width: 100, height: "auto" } ], name: "Monster ", category: "Strössel", price: 40, rating: 3, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild9.jpg", img2:"assets/photos/donut-with-chocolate-frosting2.jpg", alt: "Munk-med-choklad", width: 100, height: "auto" } ], name: "Chocoholic ", category: "Choklad", price: 39, rating: 4, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild10.jpg", img2:"assets/photos/Donut-with-chocolate-bits2.jpg", alt: "Munk-med-chokladbitar", width: 100, height: "auto" } ], name: "Chocoloco ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild11.jpg", img2:"assets/photos/donut-with-chocolate-sprinkles2.jpg", alt: "Munk-med-chokladstrossel", width: 100, height: "auto" } ], name: "Chocolate rain ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
+{ images: [ { img: "assets/photos/bild12.jpg", img2:"assets/photos/donut-with-sprinkles-on-chocolate2.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Choklad", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
 ];
 
 let images = [
@@ -399,7 +207,7 @@ function changeOpacity() {
 function swapImages(fadeOut, fadeIn) {
   const img1X = firstImageOnTop ? img1 : img2;
   const img2X = firstImageOnTop ? img2 : img1;
-
+  
   img1X.setAttribute("src", images[fadeOut].url);
   img2X.setAttribute("src", images[fadeIn].url);
   opacityTimer = setInterval(changeOpacity, (fadeTimeInSec * 1000) / 25);
