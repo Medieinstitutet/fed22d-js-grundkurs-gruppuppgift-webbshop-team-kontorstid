@@ -16,9 +16,6 @@ html {
 }
 
 /*text*/
-p, h1, h2 {
-  color: $textColor;
-}
 
 h1, h2, h3 {
   font-family: "Archivo Black", sans-serif;
@@ -37,6 +34,11 @@ body {
   background-color: $primaryColor;
 }
 
+body.xmas {
+  h2{
+  color: red;
+  }
+}
 
 /*Header section*/
 
@@ -292,10 +294,6 @@ main {
   .donut-info-container {
     margin-left: 2rem;
     width: 100%;
-  }
-
-  .donut-info-container h2, span, p {
-    color: $textColor;
   }
 
   .donut-info-container button {

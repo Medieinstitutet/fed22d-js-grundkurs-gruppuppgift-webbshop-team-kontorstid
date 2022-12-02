@@ -15,6 +15,9 @@ let donutBox; //Variable to select donut pop up
 let discountCodeFactor = 1; //Variable to set discount to 1 or 0
 let shippingFee = 25; //Standard shipping fee
 
+
+
+
 const img1 = document.querySelector("#img1");
 const img2 = document.querySelector("#img2");
 
@@ -115,6 +118,15 @@ function init() {
       donuts[i].price = Math.round(donuts[i].price * 1.15);
     }
   }
+
+  let date = new Date();
+  if(date.getDate() == 24 && date.getMonth() == 11) {
+    // wooo its christmas!
+    let e = document.querySelector(".headerBackground");
+    e.style.backgroundImage = "url(../assets/photos/christmasDonuts.jpg)";
+    document.body.classList.add('xmas');
+  }
+
   checkName1() ||
     checkName2() ||
     checkAddress() ||
@@ -232,7 +244,7 @@ function swapImages(fadeOut, fadeIn) {
 }
 
 function nextImage() {
-  if (Date.now() - last_clicked < 500) return; //Tittar ifall ett klick på knappen har skett inom en halv sekund. Ifall man tryckt på knappen inom en halv sekund så kommer man inte kunna gå vidare i koden.
+  if (Date.now() - last_clicked < 500) return; //Sees if a button has been pressed within half a second. If so, the user will not be able to proceed in code.
   last_clicked = Date.now();
   if (currentImageIndex + 1 > images.length - 1) {
     // Restart from beginning
