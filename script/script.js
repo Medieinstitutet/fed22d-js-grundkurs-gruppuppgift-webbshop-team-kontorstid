@@ -7,12 +7,16 @@ let standardPrice; //Variable for the price for each donut
 let newAmount; //Variable to show new amount of donuts
 let donutContainer; //Variable to select donutContainer from HTML
 let priceContainer; //Variable to select the container surrounding the shopping cart
+let priceContainerText; //Variable to select text in shopping cart
 let donutPrice; //Price of each donut
 let donutAmount; //Amount of each donut
 let sortDonuts; //Variable to sort donuts e.g. after pricv
 let donutBox; //Variable to select donut pop up
 let discountCodeFactor = 1; //Variable to set discount to 1 or 0
 let shippingFee = 25; //Standard shipping fee
+
+
+
 
 const img1 = document.querySelector("#img1");
 const img2 = document.querySelector("#img2");
@@ -42,6 +46,22 @@ let shoppingCart;
 
 let minuteTimer; //Används för att veta när vi öppnat orderformuläret.
 let deliveryInfo = 30; // Denna variabel är leveranstiden.
+
+const orderButton = document.querySelector("#order"); //Button to order
+const nameField1 = document.querySelector("#name1"); //Namefield for first name
+const nameField2 = document.querySelector("#name2"); // Namefield for surnamne
+const addressField = document.querySelector("#address"); //Addressfield
+const zipcodeField = document.querySelector("#zipcode"); // Zipcodefield
+const cityField = document.querySelector("#city"); // Cityfield
+const codeField = document.querySelector("#code"); // Field for door code
+const phoneField = document.querySelector("#phone"); // Field for mobile number
+const emailField = document.querySelector("#email"); // Field for email
+const paymentMethodChoice = document.querySelector("#paymentmethod"); //Radiobutton for choicing payment method
+let nameIsOk = false;
+const paymentMethodCard = document.querySelector("#card"); // Field for card information
+const paymentMethodInvoice = document.querySelector("#invoice"); // Field for invoice information
+const personalNumber = document.querySelector("#personalnumber"); //Field for personal number
+const consentOfPersonalData = document.querySelector("#consent"); // Button for personal consent
 // Fade-related variables
 let opacityTimer = null;
 let opacity = 100;
@@ -53,19 +73,212 @@ let last_clicked = 0;
 let maxFilterPrice = 500;
 let openImage;
 
-const donuts = [ //Array which stores all info about the donut, e.g. name
-{ images: [ { img: "assets/photos/bild1.jpg", img2:"assets/photos/donut-with-sugar-hole2.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Gottfrids ", category: "Klassisk", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild2.jpg", img2:"assets/photos/donut-with-sugar.jpg", alt: "Munk-med-sylt", width: 100, height: "auto" } ], name: "Raspberry pie ", category: "Klassisk", price: 36, rating: 4, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild3.jpg", img2:"assets/photos/donut-with-icing-sugar2.jpg", alt: "Munk-med-florsocker", width: 100, height: "auto" } ], name: "Sugar dream ", category: "Klassisk", price: 37, rating: 5, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild5.jpg", img2:"assets/photos/donut-with-topping2.jpg", alt: "Munk-med-topping", width: 100, height: "auto" } ], name: "Dragon Tail ", category: "Klassisk", price: 40, rating: 4, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild4.jpg", img2:"assets/photos/donut-with-sprinkles-frosting2.jpg", alt: "Munk-med-strossel", width: 100, height: "auto" } ], name: "Unicorn ", category: "Strössel", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild6.jpg", img2:"assets/photos/donut-with-sprinkles-chocolate2.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Hungover ", category: "Strössel", price: 45, rating: 3, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild7.jpg", img2:"assets/photos/donut-with-smarties2.jpg", alt: "Munk-med-smarties", width: 100, height: "auto" } ], name: "Smarties ", category: "Strössel", price: 42, rating: 4, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild8.jpg", img2:"assets/photos/donut-with-character2.jpg", alt: "Munk-med-figur", width: 100, height: "auto" } ], name: "Monster ", category: "Strössel", price: 40, rating: 3, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild9.jpg", img2:"assets/photos/donut-with-chocolate-frosting2.jpg", alt: "Munk-med-choklad", width: 100, height: "auto" } ], name: "Chocoholic ", category: "Choklad", price: 39, rating: 4, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild10.jpg", img2:"assets/photos/Donut-with-chocolate-bits2.jpg", alt: "Munk-med-chokladbitar", width: 100, height: "auto" } ], name: "Chocoloco ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild11.jpg", img2:"assets/photos/donut-with-chocolate-sprinkles2.jpg", alt: "Munk-med-chokladstrossel", width: 100, height: "auto" } ], name: "Chocolate rain ", category: "Choklad", price: 41, rating: 4, totPrice: 0, totAmount: 0 },
-{ images: [ { img: "assets/photos/bild12.jpg", img2:"assets/photos/donut-with-sprinkles-on-chocolate2.jpg", alt: "Munk-med-choklad-och-strossel", width: 100, height: "auto" } ], name: "Rainbow ", category: "Choklad", price: 42, rating: 5, totPrice: 0, totAmount: 0 },
+const donuts = [
+  //Array which stores all info about the donut, e.g. name
+  {
+    images: [
+      {
+        img: "assets/photos/bild1.jpg",
+        img2: "assets/photos/donut-with-sugar-hole2.jpg",
+        alt: "Munk-med-socker",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Gottfrids ",
+    category: "Klassisk",
+    price: 35,
+    rating: 5,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild2.jpg",
+        img2: "assets/photos/donut-with-sugar.jpg",
+        alt: "Munk-med-sylt",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Raspberry pie ",
+    category: "Klassisk",
+    price: 36,
+    rating: 4,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild3.jpg",
+        img2: "assets/photos/donut-with-icing-sugar2.jpg",
+        alt: "Munk-med-florsocker",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Sugar dream ",
+    category: "Klassisk",
+    price: 37,
+    rating: 5,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild5.jpg",
+        img2: "assets/photos/donut-with-topping2.jpg",
+        alt: "Munk-med-topping",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Dragon Tail ",
+    category: "Klassisk",
+    price: 40,
+    rating: 4,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild4.jpg",
+        img2: "assets/photos/donut-with-sprinkles-frosting2.jpg",
+        alt: "Munk-med-strossel",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Unicorn ",
+    category: "Strössel",
+    price: 42,
+    rating: 5,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild6.jpg",
+        img2: "assets/photos/donut-with-sprinkles-chocolate2.jpg",
+        alt: "Munk-med-choklad-och-strossel",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Hungover ",
+    category: "Strössel",
+    price: 45,
+    rating: 3,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild7.jpg",
+        img2: "assets/photos/donut-with-smarties2.jpg",
+        alt: "Munk-med-smarties",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Smarties ",
+    category: "Strössel",
+    price: 42,
+    rating: 4,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild8.jpg",
+        img2: "assets/photos/donut-with-character2.jpg",
+        alt: "Munk-med-figur",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Monster ",
+    category: "Strössel",
+    price: 40,
+    rating: 3,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild9.jpg",
+        img2: "assets/photos/donut-with-chocolate-frosting2.jpg",
+        alt: "Munk-med-choklad",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Chocoholic ",
+    category: "Choklad",
+    price: 39,
+    rating: 4,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild10.jpg",
+        img2: "assets/photos/Donut-with-chocolate-bits2.jpg",
+        alt: "Munk-med-chokladbitar",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Chocoloco ",
+    category: "Choklad",
+    price: 41,
+    rating: 4,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild11.jpg",
+        img2: "assets/photos/donut-with-chocolate-sprinkles2.jpg",
+        alt: "Munk-med-chokladstrossel",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Chocolate rain ",
+    category: "Choklad",
+    price: 41,
+    rating: 4,
+    totPrice: 0,
+    totAmount: 0,
+  },
+  {
+    images: [
+      {
+        img: "assets/photos/bild12.jpg",
+        img2: "assets/photos/donut-with-sprinkles-on-chocolate2.jpg",
+        alt: "Munk-med-choklad-och-strossel",
+        width: 100,
+        height: "auto",
+      },
+    ],
+    name: "Rainbow ",
+    category: "Choklad",
+    price: 42,
+    rating: 5,
+    totPrice: 0,
+    totAmount: 0,
+  },
 ];
 
 let images = [
@@ -83,20 +296,30 @@ function init() {
   donutContainer = document.querySelector(".donutContainer"); //Container surrounding each donut
   totalSum = document.querySelector(".totSum"); //HTML element to display total sum
   priceContainer = document.querySelector(".priceContainer");
-  sortDonuts = document.querySelector(".sortDonuts").addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
+  priceContainerText = document.querySelector(".priceContainerText");
+  sortDonuts = document
+    .querySelector(".sortDonuts")
+    .addEventListener("change", updateSorting); //Adds an eventlistener to the sort donut list
   shoppingCartContainer = document.querySelector(".shoppingCartContainer");
   donutOrderedName = document.querySelector(".donutOrderedName");
   donutOrderedPrice = document.querySelector(".donutOrderedPrice");
   shoppingCart = document.querySelector(".shoppingCart");
   priceRangeSlider.addEventListener("input", changePriceRange); //Adds an eventlistener to changePriceRange
 
-  if (isFriday && time >= 15 && isMonday && time <= 03) {
+  if (isFriday && time >= 15 && isMonday && time <= 3) { 
     for (let i = 0; i < donuts.length; i++) {
-      console.log("Öka pris");
       donuts[i].price = Math.round(donuts[i].price * 1.15);
-      console.log(donuts[i].price);
     }
   }
+
+  let date = new Date();
+  if(date.getDate() == 24 && date.getMonth() == 11) {
+    // wooo its christmas!
+    let e = document.querySelector(".headerBackground");
+    e.style.backgroundImage = "url(../assets/photos/christmasDonuts.jpg)";
+    document.body.classList.add('xmas');
+  }
+
   checkName1() ||
     checkName2() ||
     checkAddress() ||
@@ -122,8 +345,9 @@ function initButtons() {
   for (let i = 0; i < btnHigher.length; i++) {
     btnHigher[i].addEventListener("click", increaseTotDonut);
   }
-  for (let i = 0; i < donutImages.length; i++) 
-  {donutImages[i].addEventListener("keyup", checkKeyPressAndOpenImage);}
+  for (let i = 0; i < donutImages.length; i++) {
+    donutImages[i].addEventListener("keyup", checkKeyPressAndOpenImage);
+  }
 } //End initButtons
 
 function initImg() {
@@ -174,7 +398,7 @@ function swapImages(fadeOut, fadeIn) {
 }
 
 function nextImage() {
-  if (Date.now() - last_clicked < 500) return; //Tittar ifall ett klick på knappen har skett inom en halv sekund. Ifall man tryckt på knappen inom en halv sekund så kommer man inte kunna gå vidare i koden.
+  if (Date.now() - last_clicked < 500) return; //Sees if a button has been pressed within half a second. If so, the user will not be able to proceed in code.
   last_clicked = Date.now();
   if (currentImageIndex + 1 > images.length - 1) {
     // Restart from beginning
@@ -281,7 +505,6 @@ function sortAfterName() {
   initButtons();
 }
 
-
 function sortAfterLowPrice() {
   donuts.sort((donut1, donut2) => {
     return donut1.price - donut2.price;
@@ -290,7 +513,6 @@ function sortAfterLowPrice() {
   showDonuts();
   initButtons();
 }
-
 
 function sortAfterHighPrice() {
   donuts.sort((donut1, donut2) => {
@@ -301,7 +523,6 @@ function sortAfterHighPrice() {
   initButtons();
 }
 
-
 function sortAfterRating() {
   donuts.sort((donut1, donut2) => {
     return donut2.rating - donut1.rating;
@@ -311,27 +532,23 @@ function sortAfterRating() {
   initButtons();
 }
 
-
 function sortAfterCategory() {
   donuts.sort((donut1, donut2) => {
     if (donut1.category > donut2.category) {
-      return 1
+      return 1;
     } else if (donut1.category < donut2.category) {
-      return -1
+      return -1;
     } else {
-      return 0
+      return 0;
     }
-    
-      
   });
 
   showDonuts();
   initButtons();
 }
 
-
 function checkKeyPressAndOpenImage(e) {
-  if( e.key === 'Enter') {
+  if (e.key === "Enter") {
     e.currentTarget.click();
   }
 }
@@ -351,6 +568,7 @@ function calculateTotalPrice() {
       return Math.round(donut.totAmount * donut.price * 0.9) + previousValue;
     }
   }, 0);
+
   if (monday.getDay() === 2 && monday.getHours() < 10) {
     newSum = Math.round(sum * 0.9);
     return newSum * discountCodeFactor;
@@ -362,7 +580,23 @@ function calculateTotalPrice() {
 function showShoppingCart() {
   let sum = calculateTotalPrice();
   priceContainer.innerHTML = `
-  <p> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`;
+  <p class="priceContainerText"> Totalsumma: <span class="totSum"> ${sum} </span> kr </p>`;
+}
+
+function changeShoppingCartColor() {
+  //Changes the color of shopping cart text when a change is made. To be completed by a timer.
+  priceContainerText = document.querySelector(".priceContainerText");
+  priceContainerText.style.color = "#80E8F0";
+  priceContainerText.style.fontSize = "2rem";
+  priceContainerText.style.transition = "color 0.3s ease-out";
+  priceContainerText.style.transition = "font-size 0.3s ease-out";
+  setTimeout(clearMessage, 800);
+}
+
+function clearMessage() {
+  priceContainerText = document.querySelector(".priceContainerText");
+  priceContainerText.style.color = "";
+  priceContainerText.style.fontSize = "";
 }
 
 function printOrdredDonuts() {
@@ -386,6 +620,7 @@ function reduceTotDonut(e) {
     updateDonutSum();
     showShoppingCart();
     showShoppingCartView();
+    changeShoppingCartColor();
   }
 }
 
@@ -397,6 +632,7 @@ function increaseTotDonut(e) {
     updateDonutSum();
     showShoppingCart();
     showShoppingCartView();
+    changeShoppingCartColor();
   }
 }
 
@@ -431,10 +667,26 @@ function showShoppingCartView() {
       </div>`;
     }
   }
+
+  let donutTotalPrice = calculateTotalPrice();
+  let shippingFeeAddon = Math.round(shippingFee + donutTotalPrice * 0.1);
+  let donutWithShippingFeePrice = donutTotalPrice + shippingFeeAddon;
+  let donutWithoutShippingFee = donutTotalPrice;
+
+  const totalAmountOfDonuts = donuts.reduce((previousValue, donut) => {
+    return donut.totAmount + previousValue;
+  }, 0);
+
+  if (totalAmountOfDonuts > 15) {
+    shoppingCart.innerHTML += `<div>Fraktkostnad: 0 kr</div>
+      <div class="donutTotalPrice">Totalpris: ${donutWithoutShippingFee} kr</div>`;
+    return;
+  }
+
   if (shoppingCart.innerHTML.length > 0) {
     // Ifall varukorgen har mer en 0, alltså 1+ så visar vi varukorgen.
-    let donutTotalPrice = calculateTotalPrice();
-    shoppingCart.innerHTML += `<div class="donutTotalPrice">Totalpris: ${donutTotalPrice} kr</div>`;
+    shoppingCart.innerHTML += `<div>Fraktkostnad: ${shippingFeeAddon} kr</div>
+    <div class="donutTotalPrice">Totalpris: ${donutWithShippingFeePrice} kr</div>`;
     // visa det totala priset för alla valda munkar
 
     shoppingCartContainer.style.display = "block";
@@ -450,25 +702,6 @@ function showOrderForm() {
   orderForm.scrollIntoView();
   minuteTimer = new Date().getTime();
 }
-
-// Tillagt 221109 av Sussie
-// generella variabler
-
-const orderButton = document.querySelector("#order");
-const nameField1 = document.querySelector("#name1");
-const nameField2 = document.querySelector("#name2");
-const addressField = document.querySelector("#address");
-const zipcodeField = document.querySelector("#zipcode");
-const cityField = document.querySelector("#city");
-const codeField = document.querySelector("#code");
-const phoneField = document.querySelector("#phone");
-const emailField = document.querySelector("#email");
-const paymentMethodChoice = document.querySelector("#paymentmethod");
-let nameIsOk = false;
-const paymentMethodCard = document.querySelector("#card");
-const paymentMethodInvoice = document.querySelector("#invoice");
-const personalNumber = document.querySelector("#personalnumber");
-const consentOfPersonalData = document.querySelector("#consent");
 
 // formulär
 
