@@ -5,7 +5,6 @@ $primaryColor: #f8f8f8;
 $secondaryColor: #f96c9e;
 $textColor: #0e0e0e;
 
-
 /*Header section*/
 
 header {
@@ -16,14 +15,13 @@ header {
     margin: auto;
     display: flex;
     justify-content: space-between;
-    background-size: cover; 
+    background-size: cover;
     background-position: center;
     height: 930px;
     background-color: aqua;
     margin-top: 152px;
   }
 }
-
 
 .donutContainer {
   display: grid;
