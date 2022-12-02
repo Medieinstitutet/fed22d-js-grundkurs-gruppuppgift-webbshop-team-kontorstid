@@ -53,6 +53,7 @@ let donutName = document.querySelector(".donutName");
 let dimmer = document.querySelector(".dimmer");
 let last_clicked = 0;
 let maxFilterPrice = 500;
+let openImage;
 
 const donuts = [ //Array which stores all info about the donut, e.g. name
 { images: [ { img: "assets/photos/bild1.jpg", img2:"assets/photos/donut-with-sugar-hole2.jpg", alt: "Munk-med-socker", width: 100, height: "auto" } ], name: "Gottfrids ", category: "Klassisk", price: 35, rating: 5, totPrice: 0, totAmount: 0 },
@@ -114,7 +115,7 @@ function initButtons() {
   //Declare variables
   btnLower = document.querySelectorAll("button[data-operator='decreaseBtn']");
   btnHigher = document.querySelectorAll("button[data-operator='increaseBtn']");
-  donutImages = document.querySelectorAll("button[data-operator='donutImage']");
+  donutImages = document.querySelectorAll("img[data-operator='donutImage']");
 
   //Calling functions
   for (let i = 0; i < btnLower.length; i++) {
@@ -123,7 +124,8 @@ function initButtons() {
   for (let i = 0; i < btnHigher.length; i++) {
     btnHigher[i].addEventListener("click", increaseTotDonut);
   }
-  for (let i = 0; i < donutImages.length; i++) {donutImages[i].addEventListener("keyup", checkKeyPressAndOpenImage);}
+  for (let i = 0; i < donutImages.length; i++) 
+  {donutImages[i].addEventListener("keyup", checkKeyPressAndOpenImage);}
 } //End initButtons
 
 function initImg() {
@@ -370,9 +372,9 @@ function sortAfterCategory() {
 }
 
 
-function checkKeyPressAndOpenimage(e) {
-  if( e.key === 'enter') {
-  openImage(e.currentTarget.id);
+function checkKeyPressAndOpenImage(e) {
+  if( e.key === 'Enter') {
+    e.currentTarget.click();
   }
 }
 
