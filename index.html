@@ -125,24 +125,24 @@
         <section class="checkout-container">
             <label>
                 <p>* Förnamn:</p>
-                <input type="text" id="name1" tabindex="0">
+                <input type="text" id="name1" tabindex="0"> <span id="errormessagefirstname"></span>
             </label> <br>
             <label>
                 <p>* Efternamn:</p>
-                <input type="text" id="name2" tabindex="0">
+                <input type="text" id="name2" tabindex="0"> <span id="errormessagesurname"></span>
             </label> <br>
             <label>
                 <p>* Adress:</p>
-                <input type="text" id="address" tabindex="0">
+                <input type="text" id="address" tabindex="0"> <span id="errormessageaddress"></span>
             </label><br>
             <div class="postal-address-container">
                 <label>
                     <p>* Postnummer:</p>
-                    <input type="number" id="zipcode" class="postalcode" tabindex="0">
+                    <input type="number" id="zipcode" class="postalcode" tabindex="0"> <span id="errormessagezipcode"></span>
                 </label>
                 <label>
                     <p>* Ort:</p>
-                    <input type="text" id="city" tabindex="0">
+                    <input type="text" id="city" tabindex="0"> <span id="errormessagecity"></span>
                 </label><br>
             </div>
             <label>
@@ -151,11 +151,11 @@
             </label><br>
             <label>
                 <p>* Telefonnummer:</p>
-                <input type="number" id="phone" tabindex="0">
+                <input type="number" id="phone" tabindex="0"> <span id="errormessagephone"></span>
             </label><br>
             <label>
                 <p>* E-mail:</p>
-                <input type="email" id="email" tabindex="0">
+                <input type="email" id="email" tabindex="0"> <span id="errormessageemail"></span>
             </label><br>
             <label>
                 <p> Rabattkod</p>
@@ -169,21 +169,21 @@
 
                 <div class="paymentCardContainer">
                     <label> Kortnummer
-                        <input type="number" id="cardnumber" tabindex="0">
+                        <input type="number" id="cardnumber" tabindex="0"> <span id="errormessagecardnumber"></span>
                     </label>
                     <br>
                     <label>Månad/År
-                        <input type="number" tabindex="0">
+                        <input type="number" tabindex="0"> <span id="errormessagemonthyear"></span>
                     </label>
                     <label> CVC
-                        <input type="number" tabindex="0">
+                        <input type="number" tabindex="0"> <span id="errormessagecvc"></span>
                     </label>
 
                 </div>
                 <div class="paymentInvoiceContainer">
                     <label> Personnummer</label>
                     <!--OBS! Denna är ej fixad i JS, behöver validera att det är ett korrekt personnummer!!-->
-                    <input type="number" id="personalnumber" tabindex="0">
+                    <input type="number" id="personalnumber" tabindex="0"> <span id="errormessagepersonalnumber"></span>
 
                 </div>
             </section>
@@ -209,7 +209,7 @@
         <section class="secondFooter">
             <div class="attribution">
                 <a
-                    href="https://www.freepik.com/free-photo/group-happy-friends-having-fun-while-eating-donuts-cafe_26401670.htm#query=donut%20cafe&position=15&from_view=search&track=sph">Image
+                    href="https://www.freepik.com/free-photo/group-happy-friends-having-fun-while-eating-donuts-cafe_26401670.htm#query=donut%20cafe&position=15&from_view=search&track=sph" tabindex="-1">Image
                     by Drazen Zigic</a> on Freepik
             </div>
         </section>
