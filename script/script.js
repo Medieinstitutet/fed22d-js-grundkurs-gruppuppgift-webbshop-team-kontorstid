@@ -96,9 +96,7 @@ function init() {
 
   if (isFriday && time >= 15 && isMonday && time <= 03) {
     for (let i = 0; i < donuts.length; i++) {
-      console.log("Öka pris");
       donuts[i].price = Math.round(donuts[i].price * 1.15);
-      console.log(donuts[i].price);
     }
   }
   checkName1() ||
@@ -394,7 +392,10 @@ function calculateTotalPrice() {
     else {
       return Math.round(donut.totAmount * donut.price * 0.9) + previousValue;
     }
+    
   }, 0);
+
+ 
   if (monday.getDay() === 2 && monday.getHours() < 10) {
     newSum = Math.round(sum * 0.9);
     return newSum * discountCodeFactor;
@@ -482,10 +483,27 @@ function showShoppingCartView() {
       </div>`;
     }
   }
+  
+  let donutTotalPrice = calculateTotalPrice();
+  let shippingFeeAddon = Math.round(shippingFee + donutTotalPrice * 0.1);
+  let donutWithShippingFeePrice = donutTotalPrice + shippingFeeAddon;
+  let donutWithoutShippingFee = donutTotalPrice;
+
+  const totalAmountOfDonuts = donuts.reduce((previousValue, donut) => {
+    return donut.totAmount + previousValue;
+  }, 0);
+
+    if (totalAmountOfDonuts > 15) {
+      shoppingCart.innerHTML += `<div>Fraktkostnad: 0 kr</div>
+      <div class="donutTotalPrice">Totalpris: ${donutWithoutShippingFee} kr</div>`;
+      return;
+    }
+
+
   if (shoppingCart.innerHTML.length > 0) {
     // Ifall varukorgen har mer en 0, alltså 1+ så visar vi varukorgen.
-    let donutTotalPrice = calculateTotalPrice();
-    shoppingCart.innerHTML += `<div class="donutTotalPrice">Totalpris: ${donutTotalPrice} kr</div>`;
+    shoppingCart.innerHTML += `<div>Fraktkostnad: ${shippingFeeAddon} kr</div>
+    <div class="donutTotalPrice">Totalpris: ${donutWithShippingFeePrice} kr</div>`;
     // visa det totala priset för alla valda munkar
 
     shoppingCartContainer.style.display = "block";
@@ -493,7 +511,9 @@ function showShoppingCartView() {
     // Om vi har noll varor så visar vi inte varukorgen mer.
     shoppingCartContainer.style.display = "none";
   }
+
 }
+
 
 function showOrderForm() {
   shoppingCartContainer.style.display = "none";
