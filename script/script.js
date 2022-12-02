@@ -309,7 +309,7 @@ function init() {
     for (let i = 0; i < donuts.length; i++) {
       donuts[i].price = Math.round(donuts[i].price * 1.15);
     }
-}
+  }
   checkName1() ||
     checkName2() ||
     checkAddress() ||
