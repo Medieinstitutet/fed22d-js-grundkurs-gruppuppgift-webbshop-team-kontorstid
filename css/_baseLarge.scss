@@ -1,0 +1,19 @@
+.donutContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+header {
+  display: block;
+  padding: 0;
+
+  .headerBackground {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: center;
+    height: 730px;
+    background-color: aqua;
+  }
+}

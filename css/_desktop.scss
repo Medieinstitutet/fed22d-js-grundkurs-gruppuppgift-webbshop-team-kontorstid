@@ -1,0 +1,61 @@
+/*Variables*/
+
+/*Colors*/
+$primaryColor: #f8f8f8;
+$secondaryColor: #f96c9e;
+$textColor: #0e0e0e;
+
+/*Header section*/
+
+header {
+  display: block;
+  padding: 0;
+
+  .headerBackground {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: center;
+    height: 930px;
+    background-color: aqua;
+    margin-top: 152px;
+  }
+}
+
+.donutContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.postal-address-container {
+  display: flex;
+  gap: 15px;
+
+  .postalcode {
+    max-width: 100px;
+  }
+}
+.postal-address-container {
+  display: flex;
+  gap: 15px;
+}
+.postal-address-container .postalcode {
+  max-width: 100px;
+}
+
+main {
+  padding: 15px;
+  max-width: 1400px;
+  margin: auto;
+  padding-top: 152px;
+}
+
+.postal-address-container {
+  display: flex;
+  gap: 15px;
+}
+
+.postal-address-container .postalcode {
+  max-width: 100px;
+}
