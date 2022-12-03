@@ -3,7 +3,6 @@ $primaryColor: #f8f8f8;
 $secondaryColor: #f96c9e;
 $textColor: #0e0e0e;
 
-
 * {
   margin: 0;
   padding: 0;
@@ -16,11 +15,10 @@ html {
 }
 
 /*text*/
-p, h1, h2 {
-  color: $textColor;
-}
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: "Archivo Black", sans-serif;
 }
 
@@ -37,12 +35,17 @@ body {
   background-color: $primaryColor;
 }
 
+body.xmas {
+  h2{
+  color: red;
+  }
+}
 
 /*Header section*/
 
 header {
   display: block;
-  padding: 0; 
+  padding: 0;
 
   .heading {
     background-color: $primaryColor;
@@ -54,7 +57,7 @@ header {
     top: 0;
     left: 0;
   }
-  
+
   .headerBackground {
     margin: auto;
     display: flex;
@@ -66,7 +69,7 @@ header {
     height: 830px;
   }
 
-  .headerBanner{
+  .headerBanner {
     position: relative;
     text-align: center;
     color: $primaryColor;
@@ -86,7 +89,7 @@ header {
     transition: all 0.4s ease-in-out;
     position: fixed;
     z-index: 3;
-    
+
     ul {
       margin: 0;
       padding: 0;
@@ -118,21 +121,21 @@ header {
     right: 20px;
     top: 10px;
     z-index: 3;
-    cursor:pointer;
+    cursor: pointer;
   }
 
-  #checkbox{
-    display:none;
+  #checkbox {
+    display: none;
   }
-  
-.menuOpener{
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 3;
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
+
+  .menuOpener {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
 
     span {
       display: block;
@@ -152,25 +155,24 @@ header {
     }
   }
 
-  div.menu button:hover span:nth-child(2){
+  div.menu button:hover span:nth-child(2) {
     left: 6px;
   }
 
-.menuCloser{
-  display:none;
-  font-size: 60px;
-  font-weight: bold;
-  color: $secondaryColor;
-  z-index:4;
-  right: 10px;
-  top: 0px;
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
-  position:fixed;
+  .menuCloser {
+    display: none;
+    font-size: 60px;
+    font-weight: bold;
+    color: $secondaryColor;
+    z-index: 4;
+    right: 10px;
+    top: 0px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    position: fixed;
+  }
 }
-}
-
 
 /*Main section*/
 
@@ -211,7 +213,7 @@ main {
     width: 100%;
   }
 
-  .donutBox { 
+  .donutBox {
     position: fixed;
     background-color: $primaryColor;
     top: 50%;
@@ -221,13 +223,14 @@ main {
     z-index: 6;
   }
 
-  .donutBox p, h3 {
+  .donutBox p,
+  h3 {
     margin: 10px;
-    font-size: 0.7rem; 
+    font-size: 0.7rem;
   }
 
-  .slideControl{
-    display:flex;
+  .slideControl {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -259,7 +262,7 @@ main {
 
   .indicator {
     text-align: center;
-    }
+  }
 
   .dot {
     height: 25px;
@@ -294,10 +297,6 @@ main {
     width: 100%;
   }
 
-  .donut-info-container h2, span, p {
-    color: $textColor;
-  }
-
   .donut-info-container button {
     background-color: $textColor;
     color: $primaryColor;
@@ -307,7 +306,8 @@ main {
     width: 30px;
   }
 
-  .donut-info-container .checked, .unchecked {
+  .donut-info-container .checked,
+  .unchecked {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -331,23 +331,24 @@ main {
   .checkout-container {
     display: none;
     background-color: #616161;
-    p, input {
-    margin-left: 3rem;
+    p,
+    input {
+      margin-left: 3rem;
+    }
+    p,
+    .payment {
+      color: $primaryColor;
+    }
+    span {
+      color: $primaryColor;
+    }
   }
-    p, .payment {
-    color: $primaryColor;
-  }
-  span {
-    color: $primaryColor;
-  }
-}
 
   .paymentCardContainer {
     display: none;
   }
 
   .paymentInvoiceContainer {
-    
     display: none;
   }
 
@@ -356,7 +357,7 @@ main {
   }
 
   .shoppingCartContainer {
-    display:none;
+    display: none;
     position: fixed;
     background-color: $secondaryColor;
     top: 70%;
@@ -365,6 +366,49 @@ main {
     border: 1px solid rgb(103, 103, 103);
     z-index: 6;
     border-radius: 10px;
+  }
+
+  .toSlowContainer {
+    display:none;
+    position: fixed;
+    flex-direction: column;
+    background-color: $secondaryColor;
+    top: 50%;
+    left: 50%;
+    height:100px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgb(103, 103, 103);
+    z-index: 6;
+    border-radius: 10px;
+    align-items: center;
+  }
+  .toSlowName{
+    color:$primaryColor;
+  }
+
+  .toSlowCloser{
+    font-size: 40px;
+    font-weight: bold;
+    color: $primaryColor;
+    z-index:4;
+    width: 35px;
+    height: 35px;
+    
+    cursor: pointer;
+  }
+
+  .shoppingCloser{
+    display:block;
+    font-size: 40px;
+    font-weight: bold;
+    color: $primaryColor;
+    z-index:4;
+    right: 0px;
+    top: 5px;
+    width: 35px;
+    height: 35px;
+    position:fixed;
+    cursor: pointer;
   }
 
   .shoppingCartName {
@@ -377,8 +421,8 @@ main {
     color: $primaryColor;
   }
 
-  .donutOrderedContainer{
-    display:flex;
+  .donutOrderedContainer {
+    display: flex;
     flex-direction: row;
     line-height: 1.5rem;
     justify-content: space-around;
@@ -389,7 +433,7 @@ main {
     line-height: 1.5rem;
     padding: 15px;
     justify-content: space-around;
-    color: $primaryColor; 
+    color: $primaryColor;
   }
 
   .donutTotalPrice {

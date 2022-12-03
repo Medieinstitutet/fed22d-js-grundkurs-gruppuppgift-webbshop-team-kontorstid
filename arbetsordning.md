@@ -1,4 +1,4 @@
-[1] CSS på sidan 
+[1] CSS på sidan
 [1] x HTML-kod fix (bilder, mellanrum formulär)
 [2] x Att munkarna hamnar i varukorgen, pris och antal
 [2] Timer-funktion (varukorgen töms efter 15 min)
